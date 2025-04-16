@@ -52,23 +52,33 @@ const Retreats = () => {
   const retreats: Retreat[] = [
     {
       id: 1,
-      title: "Bali Serenity Retreat",
-      location: "Ubud, Bali",
-      date: "June 15-22, 2025",
-      description: "Immerse yourself in the lush landscapes of Bali for a week of yoga, meditation, and cultural experiences. This retreat balances daily practice with plenty of time to explore this magical island.",
+      title: "Sacred India Retreat",
+      location: "Rishikesh, India",
+      date: "March 15-28, 2026",
+      description: "Immerse yourself in the birthplace of yoga for a transformative journey along the sacred Ganges. Experience traditional practices, temple visits, and authentic teachings in the yoga capital of the world.",
       image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=1000&q=80",
-      price: "From $2,200",
-      spots: "12 spots available",
+      price: "From €2,800",
+      spots: "10 spots available",
     },
     {
       id: 2,
-      title: "Mountain Mindfulness",
-      location: "Blue Ridge Mountains, USA",
-      date: "September 8-13, 2025",
-      description: "Connect with nature in the stunning Blue Ridge Mountains. This retreat focuses on mindful movement and forest bathing, with cozy evenings by the fireplace and nourishing farm-to-table meals.",
+      title: "Kundalini Awakening",
+      location: "Southern Germany",
+      date: "July 8-15, 2025",
+      description: "Activate your inner energy through powerful kundalini practices in the serene German countryside. This retreat combines traditional kriyas, meditation, and sacred ceremonies to awaken your divine potential.",
       image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1000&q=80",
-      price: "From $1,800",
+      price: "From €1,950",
       spots: "8 spots available",
+    },
+    {
+      id: 3,
+      title: "Tantric Wisdom Retreat",
+      location: "Bali, Indonesia",
+      date: "October 5-17, 2025",
+      description: "Dive deep into ancient tantric practices that honor the sacred union of feminine and masculine energies. Connect with your divine essence through meditation, ritual, and embodiment practices in magical Bali.",
+      image: "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?auto=format&fit=crop&w=1000&q=80",
+      price: "From €3,200",
+      spots: "12 spots available",
     },
   ];
 
@@ -80,14 +90,14 @@ const Retreats = () => {
       
       <div className="container-custom relative">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="section-title text-yoga-brown">Upcoming Retreats</h2>
+          <h2 className="section-title text-yoga-brown">Sacred Journeys</h2>
           <p className="text-yoga-brown/80 max-w-2xl mx-auto mt-10">
-            Experience the transformative power of yoga in beautiful settings around the world.
-            Our retreats offer a perfect balance of practice, relaxation, and adventure.
+            Experience the transformative power of yoga in sacred locations around the world.
+            Our retreats offer a perfect balance of authentic practice, spiritual exploration, and cultural immersion.
           </p>
         </div>
 
-        <div ref={retreatsRef} className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div ref={retreatsRef} className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {retreats.map((retreat) => (
             <div key={retreat.id} className="retreat-card opacity-0 flex flex-col premium-card group">
               <div className="relative h-64 image-zoom">
@@ -138,13 +148,13 @@ const Retreats = () => {
         </div>
 
         <div className={`mt-16 p-10 bg-yoga-tan/30 backdrop-blur-sm rounded-lg shadow-lg text-center border border-yoga-gold/20 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="font-serif text-2xl mb-4 text-yoga-brown">Custom Retreats</h3>
+          <h3 className="font-serif text-2xl mb-4 text-yoga-brown">Private Sacred Journeys</h3>
           <div className="w-16 h-0.5 bg-yoga-gold mx-auto mb-6"></div>
           <p className="text-yoga-brown/80 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Looking for a personalized retreat experience for your group, company, or special occasion?
-            I offer custom-designed retreats tailored to your specific needs and preferences.
+            Looking for a personalized spiritual journey for your group, family, or special occasion?
+            Mahashakti offers custom-designed retreats tailored to your specific intentions and spiritual goals.
           </p>
-          <a href="#contact" className="yoga-button-premium bg-yoga-gold/90 hover:bg-yoga-gold text-white border-yoga-gold/90 hover:border-yoga-gold">Inquire About Custom Retreats</a>
+          <a href="#contact" className="yoga-button-premium bg-yoga-gold/90 hover:bg-yoga-gold text-white border-yoga-gold/90 hover:border-yoga-gold">Inquire About Private Journeys</a>
         </div>
       </div>
     </section>

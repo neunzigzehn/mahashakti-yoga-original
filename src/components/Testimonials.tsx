@@ -12,27 +12,27 @@ const Testimonials = () => {
   const testimonials: Testimonial[] = [
     {
       id: 1,
-      quote: "Nina's classes have transformed not just my yoga practice but my entire approach to mindfulness. Her gentle guidance has helped me connect with my body in a way I never thought possible.",
-      name: "Sarah Johnson",
-      title: "Practicing for 2 years",
+      quote: "Mahashakti's kundalini classes have been transformative for my spiritual journey. The energy work and meditations have helped me connect with my inner power in ways I never thought possible.",
+      name: "Sophia Müller",
+      title: "Practicing for 3 years",
     },
     {
       id: 2,
-      quote: "As someone who was intimidated by yoga, Nina created a space where I felt completely comfortable exploring movement at my own pace. Her approach is accessible yet deeply transformative.",
-      name: "Michael Chen",
-      title: "Practicing for 6 months",
-    },
-    {
-      id: 3,
-      quote: "The mindfulness techniques I've learned in Nina's classes have been invaluable for managing stress in my daily life. Her teaching extends far beyond the yoga mat.",
-      name: "Emily Rodriguez",
+      quote: "As someone who struggled with stress and anxiety, Mahashakti's authentic approach to yoga has been a true gift. The breathing techniques and mantras have helped me find peace in everyday life.",
+      name: "Andreas Weber",
       title: "Practicing for 1 year",
     },
     {
+      id: 3,
+      quote: "The sacred space that Mahashakti creates allows for deep inner work. Her guidance through traditional tantric practices has opened new dimensions in my spiritual development.",
+      name: "Lena Schmidt",
+      title: "Practicing for 2 years",
+    },
+    {
       id: 4,
-      quote: "Nina has an incredible ability to make each student feel seen and supported in their practice. Her attention to detail and personalized adjustments have helped me deepen my practice immensely.",
-      name: "David Thompson",
-      title: "Practicing for 3 years",
+      quote: "Mahashakti has an incredible ability to translate ancient yogic wisdom into accessible practices. Her deep knowledge and genuine devotion to the tradition make every class a profound experience.",
+      name: "Thomas Fischer",
+      title: "Practicing for 4 years",
     },
   ];
 
@@ -81,7 +81,7 @@ const Testimonials = () => {
   useEffect(() => {
     if (!isPaused) {
       intervalRef.current = window.setInterval(() => {
-        nextTestimonial();
+        setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
       }, 6000);
     }
 
@@ -90,7 +90,19 @@ const Testimonials = () => {
         clearInterval(intervalRef.current);
       }
     };
-  }, [isPaused]);
+  }, [isPaused, testimonials.length]);
+
+  const nextTestimonial = () => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setActiveIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
+  };
+
+  const goToTestimonial = (index: number) => {
+    setActiveIndex(index);
+  };
 
   return (
     <section 

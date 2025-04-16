@@ -33,12 +33,12 @@ const Hero = () => {
           </div>
           <div className="overflow-hidden mb-8">
             <h1 className={`hero-text text-yoga-darkBrown ${isVisible ? 'animate-slide-up animation-delay-300' : 'translate-y-full'}`}>
-              A mindful approach to yoga
+              Mahashakti Yoga
             </h1>
           </div>
           <div className="overflow-hidden mb-10">
             <p className={`text-yoga-brown/80 font-sans font-light max-w-xl text-lg leading-relaxed ${isVisible ? 'animate-slide-up animation-delay-600' : 'translate-y-full'}`}>
-              Experience yoga in a new light with Nina's gentle and mindful approach to movement, breath and body awareness.
+              Experience the transformative power of yoga with Mahashakti's authentic approach to movement, breath, and spiritual awareness.
             </p>
           </div>
           <div className={`flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>

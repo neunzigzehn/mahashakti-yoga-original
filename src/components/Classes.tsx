@@ -49,35 +49,35 @@ const Classes = () => {
   const classes: YogaClass[] = [
     {
       id: 1,
-      title: "Gentle Flow",
-      description: "A slow-paced class focusing on fluid movement synchronized with breath. Perfect for beginners and those seeking a gentler approach to practice.",
+      title: "Kundalini Yoga",
+      description: "Awaken your inner energy through dynamic movements, breathing techniques, and mantras. Experience the rising of consciousness and spiritual awakening.",
       image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
       level: "All Levels",
-      duration: "60 min",
+      duration: "90 min",
     },
     {
       id: 2,
-      title: "Mindful Vinyasa",
-      description: "A dynamic practice linking breath with movement in creative sequences. Builds strength, flexibility and mental focus through mindful transitions.",
+      title: "Hatha Yoga",
+      description: "A traditional approach focusing on alignment, balance and breath awareness. Build strength and flexibility while cultivating mindfulness and inner peace.",
       image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=600&q=80",
-      level: "Intermediate",
+      level: "All Levels",
       duration: "75 min",
     },
     {
       id: 3,
-      title: "Restorative Yoga",
-      description: "A deeply relaxing practice using props to support the body in comfortable poses held for longer periods, activating the parasympathetic nervous system.",
+      title: "Tantra Yoga",
+      description: "Explore the sacred union of feminine and masculine energies through mindful movement, meditation, and breathwork. Connect with your divine essence.",
       image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&w=600&q=80",
-      level: "All Levels",
+      level: "Intermediate",
       duration: "90 min",
     },
     {
       id: 4,
-      title: "Yin & Meditation",
-      description: "A slow practice targeting deep connective tissues through long-held passive poses, followed by guided meditation to cultivate presence and awareness.",
+      title: "Meditation & Mantra",
+      description: "Dive deep into ancient meditation techniques and sacred sound vibrations to quiet the mind, open the heart, and connect with your inner wisdom.",
       image: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?auto=format&fit=crop&w=600&q=80",
       level: "All Levels",
-      duration: "90 min",
+      duration: "60 min",
     },
   ];
 
@@ -87,8 +87,8 @@ const Classes = () => {
         <div className={`text-center mb-16 transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           <h2 className="section-title text-yoga-brown">Yoga Classes</h2>
           <p className="text-yoga-brown/80 max-w-2xl mx-auto mt-10">
-            Discover a variety of classes designed to support your practice wherever you are on your yoga journey.
-            Each class offers a unique approach to movement, breath, and mindfulness.
+            Discover a variety of authentic yoga practices designed to awaken your inner power and guide you towards wholeness.
+            Each class offers a unique approach to connect with your body, mind, and spirit.
           </p>
         </div>
 

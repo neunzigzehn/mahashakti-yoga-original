@@ -38,7 +38,7 @@ export const Navbar = () => {
       <div className="container-custom flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="z-10 group">
-          <h1 className="font-display italic text-2xl md:text-3xl text-yoga-brown group-hover:text-yoga-gold transition-colors duration-300">Yoga by Nina</h1>
+          <h1 className="font-display italic text-2xl md:text-3xl text-yoga-brown group-hover:text-yoga-gold transition-colors duration-300">Mahashakti Yoga</h1>
         </a>
 
         {/* Desktop Navigation */}

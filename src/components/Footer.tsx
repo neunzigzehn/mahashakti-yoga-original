@@ -15,10 +15,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Logo and about */}
           <div className="md:col-span-2">
-            <h2 className="font-display italic text-2xl mb-4">Yoga by Nina</h2>
+            <h2 className="font-display italic text-2xl mb-4">Mahashakti Yoga</h2>
             <p className="text-white/80 mb-6 max-w-md">
-              A mindful approach to yoga focused on creating space for 
-              self-discovery, growth, and connection through movement and breath.
+              An authentic approach to yoga focused on awakening inner power
+              and spiritual connection through traditional practices.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors duration-300">
@@ -70,19 +70,19 @@ const Footer = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span>123 Serenity Lane<br />Mindful Valley, NY 10001</span>
+                <span>Rosenstraße 12<br />80331 München, Germany</span>
               </li>
               <li className="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-yoga-gold shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <span>info@yogabynina.com</span>
+                <span>info@mahashakti-yoga.de</span>
               </li>
               <li className="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-yoga-gold shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <span>(555) 123-4567</span>
+                <span>+49 89 1234 5678</span>
               </li>
             </ul>
           </div>
@@ -110,7 +110,7 @@ const Footer = () => {
 
         {/* Copyright and back to top */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/20">
-          <p className="text-white/70 text-sm">&copy; {new Date().getFullYear()} Yoga by Nina. All rights reserved.</p>
+          <p className="text-white/70 text-sm">&copy; {new Date().getFullYear()} Mahashakti Yoga. All rights reserved.</p>
           <button 
             onClick={scrollToTop}
             className="mt-4 md:mt-0 group flex items-center text-white/70 hover:text-white transition-colors duration-300"
