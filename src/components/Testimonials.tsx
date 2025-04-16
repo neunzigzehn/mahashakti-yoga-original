@@ -12,25 +12,25 @@ const Testimonials = () => {
   const testimonials: Testimonial[] = [
     {
       id: 1,
-      quote: "Mahashakti's kundalini classes have been transformative for my spiritual journey. The energy work and meditations have helped me connect with my inner power in ways I never thought possible.",
-      name: "Sophia Müller",
-      title: "Practicing for 3 years",
+      quote: "I've known Veronika and her wonderful Mahashakti Yoga Studio for a very long time - she brought me to yoga and I have never found such great teaching with these beautiful vibes anywhere else. Now that I live in Saarbrücken, it's fantastic to be able to practice online with her again. I'm more than happy about it!",
+      name: "Marion",
+      title: "Practicing since 2021",
     },
     {
       id: 2,
-      quote: "As someone who struggled with stress and anxiety, Mahashakti's authentic approach to yoga has been a true gift. The breathing techniques and mantras have helped me find peace in everyday life.",
+      quote: "As someone who struggled with stress and anxiety, Veronika's authentic approach to yoga has been a true gift. The breathing techniques and mantras have helped me find peace in everyday life. Her Mind & Emotional Balance Sessions are transformative.",
       name: "Andreas Weber",
       title: "Practicing for 1 year",
     },
     {
       id: 3,
-      quote: "The sacred space that Mahashakti creates allows for deep inner work. Her guidance through traditional tantric practices has opened new dimensions in my spiritual development.",
+      quote: "The sacred space that Veronika creates allows for deep inner work. Her guidance through traditional practices has opened new dimensions in my spiritual development. The Craniosacral Balancing sessions are especially healing.",
       name: "Lena Schmidt",
       title: "Practicing for 2 years",
     },
     {
       id: 4,
-      quote: "Mahashakti has an incredible ability to translate ancient yogic wisdom into accessible practices. Her deep knowledge and genuine devotion to the tradition make every class a profound experience.",
+      quote: "Veronika has an incredible ability to translate ancient yogic wisdom into accessible practices. Her deep knowledge and genuine devotion to the tradition make every class a profound experience. I highly recommend her retreats in Tyrol!",
       name: "Thomas Fischer",
       title: "Practicing for 4 years",
     },

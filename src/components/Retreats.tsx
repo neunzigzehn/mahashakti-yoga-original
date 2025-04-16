@@ -52,33 +52,33 @@ const Retreats = () => {
   const retreats: Retreat[] = [
     {
       id: 1,
-      title: "Sacred India Retreat",
-      location: "Rishikesh, India",
-      date: "March 15-28, 2026",
-      description: "Immerse yourself in the birthplace of yoga for a transformative journey along the sacred Ganges. Experience traditional practices, temple visits, and authentic teachings in the yoga capital of the world.",
+      title: "Bikini Island & Mountain Resort",
+      location: "Port de Sóller, Mallorca, Spain",
+      date: "May 28 - June 1, 2025",
+      description: "Experience the beauty of Mallorca in this exclusive beachside resort. Practice yoga with stunning views of the Mediterranean, enjoy healthy meals, and explore the picturesque surroundings. Perfect for reconnecting with nature and yourself.",
       image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=1000&q=80",
-      price: "From €2,800",
-      spots: "10 spots available",
+      price: "From €980",
+      spots: "Limited spots available",
     },
     {
       id: 2,
-      title: "Kundalini Awakening",
-      location: "Southern Germany",
-      date: "July 8-15, 2025",
-      description: "Activate your inner energy through powerful kundalini practices in the serene German countryside. This retreat combines traditional kriyas, meditation, and sacred ceremonies to awaken your divine potential.",
+      title: "Vigilius Mountain Resort",
+      location: "Lana, South Tyrol, Italy",
+      date: "June 12-15, 2025",
+      description: "A mountain retreat at 1500m altitude in the beautiful South Tyrol region. Deepen your practice surrounded by breathtaking Alpine views while staying at this award-winning eco-resort, accessible only by cable car.",
       image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1000&q=80",
-      price: "From €1,950",
+      price: "From €795",
       spots: "8 spots available",
     },
     {
       id: 3,
-      title: "Tantric Wisdom Retreat",
-      location: "Bali, Indonesia",
-      date: "October 5-17, 2025",
-      description: "Dive deep into ancient tantric practices that honor the sacred union of feminine and masculine energies. Connect with your divine essence through meditation, ritual, and embodiment practices in magical Bali.",
+      title: "Forsthofalm Wood Hotel",
+      location: "Leogang, Salzburg, Austria",
+      date: "September 4-7, 2025",
+      description: "Connect with nature in this unique wooden hotel in the Austrian Alps. The retreat includes 3 nights of accommodation with yoga sessions in a stunning glass-walled studio overlooking the mountains. Hiking and spa treatments available.",
       image: "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?auto=format&fit=crop&w=1000&q=80",
-      price: "From €3,200",
-      spots: "12 spots available",
+      price: "From €685",
+      spots: "10 spots available",
     },
   ];
 
@@ -92,7 +92,7 @@ const Retreats = () => {
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="section-title text-yoga-brown">Sacred Journeys</h2>
           <p className="text-yoga-brown/80 max-w-2xl mx-auto mt-10">
-            Experience the transformative power of yoga in sacred locations around the world.
+            Experience the transformative power of yoga in sacred locations around Europe.
             Our retreats offer a perfect balance of authentic practice, spiritual exploration, and cultural immersion.
           </p>
         </div>
@@ -109,7 +109,7 @@ const Retreats = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-yoga-brown/80 to-transparent"></div>
                 <div className="absolute top-0 left-0 m-4">
                   <div className="py-1 px-3 bg-yoga-gold text-white text-xs uppercase tracking-wider rounded-sm shadow-md">
-                    Featured
+                    2025
                   </div>
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -141,20 +141,20 @@ const Retreats = () => {
                 </div>
               </div>
               <div className="px-6 pb-6">
-                <a href="#contact" className="yoga-button-premium bg-yoga-brown text-white hover:bg-yoga-gold border-yoga-brown hover:border-yoga-gold w-full block text-center">Learn More</a>
+                <a href="#contact" className="yoga-button-premium bg-yoga-brown text-white hover:bg-yoga-gold border-yoga-brown hover:border-yoga-gold w-full block text-center">Book Now</a>
               </div>
             </div>
           ))}
         </div>
 
         <div className={`mt-16 p-10 bg-yoga-tan/30 backdrop-blur-sm rounded-lg shadow-lg text-center border border-yoga-gold/20 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="font-serif text-2xl mb-4 text-yoga-brown">Private Sacred Journeys</h3>
+          <h3 className="font-serif text-2xl mb-4 text-yoga-brown">200h Yoga Teacher Training</h3>
           <div className="w-16 h-0.5 bg-yoga-gold mx-auto mb-6"></div>
           <p className="text-yoga-brown/80 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Looking for a personalized spiritual journey for your group, family, or special occasion?
-            Mahashakti offers custom-designed retreats tailored to your specific intentions and spiritual goals.
+            Become a certified yoga teacher with Veronika Rössl's comprehensive 200-hour Yoga Alliance certified training in Munich. 
+            The next training runs from January 16, 2026 to May 10, 2026. Take advantage of our early booking special!
           </p>
-          <a href="#contact" className="yoga-button-premium bg-yoga-gold/90 hover:bg-yoga-gold text-white border-yoga-gold/90 hover:border-yoga-gold">Inquire About Private Journeys</a>
+          <a href="#contact" className="yoga-button-premium bg-yoga-gold/90 hover:bg-yoga-gold text-white border-yoga-gold/90 hover:border-yoga-gold">Learn About Teacher Training</a>
         </div>
       </div>
     </section>

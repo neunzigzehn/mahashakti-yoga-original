@@ -29,16 +29,21 @@ const Hero = () => {
       <div className="relative container-custom h-full flex flex-col justify-center">
         <div className={`max-w-2xl transition-all duration-1500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="overflow-hidden mb-2">
-            <h2 className={`yoga-heading text-yoga-brown text-xl md:text-2xl ${isVisible ? 'animate-slide-up' : 'translate-y-full'}`}>Welcome to</h2>
+            <h2 className={`yoga-heading text-yoga-brown text-xl md:text-2xl ${isVisible ? 'animate-slide-up' : 'translate-y-full'}`}>FIT & RELAXED</h2>
           </div>
           <div className="overflow-hidden mb-8">
             <h1 className={`hero-text text-yoga-darkBrown ${isVisible ? 'animate-slide-up animation-delay-300' : 'translate-y-full'}`}>
-              Mahashakti Yoga
+              VERONIKA'S MAHASHAKTI YOGA & COACHING
             </h1>
+          </div>
+          <div className="overflow-hidden mb-4">
+            <p className={`text-yoga-brown/80 font-sans font-light max-w-xl text-lg leading-relaxed ${isVisible ? 'animate-slide-up animation-delay-600' : 'translate-y-full'}`}>
+              in MUNICH
+            </p>
           </div>
           <div className="overflow-hidden mb-10">
             <p className={`text-yoga-brown/80 font-sans font-light max-w-xl text-lg leading-relaxed ${isVisible ? 'animate-slide-up animation-delay-600' : 'translate-y-full'}`}>
-              Experience the transformative power of yoga with Mahashakti's authentic approach to movement, breath, and spiritual awareness.
+              Experience the transformative power of authentic yoga with Veronika Rössl's Mahashakti approach to movement, breath, and spiritual awareness since 2002.
             </p>
           </div>
           <div className={`flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
