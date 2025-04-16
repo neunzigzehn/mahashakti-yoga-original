@@ -6,8 +6,11 @@ const BlurEffect = () => {
   const { gl } = useThree();
   
   useEffect(() => {
-    // Higher resolution rendering for clearer orbs
-    gl.setPixelRatio(window.devicePixelRatio * 0.85); // Increased from 0.65 for better quality
+    // Full resolution rendering for maximum orb visibility
+    gl.setPixelRatio(window.devicePixelRatio);
+    
+    // Set renderer to handle alpha correctly
+    gl.setClearColor(0xffffff, 0);
   }, [gl]);
 
   return null;
