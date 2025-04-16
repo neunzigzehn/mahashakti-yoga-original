@@ -15,13 +15,13 @@ const Schedule = () => {
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   const [activeDay, setActiveDay] = useState('Monday');
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          sectionRef.current?.classList.add('animate-fade-in');
-          sectionRef.current?.classList.remove('opacity-0');
+          setIsVisible(true);
         }
       },
       {
@@ -76,11 +76,15 @@ const Schedule = () => {
   };
 
   return (
-    <section id="schedule" ref={sectionRef} className="py-24 bg-yoga-beige opacity-0 transition-opacity duration-1000">
-      <div className="container-custom">
-        <div className="text-center mb-16">
+    <section id="schedule" ref={sectionRef} className="py-24 bg-yoga-beige relative">
+      {/* Decorative elements */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-yoga-gold/5 rounded-full translate-x-1/3 -translate-y-1/3"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-yoga-gold/5 rounded-full -translate-x-1/2 translate-y-1/3"></div>
+      
+      <div className="container-custom relative">
+        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="section-title text-yoga-brown">Class Schedule</h2>
-          <p className="text-yoga-brown/80 max-w-2xl mx-auto">
+          <p className="text-yoga-brown/80 max-w-2xl mx-auto mt-10">
             Join us for regular classes throughout the week. 
             Whether you're an early bird or prefer evening practice, 
             we have options to suit your schedule.
@@ -88,14 +92,14 @@ const Schedule = () => {
         </div>
 
         {/* Day selection tabs */}
-        <div className="flex overflow-x-auto pb-2 md:pb-0 md:justify-center mb-8 scrollbar-none">
+        <div className={`flex overflow-x-auto pb-2 md:pb-0 md:justify-center mb-8 scrollbar-hide transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="flex space-x-1 md:space-x-2">
             {days.map((day) => (
               <button
                 key={day}
                 className={`px-4 py-2 font-sans text-sm uppercase tracking-wider whitespace-nowrap transition-all duration-300 ${
                   activeDay === day
-                    ? 'bg-yoga-brown text-white'
+                    ? 'bg-yoga-brown text-white shadow-md'
                     : 'bg-white text-yoga-brown hover:bg-yoga-tan/50'
                 }`}
                 onClick={() => setActiveDay(day)}
@@ -107,7 +111,7 @@ const Schedule = () => {
         </div>
 
         {/* Schedule table */}
-        <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+        <div className={`bg-white rounded-lg shadow-lg overflow-hidden border border-yoga-gold/10 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead className="bg-yoga-brown text-white">
@@ -141,44 +145,44 @@ const Schedule = () => {
         </div>
 
         {/* Pricing section */}
-        <div className="mt-24">
-          <h3 className="text-center font-serif text-2xl mb-12 text-yoga-brown">Pricing Options</h3>
+        <div className={`mt-24 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h3 className="text-center font-serif text-3xl mb-12 text-yoga-brown">Pricing Options</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 text-center">
-              <h4 className="font-serif text-xl mb-2 text-yoga-brown">Single Class</h4>
-              <p className="text-yoga-gold text-3xl font-light mb-6">$20</p>
+            <div className="premium-card p-8 text-center group">
+              <h4 className="font-serif text-xl mb-2 text-yoga-brown group-hover:text-yoga-gold transition-colors duration-300">Single Class</h4>
+              <p className="text-yoga-gold text-3xl font-light mb-6 mt-4">$20</p>
               <ul className="text-yoga-brown/80 space-y-2 mb-8">
                 <li>Access to one class</li>
                 <li>Mat rental included</li>
                 <li>Perfect for first-time visitors</li>
               </ul>
-              <a href="#contact" className="yoga-button inline-block w-full">Book Now</a>
+              <a href="#contact" className="yoga-button-premium border-yoga-brown text-yoga-brown hover:bg-yoga-brown hover:text-white inline-block w-full">Book Now</a>
             </div>
 
-            <div className="bg-yoga-tan/30 p-8 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 text-center relative transform md:scale-105">
+            <div className="premium-card p-8 text-center relative transform md:scale-105 md:-translate-y-2 border border-yoga-gold/20 shadow-lg">
               <div className="absolute top-0 right-0 bg-yoga-gold text-white px-4 py-1 text-xs uppercase tracking-wider">Most Popular</div>
               <h4 className="font-serif text-xl mb-2 text-yoga-brown">Class Pack</h4>
-              <p className="text-yoga-gold text-3xl font-light mb-6">$100</p>
+              <p className="text-yoga-gold text-3xl font-light mb-6 mt-4">$100</p>
               <ul className="text-yoga-brown/80 space-y-2 mb-8">
                 <li>10 classes (save $100)</li>
                 <li>Valid for 3 months</li>
                 <li>Mat rental included</li>
                 <li>10% off workshops</li>
               </ul>
-              <a href="#contact" className="yoga-button bg-yoga-brown text-white hover:bg-yoga-brown/80 border-yoga-brown inline-block w-full">Purchase</a>
+              <a href="#contact" className="yoga-button-premium bg-yoga-brown text-white hover:bg-yoga-gold border-yoga-brown hover:border-yoga-gold inline-block w-full">Purchase</a>
             </div>
 
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 text-center">
-              <h4 className="font-serif text-xl mb-2 text-yoga-brown">Monthly Unlimited</h4>
-              <p className="text-yoga-gold text-3xl font-light mb-6">$150</p>
+            <div className="premium-card p-8 text-center group">
+              <h4 className="font-serif text-xl mb-2 text-yoga-brown group-hover:text-yoga-gold transition-colors duration-300">Monthly Unlimited</h4>
+              <p className="text-yoga-gold text-3xl font-light mb-6 mt-4">$150</p>
               <ul className="text-yoga-brown/80 space-y-2 mb-8">
                 <li>Unlimited classes for 30 days</li>
                 <li>Mat rental included</li>
                 <li>15% off workshops</li>
                 <li>1 guest pass included</li>
               </ul>
-              <a href="#contact" className="yoga-button inline-block w-full">Subscribe</a>
+              <a href="#contact" className="yoga-button-premium border-yoga-brown text-yoga-brown hover:bg-yoga-brown hover:text-white inline-block w-full">Subscribe</a>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 interface Retreat {
   id: number;
@@ -15,20 +15,20 @@ interface Retreat {
 const Retreats = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const retreatsRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          sectionRef.current?.classList.add('animate-fade-in');
-          sectionRef.current?.classList.remove('opacity-0');
+          setIsVisible(true);
           
           const retreats = retreatsRef.current?.querySelectorAll('.retreat-card');
           retreats?.forEach((retreat, index) => {
             setTimeout(() => {
               retreat.classList.add('animate-fade-in');
               retreat.classList.remove('opacity-0');
-            }, index * 200);
+            }, index * 300);
           });
         }
       },
@@ -73,11 +73,15 @@ const Retreats = () => {
   ];
 
   return (
-    <section id="retreats" ref={sectionRef} className="py-24 bg-white opacity-0 transition-opacity duration-1000">
-      <div className="container-custom">
-        <div className="text-center mb-16">
+    <section id="retreats" ref={sectionRef} className="py-24 bg-white relative">
+      {/* Decorative elements */}
+      <div className="absolute top-24 right-0 w-48 h-48 bg-yoga-gold/5 rounded-full translate-x-1/2"></div>
+      <div className="absolute bottom-24 left-0 w-64 h-64 bg-yoga-gold/5 rounded-full -translate-x-1/2"></div>
+      
+      <div className="container-custom relative">
+        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="section-title text-yoga-brown">Upcoming Retreats</h2>
-          <p className="text-yoga-brown/80 max-w-2xl mx-auto">
+          <p className="text-yoga-brown/80 max-w-2xl mx-auto mt-10">
             Experience the transformative power of yoga in beautiful settings around the world.
             Our retreats offer a perfect balance of practice, relaxation, and adventure.
           </p>
@@ -85,14 +89,20 @@ const Retreats = () => {
 
         <div ref={retreatsRef} className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {retreats.map((retreat) => (
-            <div key={retreat.id} className="retreat-card opacity-0 flex flex-col bg-yoga-beige overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="relative h-64">
+            <div key={retreat.id} className="retreat-card opacity-0 flex flex-col premium-card group">
+              <div className="relative h-64 image-zoom">
                 <img 
                   src={retreat.image} 
                   alt={retreat.title} 
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                <div className="absolute inset-0 bg-gradient-to-t from-yoga-brown/80 to-transparent"></div>
+                <div className="absolute top-0 left-0 m-4">
+                  <div className="py-1 px-3 bg-yoga-gold text-white text-xs uppercase tracking-wider rounded-sm shadow-md">
+                    Featured
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-6">
                   <h3 className="font-serif text-2xl text-white">{retreat.title}</h3>
                   <div className="flex text-white/90 space-x-6 mt-2">
                     <span className="flex items-center">
@@ -112,28 +122,29 @@ const Retreats = () => {
                 </div>
               </div>
               <div className="p-6 flex-grow">
-                <p className="text-yoga-brown/80 mb-6">
+                <p className="text-yoga-brown/80 mb-6 leading-relaxed">
                   {retreat.description}
                 </p>
                 <div className="flex justify-between text-yoga-brown">
-                  <span className="font-medium">{retreat.price}</span>
-                  <span>{retreat.spots}</span>
+                  <span className="font-medium text-yoga-gold">{retreat.price}</span>
+                  <span className="text-yoga-brown/70">{retreat.spots}</span>
                 </div>
               </div>
               <div className="px-6 pb-6">
-                <a href="#contact" className="yoga-button w-full block text-center">Learn More</a>
+                <a href="#contact" className="yoga-button-premium bg-yoga-brown text-white hover:bg-yoga-gold border-yoga-brown hover:border-yoga-gold w-full block text-center">Learn More</a>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-16 p-8 bg-yoga-tan/30 rounded-lg shadow-sm text-center">
+        <div className={`mt-16 p-10 bg-yoga-tan/30 backdrop-blur-sm rounded-lg shadow-lg text-center border border-yoga-gold/20 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h3 className="font-serif text-2xl mb-4 text-yoga-brown">Custom Retreats</h3>
-          <p className="text-yoga-brown/80 mb-6 max-w-3xl mx-auto">
+          <div className="w-16 h-0.5 bg-yoga-gold mx-auto mb-6"></div>
+          <p className="text-yoga-brown/80 mb-8 max-w-3xl mx-auto leading-relaxed">
             Looking for a personalized retreat experience for your group, company, or special occasion?
             I offer custom-designed retreats tailored to your specific needs and preferences.
           </p>
-          <a href="#contact" className="yoga-button">Inquire About Custom Retreats</a>
+          <a href="#contact" className="yoga-button-premium bg-yoga-gold/90 hover:bg-yoga-gold text-white border-yoga-gold/90 hover:border-yoga-gold">Inquire About Custom Retreats</a>
         </div>
       </div>
     </section>
