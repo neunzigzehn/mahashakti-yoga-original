@@ -7,10 +7,10 @@ const BrownMaterial = () => {
   
   useEffect(() => {
     if (material.current) {
-      material.current.metalness = 0.3;   // Reduced for softer skin glow
-      material.current.roughness = 0.7;   // Increased for more natural skin-like appearance
+      material.current.metalness = 0.45;   // Increased for better visibility
+      material.current.roughness = 0.5;    // Decreased for more shininess
       material.current.transparent = true;
-      material.current.opacity = 0.85;    // Keep the same opacity
+      material.current.opacity = 0.95;     // Increased for better visibility
     }
   }, []);
 
@@ -19,9 +19,9 @@ const BrownMaterial = () => {
       ref={material} 
       color="#FDE1D3"              // Soft peach/skin tone color
       emissive="#FFECE3"           // Subtle warm skin-like glow
-      emissiveIntensity={0.55}     // Reduced for more natural skin-like appearance
+      emissiveIntensity={0.75}     // Increased for more visibility
       transparent
-      opacity={0.85}               // Match opacity with useEffect
+      opacity={0.95}               // Match opacity with useEffect
     />
   );
 };

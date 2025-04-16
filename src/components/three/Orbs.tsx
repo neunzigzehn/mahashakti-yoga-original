@@ -32,25 +32,25 @@ const Orbs = ({ mousePosition }: OrbsProps) => {
       // Move gold orb with gentler lerp factor
       goldOrbRef.current.position.x = THREE.MathUtils.lerp(
         goldOrbRef.current.position.x,
-        (mousePosition.x * viewport.width) * 1.4,
-        0.008 // Slower transition for premium feel
+        (mousePosition.x * viewport.width) * 1.2,
+        0.01 // Slightly increased responsiveness
       );
       goldOrbRef.current.position.y = THREE.MathUtils.lerp(
         goldOrbRef.current.position.y,
-        (-mousePosition.y * viewport.height) * 1.4,
-        0.008
+        (-mousePosition.y * viewport.height) * 1.2,
+        0.01
       );
 
       // Move brown orb in the opposite direction
       brownOrbRef.current.position.x = THREE.MathUtils.lerp(
         brownOrbRef.current.position.x,
-        (-mousePosition.x * viewport.width) * 1.7,
-        0.006 // Even slower for layered effect
+        (-mousePosition.x * viewport.width) * 1.5,
+        0.008 // Slightly increased responsiveness
       );
       brownOrbRef.current.position.y = THREE.MathUtils.lerp(
         brownOrbRef.current.position.y,
-        (mousePosition.y * viewport.height) * 1.7,
-        0.006
+        (mousePosition.y * viewport.height) * 1.5,
+        0.008
       );
 
       // More subtle rotation for premium feel
@@ -63,14 +63,14 @@ const Orbs = ({ mousePosition }: OrbsProps) => {
 
   return (
     <>
-      {/* Gold orb - slightly smaller for premium feel */}
-      <mesh ref={goldOrbRef} position={[-4, 2.5, -12]}>
+      {/* Gold orb - moved closer to camera */}
+      <mesh ref={goldOrbRef} position={[-4, 2.5, -6]}>
         <sphereGeometry args={[7.5, 64, 64]} />
         <GoldMaterial />
       </mesh>
       
-      {/* Brown orb - slightly smaller for premium feel */}
-      <mesh ref={brownOrbRef} position={[4.5, -2.5, -15]}>
+      {/* Brown orb - moved closer to camera */}
+      <mesh ref={brownOrbRef} position={[4.5, -2.5, -8]}>
         <sphereGeometry args={[9, 64, 64]} />
         <BrownMaterial />
       </mesh>
