@@ -1,10 +1,15 @@
 
 import { useEffect, useState } from 'react';
+import WebGLBackground from './WebGLBackground';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    // Set background as loaded
+    setIsLoaded(true);
+    
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 100);
@@ -14,16 +19,11 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative h-screen w-full overflow-hidden">
-      {/* Background image with parallax effect */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-fixed"
-        style={{ 
-          backgroundImage: "url('https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=2000&q=80')",
-          transform: 'translateZ(0)',
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-yoga-brown/40 to-yoga-brown/10" />
-      </div>
+      {/* WebGL Background */}
+      {isLoaded && <WebGLBackground />}
+      
+      {/* Dark overlay to ensure text visibility */}
+      <div className="absolute inset-0 bg-gradient-to-r from-yoga-brown/60 to-yoga-brown/30" />
 
       {/* Content */}
       <div className="relative container-custom h-full flex flex-col justify-center">
