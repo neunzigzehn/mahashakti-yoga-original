@@ -7,21 +7,21 @@ const GoldMaterial = () => {
   
   useEffect(() => {
     if (material.current) {
-      material.current.metalness = 0.8;     // Increased for better reflection
-      material.current.roughness = 0.25;    // Decreased for more shininess
+      material.current.metalness = 0.5;   // Increased for more premium shine
+      material.current.roughness = 0.5;   // Balanced for elegant reflection
       material.current.transparent = true;
-      material.current.opacity = 1.0;       // Full opacity for maximum visibility
+      material.current.opacity = 0.85;    // Slightly increased
     }
   }, []);
 
   return (
     <meshStandardMaterial 
       ref={material} 
-      color="#F9D878"              // More saturated blonde/gold color
-      emissive="#FFF9E0"           // Subtle warm glow
-      emissiveIntensity={0.9}      // Increased for more visibility
+      color="#BFA065"              // Rich gold from website palette
+      emissive="#FEF7CD"           // Soft warm glow
+      emissiveIntensity={0.7}      // Enhanced glow
       transparent
-      opacity={1.0}                // Match opacity with useEffect
+      opacity={0.85}               // Match opacity with useEffect
     />
   );
 };

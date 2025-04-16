@@ -18,12 +18,12 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="home" className="relative h-screen w-full overflow-hidden bg-white">
+    <section id="home" className="relative h-screen w-full overflow-hidden">
       {/* WebGL Background - load only when component is mounted */}
       {isLoaded && <WebGLBackground />}
       
-      {/* Minimal overlay to ensure text readability */}
-      <div className="absolute inset-0 bg-white/5" />
+      {/* Lighter overlay with moderate blur for premium effect while ensuring text visibility */}
+      <div className="absolute inset-0 bg-white/50 backdrop-blur-sm" />
 
       {/* Content */}
       <div className="relative container-custom h-full flex flex-col justify-center items-start">
@@ -67,4 +67,3 @@ const Hero = () => {
 };
 
 export default Hero;
-

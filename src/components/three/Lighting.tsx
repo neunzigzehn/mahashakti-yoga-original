@@ -2,12 +2,12 @@
 const Lighting = () => {
   return (
     <>
-      <ambientLight intensity={1.0} /> {/* Increased for better overall illumination */}
-      <directionalLight position={[10, 10, 5]} intensity={1.5} color="#FFFFFF" /> {/* Increased intensity */}
-      <pointLight position={[-10, -10, -5]} intensity={1.8} color="#FFF9E0" /> {/* Increased for blonde hair highlight */}
-      <pointLight position={[8, 5, 10]} intensity={1.5} color="#FFECE3" /> {/* Increased for skin tone highlight */}
-      <pointLight position={[0, 0, 10]} intensity={1.3} color="#FFFFFF" /> {/* Increased for better center lighting */}
-      <pointLight position={[-5, 3, 0]} intensity={1.1} color="#FDE1D3" /> {/* Increased for skin tone accent light */}
+      <ambientLight intensity={0.6} /> {/* Slightly reduced for more contrast */}
+      <directionalLight position={[10, 10, 5]} intensity={0.9} color="#FFFFFF" /> {/* Increased intensity, whiter light */}
+      <pointLight position={[-10, -10, -5]} intensity={0.9} color="#FEF7CD" /> {/* Increased warm light */}
+      <pointLight position={[8, 5, 15]} intensity={0.7} color="#E5D1B8" /> {/* Changed to website tan color */}
+      <pointLight position={[0, 0, 10]} intensity={0.6} color="#FFFFFF" /> {/* Increased for better center lighting */}
+      <pointLight position={[-5, 3, 0]} intensity={0.4} color="#BFA065" /> {/* New gold accent light */}
     </>
   );
 };
