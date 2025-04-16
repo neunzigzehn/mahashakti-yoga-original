@@ -19,7 +19,7 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative h-screen w-full overflow-hidden">
-      {/* WebGL Background */}
+      {/* WebGL Background - load only when component is mounted */}
       {isLoaded && <WebGLBackground />}
       
       {/* Dark overlay to ensure text visibility */}

@@ -90,14 +90,16 @@ const Orbs = ({ mousePosition }: { mousePosition: { x: number; y: number } }) =>
   return (
     <>
       {/* Gold orb */}
-      <Sphere ref={goldOrbRef} args={[1.5, 64, 64]} position={[-3, 2, -5]}>
+      <mesh ref={goldOrbRef} position={[-3, 2, -5]}>
+        <sphereGeometry args={[1.5, 64, 64]} />
         <GoldMaterial />
-      </Sphere>
+      </mesh>
       
       {/* Brown orb */}
-      <Sphere ref={brownOrbRef} args={[2, 64, 64]} position={[3, -1, -8]}>
+      <mesh ref={brownOrbRef} position={[3, -1, -8]}>
+        <sphereGeometry args={[2, 64, 64]} />
         <BrownMaterial />
-      </Sphere>
+      </mesh>
     </>
   );
 };
@@ -113,11 +115,27 @@ const Lighting = () => {
   );
 };
 
+// Fallback component when WebGL isn't available
+const FallbackContent = () => (
+  <div className="absolute inset-0 bg-gradient-to-r from-yoga-brown to-yoga-gold opacity-30" />
+);
+
 // Main WebGL component
 const WebGLBackground = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isWebGLAvailable, setIsWebGLAvailable] = useState(true);
   
   useEffect(() => {
+    // Check if WebGL is available
+    try {
+      const canvas = document.createElement('canvas');
+      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      setIsWebGLAvailable(!!gl);
+    } catch (e) {
+      setIsWebGLAvailable(false);
+      console.error("WebGL not supported:", e);
+    }
+
     // Track mouse movement
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({
@@ -144,6 +162,10 @@ const WebGLBackground = () => {
       window.removeEventListener('touchmove', handleTouchMove);
     };
   }, []);
+
+  if (!isWebGLAvailable) {
+    return <FallbackContent />;
+  }
 
   return (
     <div className="absolute inset-0 -z-10">
