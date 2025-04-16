@@ -1,127 +1,238 @@
 
-import { ChevronUp } from 'lucide-react';
+import { useState } from 'react';
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+  const [showImprint, setShowImprint] = useState(false);
+  const [showPrivacy, setShowPrivacy] = useState(false);
+
+  const toggleImprint = () => {
+    setShowImprint(!showImprint);
+    if (showPrivacy) setShowPrivacy(false);
   };
 
+  const togglePrivacy = () => {
+    setShowPrivacy(!showPrivacy);
+    if (showImprint) setShowImprint(false);
+  };
+  
   return (
-    <footer className="bg-yoga-brown text-white py-16">
+    <footer className="bg-yoga-brown text-white pt-16 pb-8 relative">
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-          {/* Logo and about */}
-          <div className="md:col-span-2">
-            <h2 className="font-display italic text-2xl mb-4">Mahashakti Yoga</h2>
-            <p className="text-white/80 mb-6 max-w-md">
-              An authentic approach to yoga focused on awakening inner power
-              and spiritual connection through traditional practices.
+          <div className="md:col-span-2 pr-4">
+            <h3 className="text-2xl font-serif mb-6">Mahashakti Yoga</h3>
+            <p className="mb-6 text-white/80 leading-relaxed">
+              Erleben Sie die Kraft authentischen Yoga-Unterrichts in der Tradition von Tantra, Kundalini und Hatha Yoga. Seit 2002 begleitet Veronika Rössl Menschen auf ihrem Weg zu mehr Bewusstsein, Kraft und Lebensfreude.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+              <a href="https://www.instagram.com/mahashakti_yoga/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yoga-gold transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                 </svg>
               </a>
-              <a href="#" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              <a href="https://www.facebook.com/mahashaktiyoga/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yoga-gold transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                 </svg>
               </a>
-              <a href="#" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+              <a href="https://www.youtube.com/user/mahashaktiyoga" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yoga-gold transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                  <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
                 </svg>
               </a>
             </div>
           </div>
-
-          {/* Quick links */}
+          
           <div>
-            <h3 className="text-lg font-medium mb-4 uppercase tracking-wider">Quick Links</h3>
-            <ul className="space-y-2 text-white/80">
-              <li>
-                <a href="#about" className="hover:text-white transition-colors duration-300">About</a>
-              </li>
-              <li>
-                <a href="#classes" className="hover:text-white transition-colors duration-300">Classes</a>
-              </li>
-              <li>
-                <a href="#schedule" className="hover:text-white transition-colors duration-300">Schedule</a>
-              </li>
-              <li>
-                <a href="#retreats" className="hover:text-white transition-colors duration-300">Retreats</a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-white transition-colors duration-300">Contact</a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact info */}
-          <div>
-            <h3 className="text-lg font-medium mb-4 uppercase tracking-wider">Contact Info</h3>
-            <ul className="space-y-2 text-white/80">
+            <h4 className="text-xl font-serif mb-4">Kontakt</h4>
+            <ul className="space-y-3 text-white/80">
               <li className="flex items-start">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-yoga-gold shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 mt-1 text-yoga-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span>Rosenstraße 12<br />80331 München, Germany</span>
+                <span>Westermühlstr. 25<br />80469 München</span>
               </li>
               <li className="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-yoga-gold shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                <span>info@mahashakti-yoga.de</span>
-              </li>
-              <li className="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-yoga-gold shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-yoga-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <span>+49 89 1234 5678</span>
+                <span>+49 (0) 89 74809953</span>
+              </li>
+              <li className="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-yoga-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <a href="mailto:info@mahashakti-yoga.de" className="hover:text-yoga-gold transition-colors">info@mahashakti-yoga.de</a>
               </li>
             </ul>
           </div>
-        </div>
-
-        {/* Newsletter */}
-        <div className="border-t border-white/20 pt-8 pb-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-6 md:mb-0">
-              <h3 className="text-lg font-medium mb-2">Subscribe to our newsletter</h3>
-              <p className="text-white/80 text-sm">Stay updated with new classes, workshops, and retreats.</p>
-            </div>
-            <div className="w-full md:w-auto flex">
-              <input 
-                type="email" 
-                placeholder="Your email address" 
-                className="flex-grow md:w-64 py-2 px-4 bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:border-white/40"
-              />
-              <button className="bg-yoga-gold hover:bg-yoga-gold/80 text-yoga-brown py-2 px-4 uppercase text-sm tracking-wider font-medium transition-colors duration-300">
-                Subscribe
-              </button>
+          
+          <div>
+            <h4 className="text-xl font-serif mb-4">Kurszeiten</h4>
+            <ul className="space-y-3 text-white/80">
+              <li className="flex justify-between">
+                <span>Montag - Freitag:</span>
+                <span>7:00 - 21:00</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Samstag:</span>
+                <span>9:00 - 13:00</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Sonntag:</span>
+                <span>10:00 - 19:00</span>
+              </li>
+            </ul>
+            <div className="mt-6">
+              <a href="#schedule" className="text-white hover:text-yoga-gold transition-colors text-sm uppercase tracking-wider flex items-center">
+                Vollständiger Kursplan
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>
-
-        {/* Copyright and back to top */}
-        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/20">
-          <p className="text-white/70 text-sm">&copy; {new Date().getFullYear()} Mahashakti Yoga. All rights reserved.</p>
-          <button 
-            onClick={scrollToTop}
-            className="mt-4 md:mt-0 group flex items-center text-white/70 hover:text-white transition-colors duration-300"
-          >
-            <span className="mr-2 text-sm">Back to top</span>
-            <span className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors duration-300">
-              <ChevronUp size={16} />
-            </span>
-          </button>
+        
+        <div className="pt-8 border-t border-white/20 flex flex-col md:flex-row md:justify-between items-center">
+          <p className="text-white/60 text-sm mb-4 md:mb-0">
+            © {new Date().getFullYear()} Mahashakti Yoga. Alle Rechte vorbehalten.
+          </p>
+          <div className="flex items-center space-x-6">
+            <button 
+              onClick={toggleImprint} 
+              className="text-white/60 hover:text-yoga-gold text-sm transition-colors"
+            >
+              Impressum
+            </button>
+            <button 
+              onClick={togglePrivacy} 
+              className="text-white/60 hover:text-yoga-gold text-sm transition-colors"
+            >
+              Datenschutz
+            </button>
+          </div>
         </div>
       </div>
+
+      {/* Impressum Modal */}
+      {showImprint && (
+        <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
+          <div className="bg-white text-yoga-brown rounded-lg max-w-2xl max-h-[80vh] overflow-y-auto p-8 relative">
+            <button 
+              onClick={toggleImprint}
+              className="absolute top-4 right-4 text-yoga-brown/60 hover:text-yoga-brown"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <h2 className="text-2xl font-serif mb-6">Impressum</h2>
+            <div className="space-y-4">
+              <div>
+                <h3 className="font-medium mb-2">Angaben gemäß § 5 TMG</h3>
+                <p>Veronika Rössl<br />
+                Mahashakti Yoga<br />
+                Westermühlstr. 25<br />
+                80469 München</p>
+              </div>
+              
+              <div>
+                <h3 className="font-medium mb-2">Kontakt</h3>
+                <p>Telefon: +49 (0) 89 74809953<br />
+                E-Mail: info@mahashakti-yoga.de</p>
+              </div>
+              
+              <div>
+                <h3 className="font-medium mb-2">Umsatzsteuer-ID</h3>
+                <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
+                DE123456789</p>
+              </div>
+              
+              <div>
+                <h3 className="font-medium mb-2">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
+                <p>Veronika Rössl<br />
+                Westermühlstr. 25<br />
+                80469 München</p>
+              </div>
+              
+              <div>
+                <h3 className="font-medium mb-2">Haftungsausschluss</h3>
+                <p className="text-sm">
+                  Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Datenschutz Modal */}
+      {showPrivacy && (
+        <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
+          <div className="bg-white text-yoga-brown rounded-lg max-w-2xl max-h-[80vh] overflow-y-auto p-8 relative">
+            <button 
+              onClick={togglePrivacy}
+              className="absolute top-4 right-4 text-yoga-brown/60 hover:text-yoga-brown"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <h2 className="text-2xl font-serif mb-6">Datenschutzerklärung</h2>
+            <div className="space-y-4 text-sm">
+              <p>
+                Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir verarbeiten Ihre Daten daher ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, TKG 2003). In diesen Datenschutzinformationen informieren wir Sie über die wichtigsten Aspekte der Datenverarbeitung im Rahmen unserer Website.
+              </p>
+              
+              <div>
+                <h3 className="font-medium mb-2 text-base">Kontakt mit uns</h3>
+                <p>
+                  Wenn Sie per Formular auf der Website oder per E-Mail Kontakt mit uns aufnehmen, werden Ihre angegebenen Daten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="font-medium mb-2 text-base">Cookies</h3>
+                <p>
+                  Unsere Website verwendet so genannte Cookies. Dabei handelt es sich um kleine Textdateien, die mit Hilfe des Browsers auf Ihrem Endgerät abgelegt werden. Sie richten keinen Schaden an. Wir nutzen Cookies dazu, unser Angebot nutzerfreundlich zu gestalten. Einige Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese löschen.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="font-medium mb-2 text-base">Web-Analyse</h3>
+                <p>
+                  Unsere Website verwendet Funktionen des Webanalysedienstes Google Analytics. Dazu werden Cookies verwendet, die eine Analyse der Benutzung der Website durch Ihre Benutzer ermöglicht. Die dadurch erzeugten Informationen werden auf den Server des Anbieters übertragen und dort gespeichert.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="font-medium mb-2 text-base">Ihre Rechte</h3>
+                <p>
+                  Ihnen stehen grundsätzlich die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerruf und Widerspruch zu. Wenn Sie glauben, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt oder Ihre datenschutzrechtlichen Ansprüche sonst in einer Weise verletzt worden sind, können Sie sich bei der Aufsichtsbehörde beschweren.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="font-medium mb-2 text-base">Kontakt zum Datenschutz</h3>
+                <p>
+                  Bei Fragen zur Erhebung, Verarbeitung oder Nutzung Ihrer personenbezogenen Daten, bei Auskünften, Berichtigung, Sperrung oder Löschung von Daten wenden Sie sich bitte an:<br />
+                  <br />
+                  Veronika Rössl<br />
+                  Mahashakti Yoga<br />
+                  Westermühlstr. 25<br />
+                  80469 München<br />
+                  info@mahashakti-yoga.de
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </footer>
   );
 };

@@ -12,27 +12,27 @@ const Testimonials = () => {
   const testimonials: Testimonial[] = [
     {
       id: 1,
-      quote: "I've known Veronika and her wonderful Mahashakti Yoga Studio for a very long time - she brought me to yoga and I have never found such great teaching with these beautiful vibes anywhere else. Now that I live in Saarbrücken, it's fantastic to be able to practice online with her again. I'm more than happy about it!",
+      quote: "Ich kenne Veronika und ihr wunderbares Mahashakti Yoga Studio schon sehr lange - sie hat mich zum Yoga gebracht und ich habe so großartigen Unterricht mit diesen schönen Vibes nirgendwo anders gefunden. Jetzt, wo ich in Saarbrücken lebe, ist es fantastisch, wieder online mit ihr üben zu können. Ich bin mehr als glücklich darüber!",
       name: "Marion",
-      title: "Practicing since 2021",
+      title: "Praktiziert seit 2021",
     },
     {
       id: 2,
-      quote: "As someone who struggled with stress and anxiety, Veronika's authentic approach to yoga has been a true gift. The breathing techniques and mantras have helped me find peace in everyday life. Her Mind & Emotional Balance Sessions are transformative.",
+      quote: "Als jemand, der mit Stress und Angstzuständen zu kämpfen hatte, war Veronikas authentischer Ansatz zum Yoga ein wahres Geschenk. Die Atemtechniken und Mantras haben mir geholfen, im Alltag Frieden zu finden. Ihre Mind & Emotional Balance Sessions sind transformativ.",
       name: "Andreas Weber",
-      title: "Practicing for 1 year",
+      title: "Praktiziert seit 1 Jahr",
     },
     {
       id: 3,
-      quote: "The sacred space that Veronika creates allows for deep inner work. Her guidance through traditional practices has opened new dimensions in my spiritual development. The Craniosacral Balancing sessions are especially healing.",
+      quote: "Der heilige Raum, den Veronika schafft, ermöglicht tiefe innere Arbeit. Ihre Führung durch traditionelle Praktiken hat neue Dimensionen in meiner spirituellen Entwicklung eröffnet. Die Craniosacral Balancing Sessions sind besonders heilsam.",
       name: "Lena Schmidt",
-      title: "Practicing for 2 years",
+      title: "Praktiziert seit 2 Jahren",
     },
     {
       id: 4,
-      quote: "Veronika has an incredible ability to translate ancient yogic wisdom into accessible practices. Her deep knowledge and genuine devotion to the tradition make every class a profound experience. I highly recommend her retreats in Tyrol!",
+      quote: "Veronika hat eine unglaubliche Fähigkeit, alte yogische Weisheit in zugängliche Praktiken zu übersetzen. Ihr tiefes Wissen und ihre echte Hingabe an die Tradition machen jede Klasse zu einer tiefgreifenden Erfahrung. Ich empfehle ihre Retreats in Tirol sehr!",
       name: "Thomas Fischer",
-      title: "Practicing for 4 years",
+      title: "Praktiziert seit 4 Jahren",
     },
   ];
 
@@ -105,7 +105,7 @@ const Testimonials = () => {
       
       <div className="container-custom relative">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="section-title text-yoga-brown">Student Experiences</h2>
+          <h2 className="section-title text-yoga-brown">Erfahrungen unserer Schüler</h2>
         </div>
 
         <div className={`max-w-4xl mx-auto relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
