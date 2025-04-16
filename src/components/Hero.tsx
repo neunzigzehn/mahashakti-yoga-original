@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import WebGLBackground from './WebGLBackground';
 
@@ -22,8 +21,8 @@ const Hero = () => {
       {/* WebGL Background - load only when component is mounted */}
       {isLoaded && <WebGLBackground />}
       
-      {/* Lighter overlay with moderate blur for premium effect while ensuring text visibility */}
-      <div className="absolute inset-0 bg-white/50 backdrop-blur-sm" />
+      {/* Change overlay to pure white with light blur */}
+      <div className="absolute inset-0 bg-white backdrop-blur-sm" />
 
       {/* Content */}
       <div className="relative container-custom h-full flex flex-col justify-center items-start">
