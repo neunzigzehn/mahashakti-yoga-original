@@ -1,17 +1,18 @@
 
 import { useRef, useEffect, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Sphere } from '@react-three/drei';
 import * as THREE from 'three';
 
-// Material for the gold orb
+// Material for the gold orb with blur effect
 const GoldMaterial = () => {
   const material = useRef<THREE.MeshStandardMaterial>(null!);
   
   useEffect(() => {
     if (material.current) {
-      material.current.metalness = 0.8;
-      material.current.roughness = 0.2;
+      material.current.metalness = 0.6;
+      material.current.roughness = 0.4;
+      material.current.transparent = true;
+      material.current.opacity = 0.8;
     }
   }, []);
 
@@ -20,19 +21,23 @@ const GoldMaterial = () => {
       ref={material} 
       color="#BFA065" 
       emissive="#BFA065"
-      emissiveIntensity={0.2}
+      emissiveIntensity={0.3}
+      transparent
+      opacity={0.8}
     />
   );
 };
 
-// Material for the brown orb
+// Material for the brown orb with blur effect
 const BrownMaterial = () => {
   const material = useRef<THREE.MeshStandardMaterial>(null!);
   
   useEffect(() => {
     if (material.current) {
-      material.current.metalness = 0.5;
-      material.current.roughness = 0.4;
+      material.current.metalness = 0.4;
+      material.current.roughness = 0.5;
+      material.current.transparent = true;
+      material.current.opacity = 0.75;
     }
   }, []);
 
@@ -41,42 +46,44 @@ const BrownMaterial = () => {
       ref={material} 
       color="#3F3628" 
       emissive="#251F17"
-      emissiveIntensity={0.1}
+      emissiveIntensity={0.2}
+      transparent
+      opacity={0.75}
     />
   );
 };
 
-// Interactive orbs that respond to mouse movement
+// Interactive orbs that respond to mouse movement with wider range
 const Orbs = ({ mousePosition }: { mousePosition: { x: number; y: number } }) => {
   const goldOrbRef = useRef<THREE.Mesh>(null!);
   const brownOrbRef = useRef<THREE.Mesh>(null!);
   const { viewport } = useThree();
 
-  // Update orb positions based on mouse movement
+  // Update orb positions based on mouse movement with greater range
   useFrame(() => {
     if (goldOrbRef.current && brownOrbRef.current) {
-      // Move gold orb in one direction
+      // Move gold orb with increased range
       goldOrbRef.current.position.x = THREE.MathUtils.lerp(
         goldOrbRef.current.position.x,
-        (mousePosition.x * viewport.width) / 5,
-        0.05
+        (mousePosition.x * viewport.width) * 1.2,
+        0.03
       );
       goldOrbRef.current.position.y = THREE.MathUtils.lerp(
         goldOrbRef.current.position.y,
-        (-mousePosition.y * viewport.height) / 5,
-        0.05
+        (-mousePosition.y * viewport.height) * 1.2,
+        0.03
       );
 
-      // Move brown orb in the opposite direction
+      // Move brown orb in the opposite direction with increased range
       brownOrbRef.current.position.x = THREE.MathUtils.lerp(
         brownOrbRef.current.position.x,
-        (-mousePosition.x * viewport.width) / 8,
-        0.03
+        (-mousePosition.x * viewport.width) * 1.5,
+        0.02
       );
       brownOrbRef.current.position.y = THREE.MathUtils.lerp(
         brownOrbRef.current.position.y,
-        (mousePosition.y * viewport.height) / 8,
-        0.03
+        (mousePosition.y * viewport.height) * 1.5,
+        0.02
       );
 
       // Gentle rotation for both orbs
@@ -89,28 +96,42 @@ const Orbs = ({ mousePosition }: { mousePosition: { x: number; y: number } }) =>
 
   return (
     <>
-      {/* Gold orb */}
-      <mesh ref={goldOrbRef} position={[-3, 2, -5]}>
-        <sphereGeometry args={[1.5, 64, 64]} />
+      {/* Gold orb - positioned further out to allow more movement range */}
+      <mesh ref={goldOrbRef} position={[-5, 3, -15]}>
+        <sphereGeometry args={[3, 64, 64]} />
         <GoldMaterial />
       </mesh>
       
-      {/* Brown orb */}
-      <mesh ref={brownOrbRef} position={[3, -1, -8]}>
-        <sphereGeometry args={[2, 64, 64]} />
+      {/* Brown orb - positioned further out to allow more movement range */}
+      <mesh ref={brownOrbRef} position={[5, -3, -20]}>
+        <sphereGeometry args={[4, 64, 64]} />
         <BrownMaterial />
       </mesh>
     </>
   );
 };
 
-// Lighting setup
+// Post-processing effect to create blur
+const BlurEffect = () => {
+  const { gl, scene, camera } = useThree();
+  const composer = useRef<any>(null);
+
+  useEffect(() => {
+    // Simple blur simulation with lower resolution rendering
+    gl.setPixelRatio(window.devicePixelRatio * 0.5);
+  }, [gl]);
+
+  return null;
+};
+
+// Lighting setup with softer, more diffused lights
 const Lighting = () => {
   return (
     <>
-      <ambientLight intensity={0.4} />
-      <directionalLight position={[10, 10, 5]} intensity={0.8} />
-      <pointLight position={[-10, -10, -5]} intensity={0.5} color="#BFA065" />
+      <ambientLight intensity={0.6} />
+      <directionalLight position={[10, 10, 5]} intensity={0.6} />
+      <pointLight position={[-10, -10, -5]} intensity={0.7} color="#BFA065" />
+      <pointLight position={[8, 5, 15]} intensity={0.4} color="#FDE1D3" />
     </>
   );
 };
@@ -169,8 +190,12 @@ const WebGLBackground = () => {
 
   return (
     <div className="absolute inset-0 -z-10">
-      <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 10], fov: 50 }}>
+      {/* Add CSS blur filter to the entire canvas for additional blur effect */}
+      <div className="absolute inset-0 backdrop-blur-sm"></div>
+      <Canvas dpr={[0.5, 1]} camera={{ position: [0, 0, 10], fov: 60 }}>
+        <BlurEffect />
         <Lighting />
+        <fog attach="fog" args={['#F5F3EE', 10, 30]} />
         <Orbs mousePosition={mousePosition} />
       </Canvas>
     </div>
