@@ -82,11 +82,11 @@ const Classes = () => {
   ];
 
   return (
-    <section id="classes" ref={sectionRef} className="py-24 bg-black">
+    <section id="classes" ref={sectionRef} className="py-24 bg-white">
       <div className="container-custom">
         <div className={`text-center mb-16 transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <h2 className="section-title text-yoga-gold">Yoga Classes</h2>
-          <p className="text-white/80 max-w-2xl mx-auto mt-10">
+          <h2 className="section-title text-yoga-brown">Yoga Classes</h2>
+          <p className="text-yoga-brown/80 max-w-2xl mx-auto mt-10">
             Discover a variety of classes designed to support your practice wherever you are on your yoga journey.
             Each class offers a unique approach to movement, breath, and mindfulness.
           </p>
@@ -94,14 +94,14 @@ const Classes = () => {
 
         <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {classes.map((yogaClass) => (
-            <div key={yogaClass.id} className="class-card opacity-0 luxury-card group">
+            <div key={yogaClass.id} className="class-card opacity-0 premium-card group">
               <div className="relative overflow-hidden h-60">
                 <img 
                   src={yogaClass.image} 
                   alt={yogaClass.title} 
                   className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-yoga-brown/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
                   <div className="flex justify-between text-white text-sm mb-2">
                     <span>{yogaClass.level}</span>
@@ -116,8 +116,8 @@ const Classes = () => {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="font-serif text-xl mb-4 text-yoga-gold group-hover:text-yoga-gold transition-colors duration-300">{yogaClass.title}</h3>
-                <p className="text-white/70 text-sm mb-6 leading-relaxed">
+                <h3 className="font-serif text-xl mb-4 text-yoga-brown group-hover:text-yoga-gold transition-colors duration-300">{yogaClass.title}</h3>
+                <p className="text-yoga-brown/80 text-sm mb-6 leading-relaxed">
                   {yogaClass.description}
                 </p>
               </div>
@@ -126,7 +126,7 @@ const Classes = () => {
         </div>
 
         <div className={`mt-16 text-center transition-opacity duration-1000 delay-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <a href="#schedule" className="yoga-button-premium border-yoga-gold text-yoga-gold hover:bg-yoga-gold hover:text-black">View Full Schedule</a>
+          <a href="#schedule" className="yoga-button-premium bg-yoga-brown text-white hover:bg-yoga-gold border-yoga-brown hover:border-yoga-gold">View Full Schedule</a>
         </div>
       </div>
     </section>
