@@ -44,11 +44,11 @@ export const Navbar = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           <a href="#home" className={`nav-link ${activeSection === 'home' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>Home</a>
-          <a href="#about" className={`nav-link ${activeSection === 'about' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>About</a>
-          <a href="#classes" className={`nav-link ${activeSection === 'classes' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>Classes</a>
-          <a href="#schedule" className={`nav-link ${activeSection === 'schedule' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>Schedule</a>
+          <a href="#about" className={`nav-link ${activeSection === 'about' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>Über Uns</a>
+          <a href="#classes" className={`nav-link ${activeSection === 'classes' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>Kurse</a>
+          <a href="#schedule" className={`nav-link ${activeSection === 'schedule' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>Zeitplan</a>
           <a href="#retreats" className={`nav-link ${activeSection === 'retreats' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>Retreats</a>
-          <a href="#contact" className={`nav-link ${activeSection === 'contact' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>Contact</a>
+          <a href="#contact" className={`nav-link ${activeSection === 'contact' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>Kontakt</a>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -64,11 +64,11 @@ export const Navbar = () => {
         <div className={`fixed inset-0 bg-yoga-cream/95 backdrop-blur-md flex flex-col items-center justify-center transition-all duration-500 ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
           <nav className="flex flex-col items-center space-y-8">
             <a href="#home" className={`nav-link text-xl ${activeSection === 'home' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Home</a>
-            <a href="#about" className={`nav-link text-xl ${activeSection === 'about' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>About</a>
-            <a href="#classes" className={`nav-link text-xl ${activeSection === 'classes' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Classes</a>
-            <a href="#schedule" className={`nav-link text-xl ${activeSection === 'schedule' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Schedule</a>
+            <a href="#about" className={`nav-link text-xl ${activeSection === 'about' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Über Uns</a>
+            <a href="#classes" className={`nav-link text-xl ${activeSection === 'classes' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Kurse</a>
+            <a href="#schedule" className={`nav-link text-xl ${activeSection === 'schedule' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Zeitplan</a>
             <a href="#retreats" className={`nav-link text-xl ${activeSection === 'retreats' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Retreats</a>
-            <a href="#contact" className={`nav-link text-xl ${activeSection === 'contact' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Contact</a>
+            <a href="#contact" className={`nav-link text-xl ${activeSection === 'contact' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Kontakt</a>
           </nav>
         </div>
       </div>

@@ -120,22 +120,22 @@ const Retreats = () => {
               </div>
               
               <CardContent className="p-6">
-                <div className="flex flex-col space-y-3 mb-6">
+                <div className="flex flex-col space-y-4 mb-6">
                   <div className="flex items-center text-yoga-brown/90">
-                    <MapPin className="h-5 w-5 mr-2 text-yoga-gold" />
-                    <span>{retreat.location}</span>
+                    <MapPin className="h-5 w-5 mr-3 flex-shrink-0 text-yoga-gold" />
+                    <span className="text-sm">{retreat.location}</span>
                   </div>
                   <div className="flex items-center text-yoga-brown/90">
-                    <Calendar className="h-5 w-5 mr-2 text-yoga-gold" />
-                    <span>{retreat.date}</span>
+                    <Calendar className="h-5 w-5 mr-3 flex-shrink-0 text-yoga-gold" />
+                    <span className="text-sm">{retreat.date}</span>
                   </div>
                   <div className="flex items-center text-yoga-brown/90">
-                    <Users className="h-5 w-5 mr-2 text-yoga-gold" />
-                    <span>{retreat.spots}</span>
+                    <Users className="h-5 w-5 mr-3 flex-shrink-0 text-yoga-gold" />
+                    <span className="text-sm">{retreat.spots}</span>
                   </div>
                 </div>
                 
-                <p className="text-yoga-brown/80 mb-6 leading-relaxed">
+                <p className="text-yoga-brown/80 mb-6 leading-relaxed text-sm">
                   {retreat.description}
                 </p>
                 

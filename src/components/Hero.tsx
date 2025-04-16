@@ -29,15 +29,15 @@ const Hero = () => {
       <div className="relative container-custom h-full flex flex-col justify-center items-start">
         <div className={`max-w-3xl transition-all duration-1500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="overflow-hidden mb-2">
-            <h2 className={`yoga-heading text-yoga-brown text-xl md:text-3xl ${isVisible ? 'animate-slide-up' : 'translate-y-full'}`}>Willkommen bei</h2>
+            <h2 className={`yoga-heading text-yoga-brown text-2xl md:text-3xl lg:text-4xl ${isVisible ? 'animate-slide-up' : 'translate-y-full'}`}>Willkommen bei</h2>
           </div>
           <div className="overflow-hidden mb-8">
-            <h1 className={`hero-text text-yoga-darkBrown text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight ${isVisible ? 'animate-slide-up animation-delay-300' : 'translate-y-full'}`}>
+            <h1 className={`hero-text text-yoga-darkBrown text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight ${isVisible ? 'animate-slide-up animation-delay-300' : 'translate-y-full'}`}>
               MAHASHAKTI YOGA
             </h1>
           </div>
           <div className="overflow-hidden mb-4">
-            <p className={`text-yoga-brown/80 font-sans font-light max-w-xl text-lg md:text-xl leading-relaxed ${isVisible ? 'animate-slide-up animation-delay-600' : 'translate-y-full'}`}>
+            <p className={`text-yoga-brown/80 font-sans font-light max-w-xl text-lg md:text-xl lg:text-2xl leading-relaxed ${isVisible ? 'animate-slide-up animation-delay-600' : 'translate-y-full'}`}>
               MÜNCHEN
             </p>
           </div>
