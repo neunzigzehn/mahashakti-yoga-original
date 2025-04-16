@@ -23,7 +23,7 @@ const Hero = () => {
       {isLoaded && <WebGLBackground />}
       
       {/* Lighter overlay with moderate blur for premium effect while ensuring text visibility */}
-      <div className="absolute inset-0 bg-white/60 backdrop-blur-md" />
+      <div className="absolute inset-0 bg-white/50 backdrop-blur-sm" />
 
       {/* Content */}
       <div className="relative container-custom h-full flex flex-col justify-center">
@@ -37,7 +37,7 @@ const Hero = () => {
             </h1>
           </div>
           <div className="overflow-hidden mb-10">
-            <p className={`text-yoga-brown font-sans font-light max-w-xl text-lg leading-relaxed ${isVisible ? 'animate-slide-up animation-delay-600' : 'translate-y-full'}`}>
+            <p className={`text-yoga-brown/80 font-sans font-light max-w-xl text-lg leading-relaxed ${isVisible ? 'animate-slide-up animation-delay-600' : 'translate-y-full'}`}>
               Experience yoga in a new light with Nina's gentle and mindful approach to movement, breath and body awareness.
             </p>
           </div>

@@ -6,8 +6,8 @@ const BlurEffect = () => {
   const { gl } = useThree();
   
   useEffect(() => {
-    // Moderate blur simulation with better resolution rendering
-    gl.setPixelRatio(window.devicePixelRatio * 0.5); // Increased from 0.25 to 0.5
+    // Higher resolution rendering for clearer premium effect
+    gl.setPixelRatio(window.devicePixelRatio * 0.65); // Increased from 0.5 to 0.65 for better quality
   }, [gl]);
 
   return null;

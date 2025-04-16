@@ -13,53 +13,65 @@ const Orbs = ({ mousePosition }: OrbsProps) => {
   const goldOrbRef = useRef<THREE.Mesh>(null!);
   const brownOrbRef = useRef<THREE.Mesh>(null!);
   const { viewport } = useThree();
+  
+  // Track time for pulsing effect
+  const timeRef = useRef(0);
 
-  // Update orb positions based on mouse movement with gentle transitions
-  useFrame(() => {
+  // Update orb positions and add premium pulsing effect
+  useFrame((state) => {
+    timeRef.current += 0.005; // Slow time increment for gentle pulsing
+    
     if (goldOrbRef.current && brownOrbRef.current) {
-      // Move gold orb with gentle lerp factor
+      // Gentle size pulsing based on time
+      const goldPulse = Math.sin(timeRef.current * 0.5) * 0.05 + 1;
+      const brownPulse = Math.sin(timeRef.current * 0.3 + 1) * 0.07 + 1;
+      
+      goldOrbRef.current.scale.set(goldPulse, goldPulse, goldPulse);
+      brownOrbRef.current.scale.set(brownPulse, brownPulse, brownPulse);
+      
+      // Move gold orb with gentler lerp factor
       goldOrbRef.current.position.x = THREE.MathUtils.lerp(
         goldOrbRef.current.position.x,
-        (mousePosition.x * viewport.width) * 1.5,
-        0.01 // Moderate transition speed
+        (mousePosition.x * viewport.width) * 1.4,
+        0.008 // Slower transition for premium feel
       );
       goldOrbRef.current.position.y = THREE.MathUtils.lerp(
         goldOrbRef.current.position.y,
-        (-mousePosition.y * viewport.height) * 1.5,
-        0.01 // Moderate transition speed
+        (-mousePosition.y * viewport.height) * 1.4,
+        0.008
       );
 
       // Move brown orb in the opposite direction
       brownOrbRef.current.position.x = THREE.MathUtils.lerp(
         brownOrbRef.current.position.x,
-        (-mousePosition.x * viewport.width) * 1.8,
-        0.008 // Slightly slower movement
+        (-mousePosition.x * viewport.width) * 1.7,
+        0.006 // Even slower for layered effect
       );
       brownOrbRef.current.position.y = THREE.MathUtils.lerp(
         brownOrbRef.current.position.y,
-        (mousePosition.y * viewport.height) * 1.8,
-        0.008 // Slightly slower movement
+        (mousePosition.y * viewport.height) * 1.7,
+        0.006
       );
 
-      // Subtle rotation for both orbs
-      goldOrbRef.current.rotation.x += 0.0005;
-      goldOrbRef.current.rotation.y += 0.0005;
-      brownOrbRef.current.rotation.x += 0.0007;
-      brownOrbRef.current.rotation.y += 0.0007;
+      // More subtle rotation for premium feel
+      goldOrbRef.current.rotation.x += 0.0003;
+      goldOrbRef.current.rotation.y += 0.0004;
+      brownOrbRef.current.rotation.x += 0.0004;
+      brownOrbRef.current.rotation.y += 0.0005;
     }
   });
 
   return (
     <>
-      {/* Gold orb - positioned closer to camera */}
-      <mesh ref={goldOrbRef} position={[-5, 3, -15]}>
-        <sphereGeometry args={[8, 64, 64]} />
+      {/* Gold orb - slightly smaller for premium feel */}
+      <mesh ref={goldOrbRef} position={[-4, 2.5, -12]}>
+        <sphereGeometry args={[7.5, 64, 64]} />
         <GoldMaterial />
       </mesh>
       
-      {/* Brown orb - positioned closer to camera */}
-      <mesh ref={brownOrbRef} position={[5, -3, -18]}>
-        <sphereGeometry args={[10, 64, 64]} />
+      {/* Brown orb - slightly smaller for premium feel */}
+      <mesh ref={brownOrbRef} position={[4.5, -2.5, -15]}>
+        <sphereGeometry args={[9, 64, 64]} />
         <BrownMaterial />
       </mesh>
     </>
