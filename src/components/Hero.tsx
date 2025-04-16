@@ -22,8 +22,8 @@ const Hero = () => {
       {/* WebGL Background - load only when component is mounted */}
       {isLoaded && <WebGLBackground />}
       
-      {/* Dark overlay with additional blur to ensure text visibility and orb blurring */}
-      <div className="absolute inset-0 bg-gradient-to-r from-yoga-brown/40 to-yoga-brown/20 backdrop-blur-md" />
+      {/* Lighter overlay with subtle blur to ensure text visibility while allowing orbs to be more visible */}
+      <div className="absolute inset-0 bg-gradient-to-r from-yoga-brown/30 to-yoga-brown/10 backdrop-blur-sm" />
 
       {/* Content */}
       <div className="relative container-custom h-full flex flex-col justify-center">
