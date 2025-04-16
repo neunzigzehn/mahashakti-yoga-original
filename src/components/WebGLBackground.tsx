@@ -23,7 +23,7 @@ const WebGLBackground = () => {
       console.error("WebGL not supported:", e);
     }
 
-    // Track mouse movement with throttling for performance
+    // Track mouse movement with heavy throttling for very smooth, subtle movement
     let timeoutId: number;
     const handleMouseMove = (e: MouseEvent) => {
       if (timeoutId) return; // Skip if we're still in throttle period
@@ -34,7 +34,7 @@ const WebGLBackground = () => {
           y: -(e.clientY / window.innerHeight) * 2 + 1
         });
         timeoutId = 0;
-      }, 10); // Very small throttle to ensure smoothness
+      }, 30); // Higher throttle for smoother, more premium feel
     };
 
     // Track touch movement for mobile with throttling
@@ -47,7 +47,7 @@ const WebGLBackground = () => {
           y: -(e.touches[0].clientY / window.innerHeight) * 2 + 1
         });
         timeoutId = 0;
-      }, 10);
+      }, 30);
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -66,12 +66,12 @@ const WebGLBackground = () => {
 
   return (
     <div className="absolute inset-0 -z-10">
-      {/* Enhanced CSS blur filter for additional glow effect */}
-      <div className="absolute inset-0 backdrop-blur-xl"></div>
-      <Canvas dpr={[0.4, 1]} camera={{ position: [0, 0, 10], fov: 70 }}>
+      {/* Enhanced extreme blur filter for premium glow effect */}
+      <div className="absolute inset-0 backdrop-blur-3xl"></div>
+      <Canvas dpr={[0.25, 0.5]} camera={{ position: [0, 0, 10], fov: 70 }}>
         <BlurEffect />
         <Lighting />
-        <fog attach="fog" args={['#F5F3EE', 15, 35]} /> {/* Adjusted fog for better visibility */}
+        <fog attach="fog" args={['#FFFFFF', 15, 35]} /> {/* White fog for better background blend */}
         <Orbs mousePosition={mousePosition} />
       </Canvas>
     </div>

@@ -1,6 +1,6 @@
 
 const FallbackContent = () => (
-  <div className="absolute inset-0 bg-gradient-to-r from-yoga-brown to-yoga-gold opacity-30" />
+  <div className="absolute inset-0 bg-white opacity-90" />
 );
 
 export default FallbackContent;

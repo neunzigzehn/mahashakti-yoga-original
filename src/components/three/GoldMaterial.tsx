@@ -7,21 +7,21 @@ const GoldMaterial = () => {
   
   useEffect(() => {
     if (material.current) {
-      material.current.metalness = 0.5;
-      material.current.roughness = 0.3;
+      material.current.metalness = 0.3;
+      material.current.roughness = 0.7;
       material.current.transparent = true;
-      material.current.opacity = 0.9;
+      material.current.opacity = 0.6;
     }
   }, []);
 
   return (
     <meshStandardMaterial 
       ref={material} 
-      color="#D4AF37" // Brighter gold
-      emissive="#FEF7CD" // Soft yellow glow
-      emissiveIntensity={0.6}
+      color="#D4AF37" // Gold color
+      emissive="#FEF7CD" // Soft warm glow
+      emissiveIntensity={0.4}
       transparent
-      opacity={0.9}
+      opacity={0.6}
     />
   );
 };
