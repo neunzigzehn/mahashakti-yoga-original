@@ -22,8 +22,8 @@ const Hero = () => {
       {/* WebGL Background - load only when component is mounted */}
       {isLoaded && <WebGLBackground />}
       
-      {/* Very light overlay with extreme blur for premium effect while ensuring text visibility */}
-      <div className="absolute inset-0 bg-white/80 backdrop-blur-xl" />
+      {/* Lighter overlay with moderate blur for premium effect while ensuring text visibility */}
+      <div className="absolute inset-0 bg-white/60 backdrop-blur-md" />
 
       {/* Content */}
       <div className="relative container-custom h-full flex flex-col justify-center">

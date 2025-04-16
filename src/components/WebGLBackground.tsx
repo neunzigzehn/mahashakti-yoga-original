@@ -66,12 +66,12 @@ const WebGLBackground = () => {
 
   return (
     <div className="absolute inset-0 -z-10">
-      {/* Enhanced extreme blur filter for premium glow effect */}
-      <div className="absolute inset-0 backdrop-blur-3xl"></div>
-      <Canvas dpr={[0.25, 0.5]} camera={{ position: [0, 0, 10], fov: 70 }}>
+      {/* Medium blur filter for premium glow effect without hiding orbs */}
+      <div className="absolute inset-0 backdrop-blur-2xl"></div>
+      <Canvas dpr={[0.5, 1]} camera={{ position: [0, 0, 10], fov: 60 }}>
         <BlurEffect />
         <Lighting />
-        <fog attach="fog" args={['#FFFFFF', 15, 35]} /> {/* White fog for better background blend */}
+        <fog attach="fog" args={['#FFFFFF', 20, 40]} /> {/* Reduced fog density */}
         <Orbs mousePosition={mousePosition} />
       </Canvas>
     </div>
