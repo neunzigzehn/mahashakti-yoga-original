@@ -24,7 +24,7 @@ export const getRetreats = (): Retreat[] => {
       image: getImageUrl("retreat-images", "retreat-1.png"),
       price: "Ab 1.950€",
       spots: "8 Plätze verfügbar",
-      objectPosition: "center 25%", // Improved centering for better visibility
+      objectPosition: "center 10%", // Significant adjustment to center faces better
     },
     {
       id: 2,
@@ -35,7 +35,7 @@ export const getRetreats = (): Retreat[] => {
       image: getImageUrl("retreat-images", "retreat-2.png"),
       price: "Ab 1.200€",
       spots: "10 Plätze verfügbar",
-      objectPosition: "center 20%", // Improved centering for better visibility
+      objectPosition: "center 5%", // Much higher position to properly center subjects
     },
     {
       id: 3,
@@ -46,7 +46,7 @@ export const getRetreats = (): Retreat[] => {
       image: getImageUrl("retreat-images", "retreat-3.png"),
       price: "Ab 990€",
       spots: "12 Plätze verfügbar",
-      objectPosition: "center 25%", // Improved centering for better visibility
+      objectPosition: "center 10%", // Significant adjustment to center people better
     },
   ];
 };

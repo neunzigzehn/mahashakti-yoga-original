@@ -9,8 +9,8 @@ interface YogaClass {
   image: string;
   level: string;
   duration: string;
-  objectPosition?: string; // Object position property for image alignment
-  objectFit?: "fill" | "contain" | "cover" | "none" | "scale-down"; // Fixed to use correct TypeScript types
+  objectPosition?: string; 
+  objectFit?: "fill" | "contain" | "cover" | "none" | "scale-down";
 }
 
 const Classes = () => {
@@ -57,7 +57,7 @@ const Classes = () => {
       image: getImageUrl("retreat-images", "yoga-class-1.png"),
       level: "Alle Niveaus",
       duration: "75 Min",
-      objectPosition: "center 15%", // Adjusted to show more of the upper body on the beach
+      objectPosition: "center 5%", // Much higher position to show the head properly
       objectFit: "cover",
     },
     {
@@ -67,7 +67,7 @@ const Classes = () => {
       image: getImageUrl("retreat-images", "yoga-class-2.png"),
       level: "Mittelstufe",
       duration: "90 Min",
-      objectPosition: "center 25%", // Slightly adjusted for better vertical alignment
+      objectPosition: "center 10%", // Moved much higher to better frame the face
       objectFit: "cover",
     },
     {
@@ -77,7 +77,7 @@ const Classes = () => {
       image: getImageUrl("retreat-images", "yoga-class-3.png"),
       level: "Alle Niveaus",
       duration: "90 Min",
-      objectPosition: "center 35%", // Adjusted to better center the person in the yin pose
+      objectPosition: "center 20%", // Significant adjustment to center the person better
       objectFit: "cover",
     },
     {
@@ -87,7 +87,7 @@ const Classes = () => {
       image: getImageUrl("retreat-images", "yoga-class-4.png"),
       level: "Fortgeschritten",
       duration: "90 Min",
-      objectPosition: "center 30%", // Adjusted to better center the person in meditation pose
+      objectPosition: "center 15%", // Moved higher to better center the meditation pose
       objectFit: "cover",
     },
   ];
