@@ -63,10 +63,10 @@ const Contact = () => {
     <section id="contact" ref={sectionRef} className="py-24 bg-yoga-beige opacity-0 transition-opacity duration-1000">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="section-title text-yoga-brown">Connect With Mahashakti</h2>
+          <h2 className="section-title text-yoga-brown">Kontakt mit Mahashakti</h2>
           <p className="text-yoga-brown/80 max-w-2xl mx-auto">
-            Ready to begin or deepen your yoga journey? 
-            Reach out to learn more about classes, retreats, or to schedule a private session.
+            Bereit, deine Yoga-Reise zu beginnen oder zu vertiefen? 
+            Kontaktiere uns, um mehr über Kurse und Retreats zu erfahren oder eine private Sitzung zu vereinbaren.
           </p>
         </div>
 
@@ -78,13 +78,13 @@ const Contact = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-yoga-gold mx-auto mb-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                <h3 className="font-serif text-2xl mb-4 text-yoga-brown">Message Sent</h3>
-                <p className="text-yoga-brown/80 mb-8">Thank you for reaching out. Mahashakti will respond to your inquiry soon.</p>
+                <h3 className="font-serif text-2xl mb-4 text-yoga-brown">Nachricht gesendet</h3>
+                <p className="text-yoga-brown/80 mb-8">Vielen Dank für deine Anfrage. Mahashakti wird dir in Kürze antworten.</p>
                 <button 
                   onClick={() => setFormSubmitted(false)} 
                   className="yoga-button"
                 >
-                  Send Another Message
+                  Weitere Nachricht senden
                 </button>
               </div>
             ) : (
@@ -105,7 +105,7 @@ const Contact = () => {
                 </div>
                 <div className="mb-6">
                   <label htmlFor="email" className="block text-yoga-brown/90 text-sm font-medium mb-2">
-                    Email
+                    E-Mail
                   </label>
                   <input
                     type="email"
@@ -119,7 +119,7 @@ const Contact = () => {
                 </div>
                 <div className="mb-6">
                   <label htmlFor="subject" className="block text-yoga-brown/90 text-sm font-medium mb-2">
-                    Subject
+                    Betreff
                   </label>
                   <select
                     id="subject"
@@ -129,17 +129,17 @@ const Contact = () => {
                     required
                     className="w-full p-3 border border-yoga-tan focus:border-yoga-gold outline-none transition-colors duration-300 rounded-md"
                   >
-                    <option value="">Select a topic</option>
-                    <option value="Class Inquiry">Class Inquiry</option>
-                    <option value="Private Session">Private Session</option>
-                    <option value="Retreat Information">Retreat Information</option>
-                    <option value="Teacher Training">Teacher Training</option>
-                    <option value="General Question">General Question</option>
+                    <option value="">Thema auswählen</option>
+                    <option value="Kursanfrage">Kursanfrage</option>
+                    <option value="Private Sitzung">Private Sitzung</option>
+                    <option value="Retreat Informationen">Retreat Informationen</option>
+                    <option value="Yogalehrer-Ausbildung">Yogalehrer-Ausbildung</option>
+                    <option value="Allgemeine Frage">Allgemeine Frage</option>
                   </select>
                 </div>
                 <div className="mb-6">
                   <label htmlFor="message" className="block text-yoga-brown/90 text-sm font-medium mb-2">
-                    Message
+                    Nachricht
                   </label>
                   <textarea
                     id="message"
@@ -152,7 +152,7 @@ const Contact = () => {
                   ></textarea>
                 </div>
                 <button type="submit" className="yoga-button w-full bg-yoga-brown text-white hover:bg-yoga-brown/80 border-yoga-brown">
-                  Send Message
+                  Nachricht senden
                 </button>
               </form>
             )}
@@ -161,9 +161,9 @@ const Contact = () => {
           {/* Contact information */}
           <div className="space-y-8">
             <div>
-              <h3 className="font-serif text-2xl mb-4 text-yoga-brown">Studio Location</h3>
+              <h3 className="font-serif text-2xl mb-4 text-yoga-brown">Studio Standort</h3>
               <p className="text-yoga-brown/80 mb-2">Rosenstraße 12</p>
-              <p className="text-yoga-brown/80 mb-4">80331 München, Germany</p>
+              <p className="text-yoga-brown/80 mb-4">80331 München, Deutschland</p>
               <div className="aspect-w-16 aspect-h-9">
                 <iframe 
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.3832795782893!2d11.576019776592503!3d48.13728197130091!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e75f626a1ca8d%3A0x93be7a6a7de8e355!2sMarienplatz%2C%20Altstadt-Lehel%2C%20Munich%2C%20Germany!5e0!3m2!1sen!2sus!4v1650913953646!5m2!1sen!2sus"
@@ -177,7 +177,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <h3 className="font-serif text-2xl mb-4 text-yoga-brown">Contact Information</h3>
+              <h3 className="font-serif text-2xl mb-4 text-yoga-brown">Kontaktinformationen</h3>
               <div className="space-y-4 text-yoga-brown/80">
                 <div className="flex items-start">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3 mt-0.5 text-yoga-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -196,16 +196,16 @@ const Contact = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <div>
-                    <p className="font-medium">Studio Hours:</p>
-                    <p>Monday - Friday: 7:00 AM - 9:00 PM</p>
-                    <p>Saturday - Sunday: 8:00 AM - 6:00 PM</p>
+                    <p className="font-medium">Öffnungszeiten:</p>
+                    <p>Montag - Freitag: 7:00 - 21:00 Uhr</p>
+                    <p>Samstag - Sonntag: 8:00 - 18:00 Uhr</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div>
-              <h3 className="font-serif text-2xl mb-4 text-yoga-brown">Stay Connected</h3>
+              <h3 className="font-serif text-2xl mb-4 text-yoga-brown">Bleib verbunden</h3>
               <div className="flex space-x-4">
                 <a href="#" className="w-10 h-10 rounded-full bg-yoga-brown flex items-center justify-center text-white hover:bg-yoga-gold transition-colors duration-300">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">

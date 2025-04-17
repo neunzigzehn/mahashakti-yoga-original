@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from 'react';
 
 interface Testimonial {
@@ -11,27 +12,27 @@ const Testimonials = () => {
   const testimonials: Testimonial[] = [
     {
       id: 1,
-      quote: "Mahashakti's kundalini classes have been transformative for my spiritual journey. The energy work and meditations have helped me connect with my inner power in ways I never thought possible.",
+      quote: "Mahashaktis Kundalini-Kurse waren transformativ für meine spirituelle Reise. Die Energiearbeit und Meditationen haben mir geholfen, mich mit meiner inneren Kraft auf eine Weise zu verbinden, die ich nie für möglich gehalten hätte.",
       name: "Sophia Müller",
-      title: "Practicing for 3 years",
+      title: "Praktiziert seit 3 Jahren",
     },
     {
       id: 2,
-      quote: "As someone who struggled with stress and anxiety, Mahashakti's authentic approach to yoga has been a true gift. The breathing techniques and mantras have helped me find peace in everyday life.",
+      quote: "Als jemand, der mit Stress und Angst zu kämpfen hatte, war Mahashaktis authentischer Ansatz zum Yoga ein wahres Geschenk. Die Atemtechniken und Mantras haben mir geholfen, Frieden im Alltag zu finden.",
       name: "Andreas Weber",
-      title: "Practicing for 1 year",
+      title: "Praktiziert seit 1 Jahr",
     },
     {
       id: 3,
-      quote: "The sacred space that Mahashakti creates allows for deep inner work. Her guidance through traditional tantric practices has opened new dimensions in my spiritual development.",
+      quote: "Der heilige Raum, den Mahashakti schafft, ermöglicht tiefe innere Arbeit. Ihre Führung durch traditionelle tantrische Praktiken hat neue Dimensionen in meiner spirituellen Entwicklung eröffnet.",
       name: "Lena Schmidt",
-      title: "Practicing for 2 years",
+      title: "Praktiziert seit 2 Jahren",
     },
     {
       id: 4,
-      quote: "Mahashakti has an incredible ability to translate ancient yogic wisdom into accessible practices. Her deep knowledge and genuine devotion to the tradition make every class a profound experience.",
+      quote: "Mahashakti hat eine unglaubliche Fähigkeit, alte yogische Weisheit in zugängliche Praktiken zu übersetzen. Ihr tiefes Wissen und ihre echte Hingabe an die Tradition machen jede Klasse zu einer tiefgreifenden Erfahrung.",
       name: "Thomas Fischer",
-      title: "Practicing for 4 years",
+      title: "Praktiziert seit 4 Jahren",
     },
   ];
 
@@ -104,7 +105,7 @@ const Testimonials = () => {
       
       <div className="container-custom relative">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="section-title text-yoga-brown">Student Experiences</h2>
+          <h2 className="section-title text-yoga-brown">Erfahrungen unserer Schüler</h2>
         </div>
 
         <div className={`max-w-4xl mx-auto relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -136,8 +137,11 @@ const Testimonials = () => {
           {/* Navigation arrows */}
           <button 
             className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-6 md:-translate-x-10 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-yoga-brown hover:text-yoga-gold transition-colors duration-300 border border-yoga-gold/10 hover:border-yoga-gold/30"
-            onClick={prevTestimonial}
-            aria-label="Previous testimonial"
+            onClick={() => {
+              const prevIndex = (activeIndex - 1 + testimonials.length) % testimonials.length;
+              setActiveIndex(prevIndex);
+            }}
+            aria-label="Vorheriges Testimonial"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -145,8 +149,11 @@ const Testimonials = () => {
           </button>
           <button 
             className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-6 md:translate-x-10 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-yoga-brown hover:text-yoga-gold transition-colors duration-300 border border-yoga-gold/10 hover:border-yoga-gold/30"
-            onClick={nextTestimonial}
-            aria-label="Next testimonial"
+            onClick={() => {
+              const nextIndex = (activeIndex + 1) % testimonials.length;
+              setActiveIndex(nextIndex);
+            }}
+            aria-label="Nächstes Testimonial"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -161,8 +168,8 @@ const Testimonials = () => {
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   activeIndex === index ? 'bg-yoga-gold w-8' : 'bg-yoga-gold/30'
                 }`}
-                onClick={() => goToTestimonial(index)}
-                aria-label={`Go to testimonial ${index + 1}`}
+                onClick={() => setActiveIndex(index)}
+                aria-label={`Zu Testimonial ${index + 1} gehen`}
               />
             ))}
           </div>

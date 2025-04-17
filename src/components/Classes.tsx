@@ -50,34 +50,34 @@ const Classes = () => {
     {
       id: 1,
       title: "Kundalini Yoga",
-      description: "Awaken your inner energy through dynamic movements, breathing techniques, and mantras. Experience the rising of consciousness and spiritual awakening.",
+      description: "Erwecke deine innere Energie durch dynamische Bewegungen, Atemtechniken und Mantras. Erlebe das Erwachen des Bewusstseins und spirituelles Wachstum.",
       image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-      level: "All Levels",
-      duration: "90 min",
+      level: "Alle Niveaus",
+      duration: "90 Min",
     },
     {
       id: 2,
       title: "Hatha Yoga",
-      description: "A traditional approach focusing on alignment, balance and breath awareness. Build strength and flexibility while cultivating mindfulness and inner peace.",
+      description: "Ein traditioneller Ansatz mit Fokus auf Ausrichtung, Balance und Atembewusstsein. Entwickle Kraft und Flexibilität bei gleichzeitiger Förderung von Achtsamkeit und innerem Frieden.",
       image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=600&q=80",
-      level: "All Levels",
-      duration: "75 min",
+      level: "Alle Niveaus",
+      duration: "75 Min",
     },
     {
       id: 3,
       title: "Tantra Yoga",
-      description: "Explore the sacred union of feminine and masculine energies through mindful movement, meditation, and breathwork. Connect with your divine essence.",
+      description: "Erforsche die heilige Vereinigung von weiblichen und männlichen Energien durch achtsame Bewegung, Meditation und Atemarbeit. Verbinde dich mit deiner göttlichen Essenz.",
       image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&w=600&q=80",
-      level: "Intermediate",
-      duration: "90 min",
+      level: "Mittelstufe",
+      duration: "90 Min",
     },
     {
       id: 4,
       title: "Meditation & Mantra",
-      description: "Dive deep into ancient meditation techniques and sacred sound vibrations to quiet the mind, open the heart, and connect with your inner wisdom.",
+      description: "Tauche ein in alte Meditationstechniken und heilige Klangvibrationen, um den Geist zu beruhigen, das Herz zu öffnen und dich mit deiner inneren Weisheit zu verbinden.",
       image: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?auto=format&fit=crop&w=600&q=80",
-      level: "All Levels",
-      duration: "60 min",
+      level: "Alle Niveaus",
+      duration: "60 Min",
     },
   ];
 
@@ -85,10 +85,10 @@ const Classes = () => {
     <section id="classes" ref={sectionRef} className="py-24 bg-white">
       <div className="container-custom">
         <div className={`text-center mb-16 transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <h2 className="section-title text-yoga-brown">Yoga Classes</h2>
+          <h2 className="section-title text-yoga-brown">Yoga Kurse</h2>
           <p className="text-yoga-brown/80 max-w-2xl mx-auto mt-10">
-            Discover a variety of authentic yoga practices designed to awaken your inner power and guide you towards wholeness.
-            Each class offers a unique approach to connect with your body, mind, and spirit.
+            Entdecke eine Vielfalt authentischer Yoga-Praktiken, die darauf ausgerichtet sind, deine innere Kraft zu erwecken und dich zur Ganzheit zu führen.
+            Jeder Kurs bietet einen einzigartigen Ansatz, um dich mit deinem Körper, Geist und Seele zu verbinden.
           </p>
         </div>
 
@@ -108,7 +108,7 @@ const Classes = () => {
                     <span>{yogaClass.duration}</span>
                   </div>
                   <a href="#schedule" className="text-white group-hover:text-yoga-gold transition-colors duration-300 text-sm uppercase tracking-wider font-medium flex items-center">
-                    View Schedule
+                    Stundenplan ansehen
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
@@ -126,7 +126,7 @@ const Classes = () => {
         </div>
 
         <div className={`mt-16 text-center transition-opacity duration-1000 delay-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <a href="#schedule" className="yoga-button-premium bg-yoga-brown text-white hover:bg-yoga-gold border-yoga-brown hover:border-yoga-gold">View Full Schedule</a>
+          <a href="#schedule" className="yoga-button-premium bg-yoga-brown text-white hover:bg-yoga-gold border-yoga-brown hover:border-yoga-gold">Vollständigen Stundenplan ansehen</a>
         </div>
       </div>
     </section>
