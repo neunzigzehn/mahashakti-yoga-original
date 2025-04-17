@@ -10,11 +10,11 @@ const GoldMaterial = () => {
       ref={materialRef} 
       color="#BFA065"
       emissive="#FEF7CD"
-      emissiveIntensity={0.7}
-      metalness={0.5}
-      roughness={0.5}
+      emissiveIntensity={0.8}
+      metalness={0.7}
+      roughness={0.3}
       transparent
-      opacity={0.85}
+      opacity={0.9}
     />
   );
 };

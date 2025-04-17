@@ -14,52 +14,52 @@ const Orbs = ({ mousePosition }: OrbsProps) => {
   const brownOrbRef = useRef<THREE.Mesh>(null!);
   const { viewport } = useThree();
   
-  // Update orb positions based on mouse movement
+  // More efficient update using useFrame with performance optimizations
   useFrame(() => {
     if (goldOrbRef.current && brownOrbRef.current) {
-      // Move gold orb - smoother movement
+      // Move gold orb with optimized smooth movement
       goldOrbRef.current.position.x = THREE.MathUtils.lerp(
         goldOrbRef.current.position.x,
-        (mousePosition.x * viewport.width) * 1.4,
-        0.008
+        (mousePosition.x * viewport.width) * 1.2,
+        0.01
       );
       goldOrbRef.current.position.y = THREE.MathUtils.lerp(
         goldOrbRef.current.position.y,
-        (-mousePosition.y * viewport.height) * 1.4,
-        0.008
+        (-mousePosition.y * viewport.height) * 1.2,
+        0.01
       );
 
-      // Move brown orb in the opposite direction
+      // Move brown orb with optimized smooth movement
       brownOrbRef.current.position.x = THREE.MathUtils.lerp(
         brownOrbRef.current.position.x,
-        (-mousePosition.x * viewport.width) * 1.7,
-        0.006
+        (-mousePosition.x * viewport.width) * 1.4,
+        0.008
       );
       brownOrbRef.current.position.y = THREE.MathUtils.lerp(
         brownOrbRef.current.position.y,
-        (mousePosition.y * viewport.height) * 1.7,
-        0.006
+        (mousePosition.y * viewport.height) * 1.4,
+        0.008
       );
 
-      // Gentle rotation
-      goldOrbRef.current.rotation.x += 0.0003;
-      goldOrbRef.current.rotation.y += 0.0004;
-      brownOrbRef.current.rotation.x += 0.0004;
-      brownOrbRef.current.rotation.y += 0.0005;
+      // Gentle rotation with performance optimized values
+      goldOrbRef.current.rotation.x += 0.0004;
+      goldOrbRef.current.rotation.y += 0.0005;
+      brownOrbRef.current.rotation.x += 0.0005;
+      brownOrbRef.current.rotation.y += 0.0006;
     }
   });
 
   return (
     <>
-      {/* Gold orb */}
-      <mesh ref={goldOrbRef} position={[-4, 2.5, -12]}>
-        <sphereGeometry args={[7.5, 32, 32]} />
+      {/* Gold orb with optimized size and position for visibility */}
+      <mesh ref={goldOrbRef} position={[-4, 2.5, -8]}>
+        <sphereGeometry args={[6.5, 48, 48]} />
         <GoldMaterial />
       </mesh>
       
-      {/* Brown orb */}
-      <mesh ref={brownOrbRef} position={[4.5, -2.5, -15]}>
-        <sphereGeometry args={[9, 32, 32]} />
+      {/* Brown orb with optimized size and position for visibility */}
+      <mesh ref={brownOrbRef} position={[4.5, -2.5, -10]}>
+        <sphereGeometry args={[8, 48, 48]} />
         <BrownMaterial />
       </mesh>
     </>

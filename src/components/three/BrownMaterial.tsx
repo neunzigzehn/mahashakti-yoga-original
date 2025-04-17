@@ -10,11 +10,11 @@ const BrownMaterial = () => {
       ref={materialRef} 
       color="#3F3628"
       emissive="#E5D1B8"
-      emissiveIntensity={0.6}
-      metalness={0.35}
-      roughness={0.65}
+      emissiveIntensity={0.7}
+      metalness={0.4}
+      roughness={0.6}
       transparent
-      opacity={0.85}
+      opacity={0.9}
     />
   );
 };
