@@ -1,9 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import * as THREE from 'three';
 import Orbs from './three/Orbs';
-import BlurEffect from './three/BlurEffect';
 import Lighting from './three/Lighting';
 import FallbackContent from './three/FallbackContent';
 
@@ -23,52 +21,41 @@ const WebGLBackground = () => {
       console.error("WebGL not supported:", e);
     }
 
-    // Track mouse movement with heavy throttling for very smooth, subtle movement
-    let timeoutId: number;
+    // Simplified mouse tracking with throttling
     let lastUpdateTime = 0;
-    const updateInterval = 50; // ms between updates for smoother tracking
+    const updateInterval = 50; // ms between updates
     
     const handleMouseMove = (e: MouseEvent) => {
       const currentTime = Date.now();
       if (currentTime - lastUpdateTime < updateInterval) return;
       
       lastUpdateTime = currentTime;
-      if (timeoutId) clearTimeout(timeoutId);
       
-      timeoutId = window.setTimeout(() => {
-        const x = (e.clientX / window.innerWidth) * 2 - 1;
-        const y = -(e.clientY / window.innerHeight) * 2 + 1;
-        
-        // Add dampening for more premium feel - smaller range of movement
-        setMousePosition({
-          x: x * 0.75, // Reduce movement range by 25%
-          y: y * 0.75
-        });
-        
-        timeoutId = 0;
-      }, 30);
+      const x = (e.clientX / window.innerWidth) * 2 - 1;
+      const y = -(e.clientY / window.innerHeight) * 2 + 1;
+      
+      setMousePosition({
+        x: x * 0.75,
+        y: y * 0.75
+      });
     };
 
-    // Track touch movement for mobile with throttling
+    // Simple touch handling
     const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length === 0) return;
+      
       const currentTime = Date.now();
-      if (currentTime - lastUpdateTime < updateInterval || e.touches.length === 0) return;
+      if (currentTime - lastUpdateTime < updateInterval) return;
       
       lastUpdateTime = currentTime;
-      if (timeoutId) clearTimeout(timeoutId);
       
-      timeoutId = window.setTimeout(() => {
-        const x = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
-        const y = -(e.touches[0].clientY / window.innerHeight) * 2 + 1;
-        
-        // Add dampening for more premium feel
-        setMousePosition({
-          x: x * 0.75,
-          y: y * 0.75
-        });
-        
-        timeoutId = 0;
-      }, 30);
+      const x = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
+      const y = -(e.touches[0].clientY / window.innerHeight) * 2 + 1;
+      
+      setMousePosition({
+        x: x * 0.75,
+        y: y * 0.75
+      });
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -77,7 +64,6 @@ const WebGLBackground = () => {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('touchmove', handleTouchMove);
-      if (timeoutId) clearTimeout(timeoutId);
     };
   }, []);
 
@@ -87,12 +73,18 @@ const WebGLBackground = () => {
 
   return (
     <div className="absolute inset-0 -z-10">
-      {/* Medium blur filter for premium glow effect */}
       <div className="absolute inset-0 backdrop-blur-3xl"></div>
-      <Canvas dpr={[0.6, 1]} camera={{ position: [0, 0, 10], fov: 60 }}>
-        <BlurEffect />
+      <Canvas 
+        gl={{ 
+          antialias: true,
+          alpha: true,
+          powerPreference: 'default'
+        }}
+        dpr={[0.6, 1]} 
+        camera={{ position: [0, 0, 10], fov: 60 }}
+      >
+        <fog attach="fog" args={['#FFFFFF', 25, 45]} />
         <Lighting />
-        <fog attach="fog" args={['#FFFFFF', 25, 45]} /> {/* Slightly reduced fog density */}
         <Orbs mousePosition={mousePosition} />
       </Canvas>
     </div>

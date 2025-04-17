@@ -14,26 +14,14 @@ const Orbs = ({ mousePosition }: OrbsProps) => {
   const brownOrbRef = useRef<THREE.Mesh>(null!);
   const { viewport } = useThree();
   
-  // Track time for pulsing effect
-  const timeRef = useRef(0);
-
-  // Update orb positions and add premium pulsing effect
-  useFrame((state) => {
-    timeRef.current += 0.005; // Slow time increment for gentle pulsing
-    
+  // Update orb positions based on mouse movement
+  useFrame(() => {
     if (goldOrbRef.current && brownOrbRef.current) {
-      // Gentle size pulsing based on time
-      const goldPulse = Math.sin(timeRef.current * 0.5) * 0.05 + 1;
-      const brownPulse = Math.sin(timeRef.current * 0.3 + 1) * 0.07 + 1;
-      
-      goldOrbRef.current.scale.set(goldPulse, goldPulse, goldPulse);
-      brownOrbRef.current.scale.set(brownPulse, brownPulse, brownPulse);
-      
-      // Move gold orb with gentler lerp factor
+      // Move gold orb - smoother movement
       goldOrbRef.current.position.x = THREE.MathUtils.lerp(
         goldOrbRef.current.position.x,
         (mousePosition.x * viewport.width) * 1.4,
-        0.008 // Slower transition for premium feel
+        0.008
       );
       goldOrbRef.current.position.y = THREE.MathUtils.lerp(
         goldOrbRef.current.position.y,
@@ -45,7 +33,7 @@ const Orbs = ({ mousePosition }: OrbsProps) => {
       brownOrbRef.current.position.x = THREE.MathUtils.lerp(
         brownOrbRef.current.position.x,
         (-mousePosition.x * viewport.width) * 1.7,
-        0.006 // Even slower for layered effect
+        0.006
       );
       brownOrbRef.current.position.y = THREE.MathUtils.lerp(
         brownOrbRef.current.position.y,
@@ -53,7 +41,7 @@ const Orbs = ({ mousePosition }: OrbsProps) => {
         0.006
       );
 
-      // More subtle rotation for premium feel
+      // Gentle rotation
       goldOrbRef.current.rotation.x += 0.0003;
       goldOrbRef.current.rotation.y += 0.0004;
       brownOrbRef.current.rotation.x += 0.0004;
@@ -63,15 +51,15 @@ const Orbs = ({ mousePosition }: OrbsProps) => {
 
   return (
     <>
-      {/* Gold orb - slightly smaller for premium feel */}
+      {/* Gold orb */}
       <mesh ref={goldOrbRef} position={[-4, 2.5, -12]}>
-        <sphereGeometry args={[7.5, 64, 64]} />
+        <sphereGeometry args={[7.5, 32, 32]} />
         <GoldMaterial />
       </mesh>
       
-      {/* Brown orb - slightly smaller for premium feel */}
+      {/* Brown orb */}
       <mesh ref={brownOrbRef} position={[4.5, -2.5, -15]}>
-        <sphereGeometry args={[9, 64, 64]} />
+        <sphereGeometry args={[9, 32, 32]} />
         <BrownMaterial />
       </mesh>
     </>

@@ -1,15 +1,8 @@
 
-import { useEffect } from 'react';
-import { useThree } from '@react-three/fiber';
+// This component is left empty intentionally
+// The blur effect is now applied directly in CSS in the WebGLBackground component
 
 const BlurEffect = () => {
-  const { gl } = useThree();
-  
-  useEffect(() => {
-    // Higher resolution rendering for clearer premium effect
-    gl.setPixelRatio(window.devicePixelRatio * 0.65); // Increased from 0.5 to 0.65 for better quality
-  }, [gl]);
-
   return null;
 };
 

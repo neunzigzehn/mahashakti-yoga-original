@@ -1,27 +1,20 @@
 
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import * as THREE from 'three';
 
 const BrownMaterial = () => {
-  const material = useRef<THREE.MeshStandardMaterial>(null!);
+  const materialRef = useRef<THREE.MeshStandardMaterial>(null!);
   
-  useEffect(() => {
-    if (material.current) {
-      material.current.metalness = 0.35;  // Slight increase for premium feel
-      material.current.roughness = 0.65;  // Balanced for elegant reflection
-      material.current.transparent = true;
-      material.current.opacity = 0.85;    // Increased for better visibility
-    }
-  }, []);
-
   return (
     <meshStandardMaterial 
-      ref={material} 
-      color="#3F3628"              // Darker brown from website palette
-      emissive="#E5D1B8"           // Warm tan glow
-      emissiveIntensity={0.6}      // Increased glow
+      ref={materialRef} 
+      color="#3F3628"
+      emissive="#E5D1B8"
+      emissiveIntensity={0.6}
+      metalness={0.35}
+      roughness={0.65}
       transparent
-      opacity={0.85}               // Match opacity with useEffect
+      opacity={0.85}
     />
   );
 };
