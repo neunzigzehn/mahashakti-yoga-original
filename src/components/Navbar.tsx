@@ -64,7 +64,7 @@ export const Navbar = () => {
                 <Link to="/uber-uns" className={`nav-link ${window.location.pathname === '/uber-uns' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>Über Uns</Link>
               </NavigationMenuItem>
               
-              {/* Angebot Dropdown - Fixed hover styling */}
+              {/* Angebot Dropdown */}
               <NavigationMenuItem>
                 <NavigationMenuTrigger className={`nav-link ${
                   ['/angebot', '/retreats', '/ausbildungen', '/stundenplan', '/workshops'].some(path => window.location.pathname === path) 

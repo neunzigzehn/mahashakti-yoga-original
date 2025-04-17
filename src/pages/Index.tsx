@@ -8,6 +8,7 @@ import Schedule from "@/components/Schedule";
 import Retreats from "@/components/Retreats";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ChatBot from "@/components/ChatBot";
 import { useEffect, useState } from "react";
 import { initializeStorage } from "@/utils/initializeStorage";
 
@@ -30,7 +31,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className={`min-h-screen transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+    <div className={`min-h-screen transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'} overflow-hidden`}>
       <Navbar />
       <Hero />
       <About />
@@ -40,6 +41,7 @@ const Index = () => {
       <Retreats />
       <Contact />
       <Footer />
+      <ChatBot />
     </div>
   );
 };
