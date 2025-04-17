@@ -1,5 +1,5 @@
+
 import { useState, useRef, useEffect } from "react";
-import { motion } from "framer-motion";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ChatMessage, Message } from "./ChatMessage";
@@ -7,7 +7,6 @@ import { ChatInput } from "./ChatInput";
 import { nanoid } from "nanoid";
 
 type ChatInterfaceProps = {
-  isOpen: boolean;
   onClose: () => void;
 };
 
@@ -21,7 +20,7 @@ const INITIAL_MESSAGES: Message[] = [
   },
 ];
 
-export function ChatInterface({ isOpen, onClose }: ChatInterfaceProps) {
+export function ChatInterface({ onClose }: ChatInterfaceProps) {
   const [messages, setMessages] = useState<Message[]>(INITIAL_MESSAGES);
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -75,7 +74,7 @@ export function ChatInterface({ isOpen, onClose }: ChatInterfaceProps) {
     }
   };
 
-  // Simple response simulation - replace with actual OpenAI API integration
+  // Simple response simulation - replace with actual API integration
   const getSimulatedResponse = (query: string): string => {
     const lowerQuery = query.toLowerCase();
     
@@ -94,16 +93,8 @@ export function ChatInterface({ isOpen, onClose }: ChatInterfaceProps) {
     }
   };
 
-  if (!isOpen) return null;
-
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: 20, scale: 0.95 }}
-      transition={{ duration: 0.2 }}
-      className="fixed bottom-24 right-6 w-[90%] max-w-[400px] rounded-lg border bg-white shadow-xl z-40"
-    >
+    <div className="fixed bottom-24 right-6 w-[90%] max-w-[400px] rounded-lg border bg-white shadow-xl z-40">
       {/* Chat Header */}
       <div className="flex items-center justify-between border-b px-4 py-3 bg-yoga-cream">
         <div>
@@ -140,6 +131,6 @@ export function ChatInterface({ isOpen, onClose }: ChatInterfaceProps) {
       
       {/* Chat Input */}
       <ChatInput onSend={handleSendMessage} disabled={isLoading} />
-    </motion.div>
+    </div>
   );
 }
