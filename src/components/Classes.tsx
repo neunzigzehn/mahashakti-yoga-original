@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react';
 import { getImageUrl } from '@/utils/supabaseStorage';
 
@@ -56,7 +57,7 @@ const Classes = () => {
       image: "/lovable-uploads/dba68d16-d275-4cef-a55a-21fcf95b2e44.png",
       level: "Alle Niveaus",
       duration: "75 Min",
-      objectPosition: "50% 80%", // Moved down to show more of the image
+      objectPosition: "50% 80%", // Positioned to show more of the image
       objectFit: "cover",
     },
     {
@@ -66,7 +67,7 @@ const Classes = () => {
       image: "/lovable-uploads/040584b2-f8bb-43a4-81b5-2ea45fdd0e83.png",
       level: "Mittelstufe",
       duration: "90 Min",
-      objectPosition: "center center", // This one is already well-positioned
+      objectPosition: "50% 40%", // Adjusted to show more of upper body
       objectFit: "cover",
     },
     {
@@ -86,7 +87,7 @@ const Classes = () => {
       image: "/lovable-uploads/9ca8aec4-ec47-4aa0-ab46-f249513d47c8.png",
       level: "Fortgeschritten",
       duration: "90 Min",
-      objectPosition: "50% 20%", // Moved up to show more of the image
+      objectPosition: "50% 20%", // Positioned to show more of the face
       objectFit: "cover",
     },
   ];

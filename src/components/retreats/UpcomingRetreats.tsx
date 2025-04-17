@@ -10,7 +10,7 @@ interface UpcomingRetreatProps {
 
 const UpcomingRetreat = ({ title, location, date, note }: UpcomingRetreatProps) => {
   return (
-    <div className="bg-white p-5 rounded-md shadow-sm">
+    <div className="bg-white p-6 rounded-md shadow-sm hover:shadow-md transition-shadow">
       <h3 className="font-serif text-lg mb-3 text-yoga-brown">{title}</h3>
       <div className="flex items-center mb-2">
         <MapPin className="h-4 w-4 mr-2 text-yoga-gold" />
@@ -21,7 +21,7 @@ const UpcomingRetreat = ({ title, location, date, note }: UpcomingRetreatProps) 
         <span className="text-yoga-brown/80">{date}</span>
       </div>
       {note && (
-        <div className="mt-1 text-yoga-brown/70 text-sm italic">
+        <div className="mt-2 text-yoga-brown/70 text-sm italic">
           {note}
         </div>
       )}
@@ -60,7 +60,7 @@ const UpcomingRetreats = () => {
   ];
 
   return (
-    <div className="bg-yoga-beige/30 p-8 rounded-lg mb-16">
+    <div className="bg-yoga-beige/30 p-8 rounded-lg mb-16 mt-20">
       <h2 className="font-serif text-2xl mb-8 text-yoga-brown text-center">Weitere Retreats 2025 / 2026</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
         {retreats.map(retreat => (
@@ -72,6 +72,15 @@ const UpcomingRetreats = () => {
             note={retreat.note}
           />
         ))}
+      </div>
+      <div className="mt-10 text-center">
+        <a 
+          href="/ALLE_TERMINE_2025_2026.pdf" 
+          download 
+          className="yoga-button-premium bg-yoga-brown text-white hover:bg-yoga-gold border-yoga-brown hover:border-yoga-gold"
+        >
+          Alle Termine als PDF herunterladen
+        </a>
       </div>
     </div>
   );

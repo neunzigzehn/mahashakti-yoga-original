@@ -26,7 +26,7 @@ const RetreatCard = ({
   objectPosition = "center center" 
 }: RetreatCardProps) => {
   return (
-    <div className="retreat-card opacity-0 flex flex-col premium-card group">
+    <div className="retreat-card opacity-0 flex flex-col premium-card group h-full">
       <div className="relative h-64 image-zoom">
         <img 
           src={image} 
@@ -63,7 +63,7 @@ const RetreatCard = ({
           <span className="text-yoga-brown/70">{spots}</span>
         </div>
       </div>
-      <div className="px-6 pb-6">
+      <div className="px-6 pb-6 mt-auto">
         <Link to="/retreats" className="yoga-button-premium bg-yoga-brown text-white hover:bg-yoga-gold border-yoga-brown hover:border-yoga-gold w-full block text-center">Mehr erfahren</Link>
       </div>
     </div>

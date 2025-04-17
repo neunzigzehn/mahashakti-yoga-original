@@ -3,6 +3,7 @@ import { useRef, useEffect, useState } from 'react';
 import RetreatCard from './retreats/RetreatCard';
 import PrivateRetreats from './retreats/PrivateRetreats';
 import { getRetreats } from './retreats/RetreatData';
+import { Link } from 'react-router-dom';
 
 const Retreats = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -73,6 +74,12 @@ const Retreats = () => {
               objectPosition={retreat.objectPosition}
             />
           ))}
+        </div>
+
+        <div className="mt-16 text-center">
+          <Link to="/retreats" className="yoga-button-premium bg-yoga-brown text-white hover:bg-yoga-gold border-yoga-brown hover:border-yoga-gold">
+            Alle Retreats entdecken
+          </Link>
         </div>
 
         <PrivateRetreats isVisible={isVisible} />

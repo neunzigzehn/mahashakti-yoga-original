@@ -8,6 +8,7 @@ import ScheduleOverview from '@/components/retreats/ScheduleOverview';
 import TestimonialsSection from '@/components/retreats/TestimonialsSection';
 import DownloadSection from '@/components/retreats/DownloadSection';
 import { getImageUrl } from '@/utils/supabaseStorage';
+import PageHeader from '@/components/PageHeader';
 
 const RetreatSeite = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -82,16 +83,10 @@ const RetreatSeite = () => {
       <Navbar />
       
       <main>
-        <section className="pt-24 pb-16 bg-yoga-beige relative">
-          <div className="container-custom">
-            <h1 className="text-center font-serif text-4xl md:text-5xl lg:text-6xl text-yoga-brown">Yoga-Retreats</h1>
-            <div className="w-24 h-0.5 bg-yoga-gold mx-auto mt-6 mb-8"></div>
-            <p className="text-center text-yoga-brown/80 max-w-3xl mx-auto">
-              Komme auch du mit auf eines der vielen schönen Yoga-Retreats mit Veronika an besonderen Kraftorten dieser Welt. 
-              Alleine, zu zweit, in einer Gruppe, als AnfängerIn oder fortgeschritten. Come as you are.
-            </p>
-          </div>
-        </section>
+        <PageHeader 
+          title="Yoga-Retreats"
+          subtitle="Komme auch du mit auf eines der vielen schönen Yoga-Retreats mit Veronika an besonderen Kraftorten dieser Welt. Alleine, zu zweit, in einer Gruppe, als AnfängerIn oder fortgeschritten. Come as you are."
+        />
 
         <section ref={sectionRef} className="py-16 bg-white">
           <div className="container-custom">
