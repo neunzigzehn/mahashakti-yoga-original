@@ -8,8 +8,15 @@ import Schedule from "@/components/Schedule";
 import Retreats from "@/components/Retreats";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { useEffect } from "react";
+import { initializeStorage } from "@/utils/initializeStorage";
 
 const Index = () => {
+  useEffect(() => {
+    // Initialize the Supabase storage when the home page loads
+    initializeStorage();
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Navbar />
