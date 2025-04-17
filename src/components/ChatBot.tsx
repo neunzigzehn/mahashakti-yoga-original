@@ -1,6 +1,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { MessageCircle, X, Send } from "lucide-react";
+import { Separator } from "./ui/separator";
 
 interface Message {
   id: string;
@@ -21,6 +22,7 @@ const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState("");
+  const [showSuggestions, setShowSuggestions] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -61,6 +63,8 @@ const ChatBot = () => {
       
       setMessages(prev => [...prev, userMessage]);
       setInputMessage("");
+      // Hide suggestions after sending a message
+      setShowSuggestions(false);
       
       // Simulate bot response after a delay
       setTimeout(() => {
@@ -86,6 +90,9 @@ const ChatBot = () => {
     };
     
     setMessages(prev => [...prev, userMessage]);
+    
+    // Hide suggestions after selecting one
+    setShowSuggestions(false);
     
     // Simulate bot response after a delay
     setTimeout(() => {
@@ -119,23 +126,28 @@ const ChatBot = () => {
       };
       
       setMessages(prev => [...prev, botResponse]);
+      
+      // Show suggestions again after bot response with a small delay
+      setTimeout(() => {
+        setShowSuggestions(true);
+      }, 500);
     }, 1000);
   };
 
   return (
     <>
-      {/* Chat button */}
+      {/* Chat button - increased size */}
       <button 
         onClick={() => setIsOpen(true)} 
-        className="fixed bottom-6 right-6 z-50 bg-yoga-brown hover:bg-yoga-gold text-white p-2 rounded-full shadow-lg transition-colors duration-300"
+        className="fixed bottom-6 right-6 z-50 bg-yoga-brown hover:bg-yoga-gold text-white p-3 rounded-full shadow-lg transition-colors duration-300 w-14 h-14 flex items-center justify-center"
         aria-label="Chat öffnen"
       >
-        <MessageCircle size={18} />
+        <MessageCircle size={20} />
       </button>
       
-      {/* Chat window */}
+      {/* Chat window - improved width */}
       {isOpen && (
-        <div className="fixed bottom-20 right-6 z-50 w-80 rounded-lg shadow-xl overflow-hidden bg-yoga-cream/95 animate-scale-in font-serif">
+        <div className="fixed bottom-24 right-6 z-50 w-[330px] rounded-lg shadow-xl overflow-hidden bg-yoga-cream animate-scale-in font-serif">
           {/* Header */}
           <div className="flex items-center justify-between p-3 border-b border-yoga-gold/20 bg-yoga-cream">
             <div className="flex items-center">
@@ -154,7 +166,7 @@ const ChatBot = () => {
           </div>
           
           {/* Messages */}
-          <div className="h-64 overflow-y-auto p-3 bg-yoga-cream/95">
+          <div className="h-[320px] overflow-y-auto p-3 bg-yoga-cream/95">
             {messages.map((message) => (
               <div
                 key={message.id}
@@ -183,21 +195,24 @@ const ChatBot = () => {
             <div ref={messagesEndRef} />
           </div>
           
-          {/* Suggested questions */}
-          <div className="p-3 bg-yoga-cream border-t border-yoga-gold/20">
-            <p className="text-xs font-sans text-yoga-brown/70 mb-2">Vorgeschlagene Fragen:</p>
-            <div className="flex flex-wrap gap-2">
-              {suggestedQuestions.map((question, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleSuggestedQuestion(question)}
-                  className="text-xs font-sans py-1 px-3 rounded-full bg-yoga-beige/60 text-yoga-brown hover:bg-yoga-gold/20 transition-colors whitespace-nowrap"
-                >
-                  {question}
-                </button>
-              ))}
+          {/* Suggested questions with improved visual separation */}
+          {showSuggestions && (
+            <div className="px-3 py-2 bg-yoga-cream border-t border-yoga-gold/30">
+              <p className="text-xs font-serif text-yoga-brown/80 mb-2">Vorgeschlagene Fragen:</p>
+              <Separator className="mb-2 bg-yoga-gold/20" />
+              <div className="flex flex-col gap-1.5">
+                {suggestedQuestions.map((question, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleSuggestedQuestion(question)}
+                    className="text-xs font-sans py-1.5 px-3 rounded-full bg-yoga-beige/80 text-yoga-brown hover:bg-yoga-gold/20 transition-colors text-left overflow-hidden text-ellipsis border border-yoga-gold/10"
+                  >
+                    {question}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
           
           {/* Input */}
           <div className="p-3 border-t border-yoga-gold/20 flex items-center">
