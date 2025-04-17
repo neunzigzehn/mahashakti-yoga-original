@@ -49,35 +49,35 @@ const Classes = () => {
   const classes: YogaClass[] = [
     {
       id: 1,
-      title: "Kundalini Yoga",
-      description: "Erwecke deine innere Energie durch dynamische Bewegungen, Atemtechniken und Mantras. Erlebe das Erwachen des Bewusstseins und spirituelles Wachstum.",
-      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-      level: "Alle Niveaus",
-      duration: "90 Min",
-    },
-    {
-      id: 2,
-      title: "Hatha Yoga",
-      description: "Ein traditioneller Ansatz mit Fokus auf Ausrichtung, Balance und Atembewusstsein. Entwickle Kraft und Flexibilität bei gleichzeitiger Förderung von Achtsamkeit und innerem Frieden.",
-      image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=600&q=80",
+      title: "Hatha Flow Yoga",
+      description: "Harmonische Verbindung von Atem und Bewegung. Stärke deinen Körper und verbessere deine Flexibilität mit fließenden Übergängen zwischen den Asanas.",
+      image: "public/lovable-uploads/2923884d-cdb3-4751-a291-53f8d955a7ae.png",
       level: "Alle Niveaus",
       duration: "75 Min",
     },
     {
-      id: 3,
-      title: "Tantra Yoga",
-      description: "Erforsche die heilige Vereinigung von weiblichen und männlichen Energien durch achtsame Bewegung, Meditation und Atemarbeit. Verbinde dich mit deiner göttlichen Essenz.",
-      image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&w=600&q=80",
+      id: 2,
+      title: "Hatha-Vinyasa",
+      description: "Eine dynamische Praxis, die traditionelle Hatha-Posen mit fließenden Vinyasa-Sequenzen verbindet. Entwickle Kraft und Flexibilität durch achtsame Bewegungen.",
+      image: "public/lovable-uploads/ef7f56f0-628a-4a61-a33d-543f239643cf.png",
       level: "Mittelstufe",
       duration: "90 Min",
     },
     {
-      id: 4,
-      title: "Meditation & Mantra",
-      description: "Tauche ein in alte Meditationstechniken und heilige Klangvibrationen, um den Geist zu beruhigen, das Herz zu öffnen und dich mit deiner inneren Weisheit zu verbinden.",
-      image: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?auto=format&fit=crop&w=600&q=80",
+      id: 3,
+      title: "Yin Yoga",
+      description: "Eine meditative Praxis mit längeren Haltezeiten. Löse tiefsitzende Spannungen, verbessere die Flexibilität deines Bindegewebes und finde innere Ruhe.",
+      image: "public/lovable-uploads/4f4b0113-5662-426b-b0ed-039247ec283a.png",
       level: "Alle Niveaus",
-      duration: "60 Min",
+      duration: "90 Min",
+    },
+    {
+      id: 4,
+      title: "Ashtanga Yoga",
+      description: "Eine kraftvolle und strukturierte Praxis, die durch eine festgelegte Sequenz von Asanas führt. Entwickle Stärke, Ausdauer und innere Klarheit durch regelmäßige Übung.",
+      image: "public/lovable-uploads/0e42c8a4-6afd-410a-a56a-63559589bb10.png",
+      level: "Fortgeschritten",
+      duration: "90 Min",
     },
   ];
 
@@ -99,9 +99,9 @@ const Classes = () => {
                 <img 
                   src={yogaClass.image} 
                   alt={yogaClass.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
+                  className="w-full h-full object-cover object-center filter grayscale-[25%] hover:grayscale-0 transition-all duration-700 ease-in-out group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-yoga-brown/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-yoga-brown/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
                   <div className="flex justify-between text-white text-sm mb-2">
                     <span>{yogaClass.level}</span>
