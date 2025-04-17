@@ -14,12 +14,13 @@ const Orbs = ({ mousePosition }: OrbsProps) => {
   const brownOrbRef = useRef<THREE.Mesh>(null!);
   const { viewport } = useThree();
   
-  // Track time for pulsing effect
+  // Track time for pulsing effect - use ref to prevent re-renders
   const timeRef = useRef(0);
 
   // Update orb positions and add premium pulsing effect
-  useFrame((state) => {
-    timeRef.current += 0.007; // Slightly faster time increment for more noticeable pulsing
+  useFrame((state, delta) => {
+    // Use delta time to maintain consistent animation speed
+    timeRef.current += delta * 0.7; // Use delta time from useFrame for more stable animation
     
     if (goldOrbRef.current && brownOrbRef.current) {
       // Enhanced size pulsing based on time
@@ -33,31 +34,31 @@ const Orbs = ({ mousePosition }: OrbsProps) => {
       goldOrbRef.current.position.x = THREE.MathUtils.lerp(
         goldOrbRef.current.position.x,
         (mousePosition.x * viewport.width) * 1.4,
-        0.012 // Slightly faster for better responsiveness
+        0.01 // Slightly slower for better stability
       );
       goldOrbRef.current.position.y = THREE.MathUtils.lerp(
         goldOrbRef.current.position.y,
         (-mousePosition.y * viewport.height) * 1.4,
-        0.012
+        0.01
       );
 
       // Move brown orb in the opposite direction
       brownOrbRef.current.position.x = THREE.MathUtils.lerp(
         brownOrbRef.current.position.x,
         (-mousePosition.x * viewport.width) * 1.7,
-        0.01 // Slightly faster
+        0.008 // Slightly slower
       );
       brownOrbRef.current.position.y = THREE.MathUtils.lerp(
         brownOrbRef.current.position.y,
         (mousePosition.y * viewport.height) * 1.7,
-        0.01
+        0.008
       );
 
-      // Enhanced rotation for more dynamic movement
-      goldOrbRef.current.rotation.x += 0.0004;
-      goldOrbRef.current.rotation.y += 0.0005;
-      brownOrbRef.current.rotation.x += 0.0005;
-      brownOrbRef.current.rotation.y += 0.0006;
+      // Simpler rotation that won't cause performance issues
+      goldOrbRef.current.rotation.x += delta * 0.04;
+      goldOrbRef.current.rotation.y += delta * 0.05;
+      brownOrbRef.current.rotation.x += delta * 0.05;
+      brownOrbRef.current.rotation.y += delta * 0.06;
     }
   });
 
@@ -65,13 +66,13 @@ const Orbs = ({ mousePosition }: OrbsProps) => {
     <>
       {/* Gold orb - positioned closer to camera */}
       <mesh ref={goldOrbRef} position={[-4, 2.5, -9]}>
-        <sphereGeometry args={[7.5, 64, 64]} />
+        <sphereGeometry args={[7.5, 32, 32]} /> {/* Reduced geometry complexity */}
         <GoldMaterial />
       </mesh>
       
       {/* Brown orb - positioned closer to camera */}
       <mesh ref={brownOrbRef} position={[4.5, -2.5, -10]}>
-        <sphereGeometry args={[9, 64, 64]} />
+        <sphereGeometry args={[9, 32, 32]} /> {/* Reduced geometry complexity */}
         <BrownMaterial />
       </mesh>
     </>

@@ -6,8 +6,12 @@ const BlurEffect = () => {
   const { gl } = useThree();
   
   useEffect(() => {
-    // Full resolution rendering for better visibility
-    gl.setPixelRatio(window.devicePixelRatio);
+    // Set pixel ratio once on mount
+    gl.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit to prevent performance issues
+    
+    return () => {
+      // Cleanup if needed
+    };
   }, [gl]);
 
   return null;
