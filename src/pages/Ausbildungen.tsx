@@ -1,7 +1,7 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Navbar } from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 
 const Ausbildungen = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -36,13 +36,10 @@ const Ausbildungen = () => {
       <Navbar />
       
       <main>
-        {/* Hero banner */}
-        <section className="pt-24 pb-16 bg-yoga-beige relative">
-          <div className="container-custom">
-            <h1 className="text-center font-serif text-4xl md:text-5xl lg:text-6xl text-yoga-brown">Ausbildungen</h1>
-            <div className="w-24 h-0.5 bg-yoga-gold mx-auto mt-6 mb-12"></div>
-          </div>
-        </section>
+        <PageHeader 
+          title="Ausbildungen" 
+          subtitle="Professionelle Yoga-Ausbildungen für angehende Lehrer und alle, die ihre Praxis vertiefen möchten."
+        />
 
         {/* Main content */}
         <section ref={sectionRef} className="py-16 bg-white">

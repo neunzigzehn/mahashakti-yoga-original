@@ -1,8 +1,8 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Navbar } from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Link } from 'react-router-dom';
+import PageHeader from "@/components/PageHeader";
 
 interface ClassSchedule {
   id: number;
@@ -83,20 +83,10 @@ const Stundenplan = () => {
       <Navbar />
       
       <main>
-        {/* Hero banner */}
-        <section className="pt-24 pb-16 bg-yoga-beige relative">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-yoga-gold/5 rounded-full translate-x-1/3 -translate-y-1/3"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-yoga-gold/5 rounded-full -translate-x-1/2 translate-y-1/3"></div>
-          
-          <div className="container-custom">
-            <h1 className="text-center font-serif text-4xl md:text-5xl lg:text-6xl text-yoga-brown">Stundenplan</h1>
-            <div className="w-24 h-0.5 bg-yoga-gold mx-auto mt-6 mb-12"></div>
-            <p className="text-yoga-brown/80 max-w-2xl mx-auto text-center mt-8">
-              Unser Stundenplan bietet eine Vielfalt an Klassen für alle Niveaus. 
-              Für Einsteiger empfehlen wir unsere "Alle Level" Kurse.
-            </p>
-          </div>
-        </section>
+        <PageHeader 
+          title="Stundenplan" 
+          subtitle="Unser Stundenplan bietet eine Vielfalt an Klassen für alle Niveaus. Für Einsteiger empfehlen wir unsere 'Alle Level' Kurse."
+        />
 
         {/* Main content */}
         <section ref={sectionRef} className="py-16 bg-white">

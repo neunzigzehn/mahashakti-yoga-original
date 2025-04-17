@@ -1,7 +1,7 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Navbar } from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 
 const Kontakt = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -55,6 +55,11 @@ const Kontakt = () => {
       <Navbar />
       
       <main>
+        <PageHeader 
+          title="Kontakt" 
+          subtitle="Hast du Fragen oder Anregungen? Wir freuen uns, von dir zu hören."
+        />
+
         {/* Hero banner */}
         <section className="pt-24 pb-16 bg-yoga-beige relative">
           <div className="container-custom">
