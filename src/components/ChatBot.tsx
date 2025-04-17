@@ -6,6 +6,7 @@ import SuggestedQuestions from "./chat/SuggestedQuestions";
 import ChatInput from "./chat/ChatInput";
 import ChatHeader from "./chat/ChatHeader";
 import { Message } from "./chat/types";
+import { useIsMobile } from "@/hooks/use-mobile";
 import "./chat/styles.css";
 
 const suggestedQuestions = [
@@ -21,6 +22,12 @@ const ChatBot = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(true);
   const [isTyping, setIsTyping] = useState(false);
+  const isMobile = useIsMobile();
+
+  // Don't render the chatbot on mobile devices
+  if (isMobile) {
+    return null;
+  }
 
   useEffect(() => {
     if (messages.length === 0) {

@@ -1,5 +1,6 @@
 
 import { Separator } from "../ui/separator";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface SuggestedQuestionsProps {
   questions: string[];
@@ -7,6 +8,8 @@ interface SuggestedQuestionsProps {
 }
 
 const SuggestedQuestions = ({ questions, onSelectQuestion }: SuggestedQuestionsProps) => {
+  const isMobile = useIsMobile();
+  
   return (
     <div className="suggested-questions-container">
       <p className="text-xs font-serif text-yoga-brown/80 mb-2">Vorgeschlagene Fragen:</p>
@@ -16,7 +19,7 @@ const SuggestedQuestions = ({ questions, onSelectQuestion }: SuggestedQuestionsP
           <button
             key={index}
             onClick={() => onSelectQuestion(question)}
-            className="suggested-question-button"
+            className={`suggested-question-button ${isMobile ? 'text-[10px] py-1' : ''}`}
           >
             {question}
           </button>

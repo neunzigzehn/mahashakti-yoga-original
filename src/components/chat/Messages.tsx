@@ -2,6 +2,7 @@
 import { useRef, useEffect } from "react";
 import { Message } from "./types";
 import { ScrollArea } from "../ui/scroll-area";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface MessagesProps {
   messages: Message[];
@@ -9,6 +10,7 @@ interface MessagesProps {
 
 const Messages = ({ messages }: MessagesProps) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     // Scroll to bottom when messages change
@@ -23,7 +25,7 @@ const Messages = ({ messages }: MessagesProps) => {
   };
 
   return (
-    <ScrollArea className="h-[320px] px-3 py-2">
+    <ScrollArea className={`h-[320px] ${isMobile ? 'px-2' : 'px-3'} py-2`}>
       <div className="flex flex-col space-y-4">
         {messages.map((message) => (
           <div
