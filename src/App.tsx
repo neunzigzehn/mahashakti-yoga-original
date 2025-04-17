@@ -16,7 +16,17 @@ import Blog from "./pages/Blog";
 import Widerruf from "./pages/Widerruf";
 import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
+// Create query client with optimized settings
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: 1,
+      staleTime: 5 * 60 * 1000,
+      gcTime: 10 * 60 * 1000
+    }
+  }
+});
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -35,7 +45,7 @@ const App = () => (
           <Route path="/kontakt" element={<Kontakt />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/widerruf" element={<Widerruf />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          {/* Catch-all route for 404 */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -1,7 +1,16 @@
 
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,15 +54,72 @@ export const Navbar = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <Link to="/" className={`nav-link ${activeSection === 'home' || window.location.pathname === '/' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>Home</Link>
-          <Link to="/uber-uns" className={`nav-link ${window.location.pathname === '/uber-uns' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>Über Uns</Link>
-          <Link to="/angebot" className={`nav-link ${window.location.pathname === '/angebot' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>Angebot</Link>
-          <Link to="/stundenplan" className={`nav-link ${window.location.pathname === '/stundenplan' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>Stundenplan</Link>
-          <Link to="/retreats" className={`nav-link ${window.location.pathname === '/retreats' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>Retreats</Link>
-          <Link to="/ausbildungen" className={`nav-link ${window.location.pathname === '/ausbildungen' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>Ausbildungen</Link>
-          <Link to="/workshops" className={`nav-link ${window.location.pathname === '/workshops' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>Workshops & Events</Link>
-          <Link to="/kontakt" className={`nav-link ${window.location.pathname === '/kontakt' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>Kontakt</Link>
+        <nav className="hidden md:block">
+          <NavigationMenu>
+            <NavigationMenuList className="space-x-5">
+              <NavigationMenuItem>
+                <Link to="/" className={`nav-link ${activeSection === 'home' || window.location.pathname === '/' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>Home</Link>
+              </NavigationMenuItem>
+              
+              <NavigationMenuItem>
+                <Link to="/uber-uns" className={`nav-link ${window.location.pathname === '/uber-uns' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>Über Uns</Link>
+              </NavigationMenuItem>
+              
+              {/* Angebot Dropdown */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className={`nav-link ${
+                  ['/angebot', '/retreats', '/ausbildungen', '/stundenplan', '/workshops'].some(path => window.location.pathname === path) 
+                  ? 'text-yoga-gold' 
+                  : 'text-yoga-brown'
+                } bg-transparent hover:bg-transparent focus:bg-transparent p-0`}>
+                  Angebot <ChevronDown className="h-4 w-4 ml-1" />
+                </NavigationMenuTrigger>
+                <NavigationMenuContent className="bg-yoga-cream/95 backdrop-blur-md p-4 rounded-md shadow-md">
+                  <ul className="grid w-[400px] gap-3 p-4">
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link to="/angebot" className="nav-link block mb-2 text-yoga-brown hover:text-yoga-gold">
+                          Kursangebot
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link to="/stundenplan" className="nav-link block mb-2 text-yoga-brown hover:text-yoga-gold">
+                          Stundenplan
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link to="/retreats" className="nav-link block mb-2 text-yoga-brown hover:text-yoga-gold">
+                          Retreats
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link to="/ausbildungen" className="nav-link block mb-2 text-yoga-brown hover:text-yoga-gold">
+                          Ausbildungen
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link to="/workshops" className="nav-link block text-yoga-brown hover:text-yoga-gold">
+                          Workshops & Events
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              
+              <NavigationMenuItem>
+                <Link to="/kontakt" className={`nav-link ${window.location.pathname === '/kontakt' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>Kontakt</Link>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -67,14 +133,22 @@ export const Navbar = () => {
 
         {/* Mobile Menu */}
         <div className={`fixed inset-0 bg-yoga-cream/95 backdrop-blur-md flex flex-col items-center justify-center transition-all duration-500 ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
-          <nav className="flex flex-col items-center space-y-8">
+          <nav className="flex flex-col items-center space-y-6">
             <Link to="/" className={`nav-link text-xl ${activeSection === 'home' || window.location.pathname === '/' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Home</Link>
             <Link to="/uber-uns" className={`nav-link text-xl ${window.location.pathname === '/uber-uns' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Über Uns</Link>
-            <Link to="/angebot" className={`nav-link text-xl ${window.location.pathname === '/angebot' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Angebot</Link>
-            <Link to="/stundenplan" className={`nav-link text-xl ${window.location.pathname === '/stundenplan' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Stundenplan</Link>
-            <Link to="/retreats" className={`nav-link text-xl ${window.location.pathname === '/retreats' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Retreats</Link>
-            <Link to="/ausbildungen" className={`nav-link text-xl ${window.location.pathname === '/ausbildungen' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Ausbildungen</Link>
-            <Link to="/workshops" className={`nav-link text-xl ${window.location.pathname === '/workshops' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Workshops & Events</Link>
+            
+            {/* Mobile Angebot submenu */}
+            <div className="flex flex-col items-center space-y-2">
+              <span className="nav-link text-xl text-yoga-gold">Angebot</span>
+              <div className="flex flex-col items-center space-y-4 mt-2 ml-4">
+                <Link to="/angebot" className={`nav-link text-lg ${window.location.pathname === '/angebot' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Kursangebot</Link>
+                <Link to="/stundenplan" className={`nav-link text-lg ${window.location.pathname === '/stundenplan' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Stundenplan</Link>
+                <Link to="/retreats" className={`nav-link text-lg ${window.location.pathname === '/retreats' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Retreats</Link>
+                <Link to="/ausbildungen" className={`nav-link text-lg ${window.location.pathname === '/ausbildungen' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Ausbildungen</Link>
+                <Link to="/workshops" className={`nav-link text-lg ${window.location.pathname === '/workshops' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Workshops & Events</Link>
+              </div>
+            </div>
+            
             <Link to="/kontakt" className={`nav-link text-xl ${window.location.pathname === '/kontakt' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Kontakt</Link>
           </nav>
         </div>

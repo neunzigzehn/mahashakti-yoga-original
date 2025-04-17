@@ -36,8 +36,8 @@ const UberUns = () => {
       <Navbar />
       
       <main>
-        {/* Hero banner for About page */}
-        <section className="pt-24 pb-16 bg-yoga-beige relative">
+        {/* Hero banner for About page with improved spacing */}
+        <section className="pt-36 pb-20 bg-yoga-beige relative">
           <div className="container-custom">
             <h1 className="text-center font-serif text-4xl md:text-5xl lg:text-6xl text-yoga-brown">Über Uns</h1>
             <div className="w-24 h-0.5 bg-yoga-gold mx-auto mt-6 mb-12"></div>

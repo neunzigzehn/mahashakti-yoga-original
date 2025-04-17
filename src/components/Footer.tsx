@@ -48,13 +48,19 @@ const Footer = () => {
                 <Link to="/uber-uns" className="hover:text-white transition-colors duration-300">Über Uns</Link>
               </li>
               <li>
-                <Link to="/angebot" className="hover:text-white transition-colors duration-300">Klassen</Link>
+                <Link to="/angebot" className="hover:text-white transition-colors duration-300">Kursangebot</Link>
               </li>
               <li>
                 <Link to="/stundenplan" className="hover:text-white transition-colors duration-300">Stundenplan</Link>
               </li>
               <li>
                 <Link to="/retreats" className="hover:text-white transition-colors duration-300">Retreats</Link>
+              </li>
+              <li>
+                <Link to="/ausbildungen" className="hover:text-white transition-colors duration-300">Ausbildungen</Link>
+              </li>
+              <li>
+                <Link to="/workshops" className="hover:text-white transition-colors duration-300">Workshops & Events</Link>
               </li>
               <li>
                 <Link to="/kontakt" className="hover:text-white transition-colors duration-300">Kontakt</Link>
