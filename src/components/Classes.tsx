@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { getImageUrl } from '@/utils/supabaseStorage';
 
@@ -10,7 +9,7 @@ interface YogaClass {
   level: string;
   duration: string;
   objectPosition?: string; // Object position property for image alignment
-  objectFit?: string;      // Added object-fit property for more control
+  objectFit?: "fill" | "contain" | "cover" | "none" | "scale-down"; // Fixed to use correct TypeScript types
 }
 
 const Classes = () => {
