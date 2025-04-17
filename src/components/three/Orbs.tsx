@@ -14,7 +14,7 @@ const Orbs = ({ mousePosition }: OrbsProps) => {
   
   // Create a high-quality radial gradient texture for orbs (cached via useMemo)
   const gradientTexture = useMemo(() => {
-    const size = 1024; // Higher resolution texture for production quality
+    const size = 1024; // Higher resolution texture for better quality
     const canvas = document.createElement('canvas');
     canvas.width = size;
     canvas.height = size;
@@ -47,19 +47,19 @@ const Orbs = ({ mousePosition }: OrbsProps) => {
     if (goldOrbRef.current && brownOrbRef.current) {
       const time = clock.getElapsedTime();
       
-      // Optimized movement calculations with better performance
+      // Fixed positioning to ensure visibility
       goldOrbRef.current.position.x = THREE.MathUtils.lerp(
         goldOrbRef.current.position.x,
         (mousePosition.x * viewport.width) * 0.1 + Math.sin(time * 0.05) * 2,
-        0.01 // Slightly increased for smoother movement
+        0.01
       );
       goldOrbRef.current.position.y = THREE.MathUtils.lerp(
         goldOrbRef.current.position.y,
         (-mousePosition.y * viewport.height) * 0.1 + Math.cos(time * 0.07) * 1,
         0.01
       );
-      // Optimal z-position for visibility
-      goldOrbRef.current.position.z = -0.5;
+      // Fixed z position to ensure visibility
+      goldOrbRef.current.position.z = 0;
 
       brownOrbRef.current.position.x = THREE.MathUtils.lerp(
         brownOrbRef.current.position.x,
@@ -71,35 +71,35 @@ const Orbs = ({ mousePosition }: OrbsProps) => {
         (mousePosition.y * viewport.height) * 0.12 + Math.sin(time * 0.08) * 1.2,
         0.008
       );
-      // Optimal z-position for visibility and layering
-      brownOrbRef.current.position.z = -3;
+      // Fixed z position to ensure visibility but maintain layering
+      brownOrbRef.current.position.z = -1;
     }
   });
 
   return (
     <>
-      {/* Gold hue orb - optimized for visibility and performance */}
-      <mesh ref={goldOrbRef} position={[-2, 2, -0.5]} renderOrder={1}>
-        <planeGeometry args={[14, 14]} />
+      {/* Gold hue orb with increased size and opacity */}
+      <mesh ref={goldOrbRef} position={[0, 0, 0]} renderOrder={10}>
+        <planeGeometry args={[20, 20]} />
         <meshBasicMaterial 
           map={gradientTexture}
           color="#FEF7CD"
           transparent
-          opacity={0.95}
+          opacity={1}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
           depthTest={false}
         />
       </mesh>
       
-      {/* Brown/peach hue orb - optimized for visibility and performance */}
-      <mesh ref={brownOrbRef} position={[2, -2, -3]} renderOrder={2}>
-        <planeGeometry args={[16, 16]} />
+      {/* Brown/peach hue orb with increased size and opacity */}
+      <mesh ref={brownOrbRef} position={[0, 0, -1]} renderOrder={9}>
+        <planeGeometry args={[22, 22]} />
         <meshBasicMaterial 
           map={gradientTexture}
           color="#FDE1D3"
           transparent
-          opacity={0.9}
+          opacity={1}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
           depthTest={false}

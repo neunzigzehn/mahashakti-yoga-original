@@ -8,25 +8,25 @@ const Lighting = () => {
   
   useFrame(({ clock }) => {
     if (pointLightRef.current) {
-      // Subtle intensity variations for organic feel
+      // Enhanced intensity variations for better visibility
       const time = clock.getElapsedTime();
-      pointLightRef.current.intensity = 0.55 + Math.sin(time * 0.2) * 0.05;
+      pointLightRef.current.intensity = 1.0 + Math.sin(time * 0.2) * 0.1;
     }
   });
   
   return (
     <>
-      {/* Balanced ambient light for baseline illumination */}
-      <ambientLight intensity={0.45} />
+      {/* Increased ambient light for better baseline illumination */}
+      <ambientLight intensity={0.7} />
       
-      {/* Optimized point light with better positioning */}
+      {/* Enhanced point light with better positioning for orb visibility */}
       <pointLight 
         ref={pointLightRef} 
-        position={[0, 0, 4.5]} 
-        intensity={0.55} 
+        position={[0, 0, 10]} 
+        intensity={1.0} 
         color="#ffffff" 
-        distance={25}
-        decay={2}
+        distance={40}
+        decay={1.5}
       />
     </>
   );
