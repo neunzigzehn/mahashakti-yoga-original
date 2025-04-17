@@ -13,7 +13,8 @@ import Ausbildungen from "./pages/Ausbildungen";
 import Workshops from "./pages/Workshops";
 import Kontakt from "./pages/Kontakt";
 import Blog from "./pages/Blog";
-import Widerruf from "./pages/Widerruf";
+import Impressum from "./pages/Impressum";
+import AGB from "./pages/AGB";
 import NotFound from "./pages/NotFound";
 
 // Create query client with optimized settings
@@ -44,7 +45,8 @@ const App = () => (
           <Route path="/workshops" element={<Workshops />} />
           <Route path="/kontakt" element={<Kontakt />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/widerruf" element={<Widerruf />} />
+          <Route path="/impressum" element={<Impressum />} />
+          <Route path="/agb" element={<AGB />} />
           {/* Catch-all route for 404 */}
           <Route path="*" element={<NotFound />} />
         </Routes>

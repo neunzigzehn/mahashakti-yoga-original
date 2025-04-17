@@ -68,9 +68,6 @@ const Footer = () => {
               <li>
                 <Link to="/blog" className="hover:text-white transition-colors duration-300">Blog</Link>
               </li>
-              <li>
-                <Link to="/widerruf" className="hover:text-white transition-colors duration-300">Widerruf</Link>
-              </li>
             </ul>
           </div>
 
@@ -124,7 +121,11 @@ const Footer = () => {
 
         {/* Copyright and back to top */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/20">
-          <p className="text-white/70 text-sm">&copy; {new Date().getFullYear()} Mahashakti Yoga. Alle Rechte vorbehalten.</p>
+          <div className="flex space-x-6 text-white/70 text-sm">
+            <p>&copy; {new Date().getFullYear()} Mahashakti Yoga. Alle Rechte vorbehalten.</p>
+            <Link to="/impressum" className="hover:text-white transition-colors duration-300">Impressum</Link>
+            <Link to="/agb" className="hover:text-white transition-colors duration-300">AGB</Link>
+          </div>
           <button 
             onClick={scrollToTop}
             className="mt-4 md:mt-0 group flex items-center text-white/70 hover:text-white transition-colors duration-300"

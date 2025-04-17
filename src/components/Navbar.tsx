@@ -9,7 +9,6 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
 export const Navbar = () => {
@@ -65,48 +64,48 @@ export const Navbar = () => {
                 <Link to="/uber-uns" className={`nav-link ${window.location.pathname === '/uber-uns' ? 'text-yoga-gold' : 'text-yoga-brown'}`}>Über Uns</Link>
               </NavigationMenuItem>
               
-              {/* Angebot Dropdown */}
+              {/* Angebot Dropdown - Improved styling */}
               <NavigationMenuItem>
                 <NavigationMenuTrigger className={`nav-link ${
                   ['/angebot', '/retreats', '/ausbildungen', '/stundenplan', '/workshops'].some(path => window.location.pathname === path) 
                   ? 'text-yoga-gold' 
                   : 'text-yoga-brown'
-                } bg-transparent hover:bg-transparent focus:bg-transparent p-0`}>
+                } bg-transparent hover:bg-transparent data-[state=open]:bg-transparent focus:bg-transparent p-0`}>
                   Angebot <ChevronDown className="h-4 w-4 ml-1" />
                 </NavigationMenuTrigger>
-                <NavigationMenuContent className="bg-yoga-cream/95 backdrop-blur-md p-4 rounded-md shadow-md">
-                  <ul className="grid w-[400px] gap-3 p-4">
+                <NavigationMenuContent className="bg-yoga-cream/95 backdrop-blur-md p-3 rounded-md shadow-md mt-2 border border-yoga-gold/10">
+                  <ul className="grid w-[250px] gap-1 p-2">
                     <li>
                       <NavigationMenuLink asChild>
-                        <Link to="/angebot" className="nav-link block mb-2 text-yoga-brown hover:text-yoga-gold">
+                        <Link to="/angebot" className="block w-full px-4 py-2.5 rounded-md text-yoga-brown hover:text-yoga-gold hover:bg-yoga-beige/50 transition-colors">
                           Kursangebot
                         </Link>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <Link to="/stundenplan" className="nav-link block mb-2 text-yoga-brown hover:text-yoga-gold">
+                        <Link to="/stundenplan" className="block w-full px-4 py-2.5 rounded-md text-yoga-brown hover:text-yoga-gold hover:bg-yoga-beige/50 transition-colors">
                           Stundenplan
                         </Link>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <Link to="/retreats" className="nav-link block mb-2 text-yoga-brown hover:text-yoga-gold">
+                        <Link to="/retreats" className="block w-full px-4 py-2.5 rounded-md text-yoga-brown hover:text-yoga-gold hover:bg-yoga-beige/50 transition-colors">
                           Retreats
                         </Link>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <Link to="/ausbildungen" className="nav-link block mb-2 text-yoga-brown hover:text-yoga-gold">
+                        <Link to="/ausbildungen" className="block w-full px-4 py-2.5 rounded-md text-yoga-brown hover:text-yoga-gold hover:bg-yoga-beige/50 transition-colors">
                           Ausbildungen
                         </Link>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <Link to="/workshops" className="nav-link block text-yoga-brown hover:text-yoga-gold">
+                        <Link to="/workshops" className="block w-full px-4 py-2.5 rounded-md text-yoga-brown hover:text-yoga-gold hover:bg-yoga-beige/50 transition-colors">
                           Workshops & Events
                         </Link>
                       </NavigationMenuLink>
@@ -140,7 +139,7 @@ export const Navbar = () => {
             {/* Mobile Angebot submenu */}
             <div className="flex flex-col items-center space-y-2">
               <span className="nav-link text-xl text-yoga-gold">Angebot</span>
-              <div className="flex flex-col items-center space-y-4 mt-2 ml-4">
+              <div className="flex flex-col items-center space-y-4 mt-2">
                 <Link to="/angebot" className={`nav-link text-lg ${window.location.pathname === '/angebot' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Kursangebot</Link>
                 <Link to="/stundenplan" className={`nav-link text-lg ${window.location.pathname === '/stundenplan' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Stundenplan</Link>
                 <Link to="/retreats" className={`nav-link text-lg ${window.location.pathname === '/retreats' ? 'text-yoga-gold' : 'text-yoga-brown'}`} onClick={() => setIsMenuOpen(false)}>Retreats</Link>

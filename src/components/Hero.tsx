@@ -29,19 +29,16 @@ const Hero = () => {
       <div className="relative container-custom h-full flex flex-col justify-center">
         <div className={`max-w-2xl transition-all duration-1500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="overflow-hidden mb-2">
-            <h2 className={`yoga-heading text-yoga-brown text-xl md:text-2xl ${isVisible ? 'animate-slide-up' : 'translate-y-full'}`}>Veronikas in München</h2>
+            <h2 className={`yoga-heading text-yoga-brown text-xl md:text-2xl ${isVisible ? 'animate-slide-up' : 'translate-y-full'}`}>Mahashakti Yoga in München</h2>
           </div>
           <div className="overflow-hidden mb-8">
             <h1 className={`hero-text text-yoga-darkBrown ${isVisible ? 'animate-slide-up animation-delay-300' : 'translate-y-full'}`}>
-              Veronika, eine der beliebtesten Yoga-Trainerinnen & Coaches in Deutschland.
+              Yoga mit Veronika, eine der erfahrensten Yoga-Lehrerinnen in Deutschland.
             </h1>
           </div>
           <div className="overflow-hidden mb-10">
             <p className={`text-yoga-brown/80 font-sans font-light max-w-xl text-lg leading-relaxed ${isVisible ? 'animate-slide-up animation-delay-600' : 'translate-y-full'}`}>
-              Veronika auf Festivals mit Teilnehmer*innen, auf Yoga-Retreats und bei
-              Ausbildungen am Strand. Veronika gehört laut Presse, Verbänden und Blogger*innen zu den 10 besten
-              Yoga-Lehrerinnen in München. Gründe, warum du bei Veronika Aus- & Fortbildungen
-              machen möchtest, findest du unten.
+              Erfahre die transformative Kraft des Yoga bei Mahashakti. Wir bieten Kurse, Workshops, Retreats und Ausbildungen für alle Niveaus. Entdecke deinen eigenen Weg zum inneren Gleichgewicht und zur Harmonie.
             </p>
           </div>
           <div className={`flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
