@@ -50,7 +50,7 @@ const RetreatSeite = () => {
       description: "Yoga-Retreat in den Bergen mit Blick aufs Meer. Erlebe eine perfekte Balance aus Yoga-Praxis, Entspannung und mediterranem Flair auf der wunderschönen Insel Mallorca.",
       image: getImageUrl("retreat-images", "retreat-1.png"),
       price: "Ab 1.950€",
-      availableSpots: "8 Plätze verfügbar",
+      spots: "8 Plätze verfügbar",
       objectPosition: "center 40%"
     },
     {
@@ -61,7 +61,7 @@ const RetreatSeite = () => {
       description: "Eintauchen in die alpine Bergwelt auf 1500m Höhe. Ein besonderes Retreat in diesem exklusiven Naturresort, nur mit der Seilbahn erreichbar, für echte Erholung und tiefe Yoga-Praxis.",
       image: getImageUrl("retreat-images", "retreat-2.png"),
       price: "Ab 1.200€",
-      availableSpots: "10 Plätze verfügbar",
+      spots: "10 Plätze verfügbar",
       objectPosition: "center 35%"
     },
     {
@@ -72,7 +72,7 @@ const RetreatSeite = () => {
       description: "Drei Tage Yoga inmitten der atemberaubenden Bergkulisse des Salzburger Landes. Das nachhaltige Holzhotel bietet den perfekten Rahmen für Yoga und Naturerlebnisse.",
       image: getImageUrl("retreat-images", "retreat-3.png"),
       price: "Ab 990€",
-      availableSpots: "12 Plätze verfügbar",
+      spots: "12 Plätze verfügbar",
       objectPosition: "center 40%"
     }
   ];
@@ -101,13 +101,14 @@ const RetreatSeite = () => {
                 {retreats.map(retreat => (
                   <RetreatCard
                     key={retreat.id}
+                    id={retreat.id}
                     image={retreat.image}
                     title={retreat.title}
                     location={retreat.location}
                     date={retreat.date}
                     description={retreat.description}
                     price={retreat.price}
-                    availableSpots={retreat.availableSpots}
+                    spots={retreat.spots}
                     objectPosition={retreat.objectPosition}
                   />
                 ))}
