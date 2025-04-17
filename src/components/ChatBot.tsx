@@ -20,10 +20,11 @@ const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(true);
+  const [isTyping, setIsTyping] = useState(false);
 
   useEffect(() => {
     if (messages.length === 0) {
-      // Add welcome message when component mounts
+      // Add welcome message when component mounts (in German)
       setMessages([
         {
           id: "welcome",
@@ -36,6 +37,8 @@ const ChatBot = () => {
   }, []);
 
   const handleSend = (message: string) => {
+    if (!message.trim()) return;
+    
     // Add user message
     const userMessage: Message = {
       id: `user-${Date.now()}`,
@@ -45,11 +48,17 @@ const ChatBot = () => {
     };
     
     setMessages(prev => [...prev, userMessage]);
+    
     // Hide suggestions after sending a message
     setShowSuggestions(false);
     
+    // Show typing indicator
+    setIsTyping(true);
+    
     // Simulate bot response after a delay
     setTimeout(() => {
+      setIsTyping(false);
+      
       const botResponse: Message = {
         id: `bot-${Date.now()}`,
         text: "Vielen Dank für Ihre Nachricht! Unser Team wird sich in Kürze bei Ihnen melden.",
@@ -59,14 +68,16 @@ const ChatBot = () => {
       
       setMessages(prev => [...prev, botResponse]);
       
-      // Show suggestions again after bot response
+      // Show suggestions again after bot response with a small delay
       setTimeout(() => {
         setShowSuggestions(true);
       }, 500);
-    }, 1000);
+    }, 1500);
   };
 
   const handleSuggestedQuestion = (question: string) => {
+    if (!question.trim()) return;
+    
     // Add user message for the suggested question
     const userMessage: Message = {
       id: `user-${Date.now()}`,
@@ -80,8 +91,13 @@ const ChatBot = () => {
     // Hide suggestions after selecting one
     setShowSuggestions(false);
     
+    // Show typing indicator
+    setIsTyping(true);
+    
     // Simulate bot response after a delay
     setTimeout(() => {
+      setIsTyping(false);
+      
       let responseText = "";
       
       switch (question) {
@@ -117,28 +133,41 @@ const ChatBot = () => {
       setTimeout(() => {
         setShowSuggestions(true);
       }, 500);
-    }, 1000);
+    }, 1500);
   };
 
   return (
     <>
-      {/* Chat button - increased size */}
+      {/* Chat button with increased size */}
       <button 
         onClick={() => setIsOpen(true)} 
-        className="fixed bottom-6 right-6 z-50 bg-yoga-brown hover:bg-yoga-gold text-white p-3 rounded-full shadow-lg transition-colors duration-300 w-14 h-14 flex items-center justify-center"
+        className="fixed bottom-6 right-6 z-50 bg-yoga-brown hover:bg-yoga-gold text-white p-4 rounded-full shadow-lg transition-colors duration-300 w-16 h-16 flex items-center justify-center"
         aria-label="Chat öffnen"
       >
-        <MessageCircle size={20} />
+        <MessageCircle size={24} />
       </button>
       
-      {/* Chat window - improved width */}
+      {/* Chat window with improved width */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 w-[330px] rounded-lg shadow-xl overflow-hidden bg-yoga-cream animate-scale-in font-serif">
+        <div className="fixed bottom-24 right-6 z-50 w-[360px] rounded-lg shadow-xl overflow-hidden bg-white animate-scale-in font-serif">
           <ChatHeader onClose={() => setIsOpen(false)} />
+          
+          {/* Messages component with consistent height */}
           <Messages messages={messages} />
           
+          {/* Typing indicator */}
+          {isTyping && (
+            <div className="px-4 py-2">
+              <div className="flex items-center space-x-1">
+                <div className="w-2 h-2 bg-yoga-gold/70 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-yoga-gold/70 rounded-full animate-pulse delay-75"></div>
+                <div className="w-2 h-2 bg-yoga-gold/70 rounded-full animate-pulse delay-150"></div>
+              </div>
+            </div>
+          )}
+          
           {/* Suggested questions with improved visual separation */}
-          {showSuggestions && (
+          {showSuggestions && messages.length > 0 && (
             <SuggestedQuestions 
               questions={suggestedQuestions} 
               onSelectQuestion={handleSuggestedQuestion} 

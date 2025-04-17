@@ -5,11 +5,11 @@
 }
 
 .chatbot-button {
-  @apply bg-yoga-brown text-white p-3 rounded-full shadow-lg hover:bg-yoga-gold transition-colors duration-300 self-end w-14 h-14 flex items-center justify-center;
+  @apply bg-yoga-brown text-white p-3 rounded-full shadow-lg hover:bg-yoga-gold transition-colors duration-300 self-end w-16 h-16 flex items-center justify-center;
 }
 
 .chatbot-window {
-  @apply bg-white rounded-lg shadow-xl mb-4 w-[330px] flex flex-col max-h-[70vh] overflow-hidden border border-yoga-gold/20;
+  @apply bg-white rounded-lg shadow-xl mb-4 w-[360px] flex flex-col max-h-[70vh] overflow-hidden border border-yoga-gold/20;
   transform-origin: bottom right;
 }
 
@@ -82,3 +82,13 @@
 .animate-scale-in {
   animation: scale-in 0.3s ease-out forwards;
 }
+
+.suggested-questions-container {
+  @apply px-3 py-2 bg-yoga-cream/90 border-t border-b border-yoga-gold/30;
+}
+
+.suggested-question-button {
+  @apply text-xs font-sans py-1.5 px-3 rounded-full bg-yoga-beige/80 text-yoga-brown hover:bg-yoga-gold/20 
+         transition-colors text-left overflow-hidden text-ellipsis border border-yoga-gold/10 w-full truncate;
+}
+
