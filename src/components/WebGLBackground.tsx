@@ -5,13 +5,13 @@ import Orbs from './three/Orbs';
 import Lighting from './three/Lighting';
 import FallbackContent from './three/FallbackContent';
 
-// Main WebGL component with visual effects
+// Optimized WebGL background component for production
 const WebGLBackground = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isWebGLAvailable, setIsWebGLAvailable] = useState(true);
   
   useEffect(() => {
-    // Check if WebGL is available
+    // Check if WebGL is available - crucial for production
     try {
       const canvas = document.createElement('canvas');
       const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
@@ -21,9 +21,9 @@ const WebGLBackground = () => {
       console.error("WebGL not supported:", e);
     }
 
-    // Extremely throttled mouse tracking for smoother movement
+    // Production-optimized mouse/touch tracking with better throttling
     let lastUpdateTime = 0;
-    const updateInterval = 100; // Increased time between updates for smoother performance
+    const updateInterval = 120; // Further throttling for production performance
     
     const handleMouseMove = (e: MouseEvent) => {
       const currentTime = Date.now();
@@ -31,17 +31,17 @@ const WebGLBackground = () => {
       
       lastUpdateTime = currentTime;
       
-      // Calculate smooth, normalized position with reduced sensitivity
+      // Calculate smooth normalized position with optimized sensitivity
       const x = (e.clientX / window.innerWidth) * 2 - 1;
       const y = -(e.clientY / window.innerHeight) * 2 + 1;
       
       setMousePosition({
-        x: x * 0.2, // Further reduced sensitivity for smoother movement
-        y: y * 0.2
+        x: x * 0.15, // Fine-tuned sensitivity
+        y: y * 0.15
       });
     };
 
-    // Optimized touch handling
+    // Production-optimized touch handling
     const handleTouchMove = (e: TouchEvent) => {
       if (e.touches.length === 0) return;
       
@@ -54,13 +54,13 @@ const WebGLBackground = () => {
       const y = -(e.touches[0].clientY / window.innerHeight) * 2 + 1;
       
       setMousePosition({
-        x: x * 0.2,
-        y: y * 0.2
+        x: x * 0.15,
+        y: y * 0.15
       });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('touchmove', handleTouchMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true }); // Passive flag for better performance
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
     
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
@@ -68,22 +68,22 @@ const WebGLBackground = () => {
     };
   }, []);
 
-  // Enhanced noise pattern for background
+  // Optimized noise pattern for production with better caching
   const noisePattern = useMemo(() => {
     const canvas = document.createElement('canvas');
-    canvas.width = 128;
-    canvas.height = 128;
+    canvas.width = 256; // Increased for better quality
+    canvas.height = 256;
     const ctx = canvas.getContext('2d');
     if (ctx) {
       for (let x = 0; x < canvas.width; x++) {
         for (let y = 0; y < canvas.height; y++) {
-          const value = Math.random() * 15; // Subtle noise
+          const value = Math.random() * 12; // Subtle noise
           ctx.fillStyle = `rgba(255, 255, 255, ${value / 100})`;
           ctx.fillRect(x, y, 1, 1);
         }
       }
     }
-    return canvas.toDataURL();
+    return canvas.toDataURL('image/webp', 0.8); // WebP for better compression
   }, []);
 
   if (!isWebGLAvailable) {
@@ -92,7 +92,7 @@ const WebGLBackground = () => {
 
   return (
     <div className="absolute inset-0 -z-10">
-      {/* Premium background effect with softer radial gradient */}
+      {/* Production-optimized background with better gradients */}
       <div 
         className="absolute inset-0" 
         style={{
@@ -102,25 +102,27 @@ const WebGLBackground = () => {
         }}
       />
       
-      {/* Reduced blur effect for the background to make orbs more visible */}
-      <div className="absolute inset-0 backdrop-blur-[30px] opacity-30" />
+      {/* Optimized blur effect for production */}
+      <div className="absolute inset-0 backdrop-blur-[25px] opacity-25" />
       
       <Canvas 
         gl={{ 
           antialias: true,
           alpha: true,
-          powerPreference: 'default',
+          powerPreference: 'high-performance', // Better for production
           stencil: false,
-          depth: false // Disable depth testing for better blending
+          depth: false,
+          failIfMajorPerformanceCaveat: false // More permissive for wider device support
         }}
-        dpr={[1, 2]} // Increased DPR for better quality
+        dpr={[1, window.devicePixelRatio > 2 ? 2 : window.devicePixelRatio]} // Dynamic DPR based on device capability
         camera={{ 
-          position: [0, 0, 10], // Moved camera closer
-          fov: 50, // Wider field of view
+          position: [0, 0, 8], 
+          fov: 45, 
           near: 0.1, 
           far: 100 
         }}
-        style={{ mixBlendMode: 'plus-lighter' }} // Premium blend mode
+        style={{ mixBlendMode: 'plus-lighter' }}
+        performance={{ min: 0.5 }} // Performance optimization for production
       >
         <Lighting />
         <Orbs mousePosition={mousePosition} />
