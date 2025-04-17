@@ -14,52 +14,52 @@ const Orbs = ({ mousePosition }: OrbsProps) => {
   const brownOrbRef = useRef<THREE.Mesh>(null!);
   const { viewport } = useThree();
   
-  // Update orb positions based on mouse movement
+  // Use a simpler animation approach to avoid compatibility issues
   useFrame(() => {
     if (goldOrbRef.current && brownOrbRef.current) {
-      // Move gold orb - smoother movement
+      // Move gold orb with simplified movement
       goldOrbRef.current.position.x = THREE.MathUtils.lerp(
         goldOrbRef.current.position.x,
-        (mousePosition.x * viewport.width) * 1.4,
-        0.008
+        (mousePosition.x * viewport.width) * 0.7,
+        0.005
       );
       goldOrbRef.current.position.y = THREE.MathUtils.lerp(
         goldOrbRef.current.position.y,
-        (-mousePosition.y * viewport.height) * 1.4,
-        0.008
+        (-mousePosition.y * viewport.height) * 0.7,
+        0.005
       );
 
-      // Move brown orb in the opposite direction
+      // Move brown orb in the opposite direction with simplified movement
       brownOrbRef.current.position.x = THREE.MathUtils.lerp(
         brownOrbRef.current.position.x,
-        (-mousePosition.x * viewport.width) * 1.7,
-        0.006
+        (-mousePosition.x * viewport.width) * 0.8,
+        0.004
       );
       brownOrbRef.current.position.y = THREE.MathUtils.lerp(
         brownOrbRef.current.position.y,
-        (mousePosition.y * viewport.height) * 1.7,
-        0.006
+        (mousePosition.y * viewport.height) * 0.8,
+        0.004
       );
 
-      // Gentle rotation
-      goldOrbRef.current.rotation.x += 0.0003;
-      goldOrbRef.current.rotation.y += 0.0004;
-      brownOrbRef.current.rotation.x += 0.0004;
-      brownOrbRef.current.rotation.y += 0.0005;
+      // Very gentle rotation to avoid issues
+      goldOrbRef.current.rotation.x += 0.0001;
+      goldOrbRef.current.rotation.y += 0.0002;
+      brownOrbRef.current.rotation.x += 0.0002;
+      brownOrbRef.current.rotation.y += 0.0001;
     }
   });
 
   return (
     <>
-      {/* Gold orb */}
+      {/* Simplified geometry for gold orb */}
       <mesh ref={goldOrbRef} position={[-4, 2.5, -12]}>
-        <sphereGeometry args={[7.5, 32, 32]} />
+        <sphereGeometry args={[7, 16, 16]} />
         <GoldMaterial />
       </mesh>
       
-      {/* Brown orb */}
+      {/* Simplified geometry for brown orb */}
       <mesh ref={brownOrbRef} position={[4.5, -2.5, -15]}>
-        <sphereGeometry args={[9, 32, 32]} />
+        <sphereGeometry args={[8, 16, 16]} />
         <BrownMaterial />
       </mesh>
     </>

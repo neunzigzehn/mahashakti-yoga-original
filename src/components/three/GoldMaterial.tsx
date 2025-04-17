@@ -9,12 +9,10 @@ const GoldMaterial = () => {
     <meshStandardMaterial 
       ref={materialRef} 
       color="#BFA065"
-      emissive="#FEF7CD"
-      emissiveIntensity={0.7}
-      metalness={0.5}
-      roughness={0.5}
+      metalness={0.4}
+      roughness={0.6}
       transparent
-      opacity={0.85}
+      opacity={0.8}
     />
   );
 };

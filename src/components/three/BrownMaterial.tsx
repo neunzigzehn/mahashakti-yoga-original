@@ -9,12 +9,10 @@ const BrownMaterial = () => {
     <meshStandardMaterial 
       ref={materialRef} 
       color="#3F3628"
-      emissive="#E5D1B8"
-      emissiveIntensity={0.6}
-      metalness={0.35}
-      roughness={0.65}
+      metalness={0.3}
+      roughness={0.7}
       transparent
-      opacity={0.85}
+      opacity={0.8}
     />
   );
 };
