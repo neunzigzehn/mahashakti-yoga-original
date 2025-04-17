@@ -4,7 +4,6 @@ import { Navbar } from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import ContactForm from '@/components/ContactForm';
-import ContactHero from '@/components/contact/ContactHero';
 import ContactInfo from '@/components/contact/ContactInfo';
 import LocationMap from '@/components/contact/LocationMap';
 import AnimatedSection from '@/components/contact/AnimatedSection';
@@ -15,13 +14,11 @@ const Kontakt = () => {
       <Navbar />
       
       <main>
+        {/* Using only the PageHeader component and removing the duplicate ContactHero */}
         <PageHeader 
           title="Kontakt" 
           subtitle="Hast du Fragen oder Anregungen? Wir freuen uns, von dir zu hören."
         />
-
-        {/* Hero banner */}
-        <ContactHero />
 
         {/* Main content */}
         <section className="py-16 bg-white">
