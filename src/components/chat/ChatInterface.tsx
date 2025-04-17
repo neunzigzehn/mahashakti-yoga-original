@@ -1,19 +1,18 @@
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ChatMessage, Message } from "./ChatMessage";
+import { ChatMessage } from "./ChatMessage";
 import { ChatInput } from "./ChatInput";
-import { nanoid } from "nanoid";
 
 type ChatInterfaceProps = {
   onClose: () => void;
 };
 
 // Initial greeting message from the assistant
-const INITIAL_MESSAGES: Message[] = [
+const INITIAL_MESSAGES = [
   {
-    id: nanoid(),
+    id: "initial-message",
     content: "Namasté! I'm the Mahashakti Yoga assistant. How can I help you today with yoga classes, retreats, or scheduling?",
     role: "assistant",
     timestamp: new Date(),
@@ -21,23 +20,15 @@ const INITIAL_MESSAGES: Message[] = [
 ];
 
 export function ChatInterface({ onClose }: ChatInterfaceProps) {
-  const [messages, setMessages] = useState<Message[]>(INITIAL_MESSAGES);
+  const [messages, setMessages] = useState(INITIAL_MESSAGES);
   const [isLoading, setIsLoading] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Scroll to the bottom whenever messages change
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [messages]);
 
   const handleSendMessage = async (content: string) => {
     if (!content.trim()) return;
     
     // Add user message to chat
-    const userMessage: Message = {
-      id: nanoid(),
+    const userMessage = {
+      id: `user-${Date.now()}`,
       content,
       role: "user",
       timestamp: new Date(),
@@ -48,11 +39,11 @@ export function ChatInterface({ onClose }: ChatInterfaceProps) {
 
     try {
       // Simulate API call delay
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       
-      // Mock response - in production, replace with actual API call
-      const botResponse: Message = {
-        id: nanoid(),
+      // Mock response
+      const botResponse = {
+        id: `bot-${Date.now()}`,
         content: getSimulatedResponse(content),
         role: "assistant",
         timestamp: new Date(),
@@ -61,20 +52,12 @@ export function ChatInterface({ onClose }: ChatInterfaceProps) {
       setMessages((prev) => [...prev, botResponse]);
     } catch (error) {
       console.error("Error getting response:", error);
-      // Add error message
-      const errorMessage: Message = {
-        id: nanoid(),
-        content: "I'm sorry, I couldn't process your request. Please try again later.",
-        role: "assistant",
-        timestamp: new Date(),
-      };
-      setMessages((prev) => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Simple response simulation - replace with actual API integration
+  // Simple response simulation
   const getSimulatedResponse = (query: string): string => {
     const lowerQuery = query.toLowerCase();
     
@@ -120,13 +103,12 @@ export function ChatInterface({ onClose }: ChatInterfaceProps) {
         {isLoading && (
           <div className="flex justify-start py-2">
             <div className="flex space-x-1">
-              <div className="h-2 w-2 rounded-full bg-yoga-gold animate-pulse"></div>
-              <div className="h-2 w-2 rounded-full bg-yoga-gold animate-pulse delay-150"></div>
-              <div className="h-2 w-2 rounded-full bg-yoga-gold animate-pulse delay-300"></div>
+              <div className="h-2 w-2 rounded-full bg-yoga-gold"></div>
+              <div className="h-2 w-2 rounded-full bg-yoga-gold"></div>
+              <div className="h-2 w-2 rounded-full bg-yoga-gold"></div>
             </div>
           </div>
         )}
-        <div ref={messagesEndRef} />
       </div>
       
       {/* Chat Input */}
