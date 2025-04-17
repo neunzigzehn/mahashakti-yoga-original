@@ -1,5 +1,5 @@
-
 import { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ChatMessage, Message } from "./ChatMessage";
@@ -97,7 +97,13 @@ export function ChatInterface({ isOpen, onClose }: ChatInterfaceProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed bottom-24 right-6 w-[90%] max-w-[400px] rounded-lg border bg-white shadow-xl z-40">
+    <motion.div
+      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 20, scale: 0.95 }}
+      transition={{ duration: 0.2 }}
+      className="fixed bottom-24 right-6 w-[90%] max-w-[400px] rounded-lg border bg-white shadow-xl z-40"
+    >
       {/* Chat Header */}
       <div className="flex items-center justify-between border-b px-4 py-3 bg-yoga-cream">
         <div>
@@ -134,6 +140,6 @@ export function ChatInterface({ isOpen, onClose }: ChatInterfaceProps) {
       
       {/* Chat Input */}
       <ChatInput onSend={handleSendMessage} disabled={isLoading} />
-    </div>
+    </motion.div>
   );
 }
