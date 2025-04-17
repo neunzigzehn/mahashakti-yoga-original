@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Navbar } from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -35,7 +34,6 @@ const RetreatSeite = () => {
     };
   }, []);
 
-  // Scroll to top when page loads
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -45,7 +43,6 @@ const RetreatSeite = () => {
       <Navbar />
       
       <main>
-        {/* Hero banner */}
         <section className="pt-24 pb-16 bg-yoga-beige relative">
           <div className="container-custom">
             <h1 className="text-center font-serif text-4xl md:text-5xl lg:text-6xl text-yoga-brown">Yoga-Retreats</h1>
@@ -57,20 +54,18 @@ const RetreatSeite = () => {
           </div>
         </section>
 
-        {/* Main content */}
         <section ref={sectionRef} className="py-16 bg-white">
           <div className="container-custom">
             <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               
-              {/* Featured Retreats */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-                {/* Mallorca - Port de Soller */}
                 <Card className="overflow-hidden bg-white shadow-lg border-yoga-gold/10 hover:shadow-xl transition-shadow duration-300">
                   <div className="h-56 bg-yoga-beige/50 relative overflow-hidden">
                     <img 
                       src={getImageUrl("retreat-images", "retreat-1.png")}
                       alt="Yoga-Retreat in Port de Sollér, Mallorca" 
                       className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                      style={{ objectPosition: "center 40%" }}
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-yoga-brown/70 to-transparent"></div>
@@ -103,13 +98,13 @@ const RetreatSeite = () => {
                   </CardFooter>
                 </Card>
                 
-                {/* Südtirol - Vigilius */}
                 <Card className="overflow-hidden bg-white shadow-lg border-yoga-gold/10 hover:shadow-xl transition-shadow duration-300">
                   <div className="h-56 bg-yoga-beige/50 relative overflow-hidden">
                     <img 
                       src={getImageUrl("retreat-images", "retreat-2.png")}
                       alt="Yoga-Retreat im Vigilius Mountain Hotel, Südtirol" 
                       className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                      style={{ objectPosition: "center 35%" }}
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-yoga-brown/70 to-transparent"></div>
@@ -142,13 +137,13 @@ const RetreatSeite = () => {
                   </CardFooter>
                 </Card>
                 
-                {/* Salzburger Land - Forsthofalm */}
                 <Card className="overflow-hidden bg-white shadow-lg border-yoga-gold/10 hover:shadow-xl transition-shadow duration-300">
                   <div className="h-56 bg-yoga-beige/50 relative overflow-hidden">
                     <img 
                       src={getImageUrl("retreat-images", "retreat-3.png")}
                       alt="Yoga-Retreat im Holzhotel Forsthofalm, Salzburger Land" 
                       className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                      style={{ objectPosition: "center 40%" }}
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-yoga-brown/70 to-transparent"></div>
@@ -182,7 +177,6 @@ const RetreatSeite = () => {
                 </Card>
               </div>
               
-              {/* Additional Retreats */}
               <div className="bg-yoga-beige/30 p-8 rounded-lg mb-16">
                 <h2 className="font-serif text-2xl mb-8 text-yoga-brown text-center">Weitere Retreats 2025 / 2026</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -242,7 +236,6 @@ const RetreatSeite = () => {
                 </div>
               </div>
               
-              {/* Typical Retreat Day */}
               <div className="mb-16 bg-white shadow-lg rounded-lg overflow-hidden">
                 <div className="bg-yoga-tan/20 py-6 px-8">
                   <h2 className="font-serif text-2xl text-yoga-brown text-center">Ein typischer Yoga-Tag</h2>
@@ -276,7 +269,6 @@ const RetreatSeite = () => {
                 </div>
               </div>
               
-              {/* Testimonials */}
               <div className="mb-16">
                 <h2 className="font-serif text-2xl mb-8 text-yoga-brown text-center">Feedback von Teilnehmern</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -302,7 +294,6 @@ const RetreatSeite = () => {
                 </div>
               </div>
               
-              {/* Private Sacred Journeys */}
               <div className="text-center max-w-2xl mx-auto mb-16">
                 <h2 className="font-serif text-2xl mb-4 text-yoga-brown">Private Yoga-Reisen</h2>
                 <p className="text-yoga-brown/80 mb-8">
@@ -313,7 +304,6 @@ const RetreatSeite = () => {
                 </Link>
               </div>
               
-              {/* Download PDF section */}
               <div className="p-8 bg-white shadow-md rounded-lg text-center max-w-2xl mx-auto border border-yoga-gold/10">
                 <h3 className="font-serif text-xl mb-4 text-yoga-brown">Alle Retreats, Aus- & Fortbildungen 2025 / 2026</h3>
                 <a 

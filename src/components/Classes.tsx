@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react';
 import { getImageUrl } from '@/utils/supabaseStorage';
 
@@ -56,7 +57,7 @@ const Classes = () => {
       image: getImageUrl("retreat-images", "yoga-class-1.png"),
       level: "Alle Niveaus",
       duration: "75 Min",
-      objectPosition: "center 20%", // Improved to better center the split pose
+      objectPosition: "center 35%", // Adjusted to better center the split pose
       objectFit: "cover",
     },
     {
@@ -66,7 +67,7 @@ const Classes = () => {
       image: getImageUrl("retreat-images", "yoga-class-2.png"),
       level: "Mittelstufe",
       duration: "90 Min",
-      objectPosition: "center 30%", // Adjusted to better center the woman on the yoga mat
+      objectPosition: "center 40%", // Adjusted to better center the woman on the yoga mat
       objectFit: "cover",
     },
     {
@@ -76,7 +77,7 @@ const Classes = () => {
       image: getImageUrl("retreat-images", "yoga-class-3.png"),
       level: "Alle Niveaus",
       duration: "90 Min",
-      objectPosition: "center 25%", // Adjusted to better show the entire body in the Yin Yoga pose
+      objectPosition: "center 20%", // Adjusted to properly show the entire body in the Yin Yoga pose
       objectFit: "cover",
     },
     {
@@ -86,7 +87,7 @@ const Classes = () => {
       image: getImageUrl("retreat-images", "yoga-class-4.png"),
       level: "Fortgeschritten",
       duration: "90 Min",
-      objectPosition: "center 20%", // Adjusted to better center the meditation pose
+      objectPosition: "center 30%", // Adjusted to better center the meditation pose
       objectFit: "cover",
     },
   ];

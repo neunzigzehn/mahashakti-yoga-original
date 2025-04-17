@@ -63,7 +63,7 @@ const Retreats = () => {
       image: getImageUrl("retreat-images", "retreat-1.png"),
       price: "Ab 1.950€",
       spots: "8 Plätze verfügbar",
-      objectPosition: "center 25%", // Improved positioning
+      objectPosition: "center 40%", // Adjusted to better center on the person
     },
     {
       id: 2,
@@ -74,7 +74,7 @@ const Retreats = () => {
       image: getImageUrl("retreat-images", "retreat-2.png"),
       price: "Ab 1.200€",
       spots: "10 Plätze verfügbar",
-      objectPosition: "center 30%", // Improved positioning
+      objectPosition: "center 35%", // Adjusted for better focus on the yoga pose
     },
     {
       id: 3,
@@ -85,7 +85,7 @@ const Retreats = () => {
       image: getImageUrl("retreat-images", "retreat-3.png"),
       price: "Ab 990€",
       spots: "12 Plätze verfügbar",
-      objectPosition: "center 30%", // Improved positioning
+      objectPosition: "center 40%", // Adjusted to better center the woman
     },
   ];
 
