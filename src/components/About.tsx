@@ -51,8 +51,8 @@ const About = () => {
             <div className="absolute inset-0 border-2 border-yoga-gold rounded-lg transform translate-x-6 translate-y-6"></div>
             <div className="relative overflow-hidden rounded-lg shadow-xl">
               <img 
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1000&q=80" 
-                alt="Mahashakti in yoga pose" 
+                src="/lovable-uploads/602e51c2-8474-470c-b1e8-9a9567c669e7.png" 
+                alt="Mahashakti Yoga Founder" 
                 className="w-full h-auto object-cover transform transition-transform duration-700 hover:scale-105"
               />
             </div>
