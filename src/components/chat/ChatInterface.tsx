@@ -1,6 +1,5 @@
-
 import { useState, useRef, useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ChatMessage, Message } from "./ChatMessage";
