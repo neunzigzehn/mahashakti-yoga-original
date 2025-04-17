@@ -12,10 +12,7 @@ export function ChatButton({ onClick, isOpen }: ChatButtonProps) {
   return (
     <Button
       onClick={onClick}
-      className={cn(
-        "fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg",
-        "bg-yoga-gold hover:bg-yoga-gold/90 text-white z-50"
-      )}
+      className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg bg-yoga-gold hover:bg-yoga-gold/90 text-white z-50"
       size="icon"
       aria-label={isOpen ? "Close chat" : "Open chat"}
     >

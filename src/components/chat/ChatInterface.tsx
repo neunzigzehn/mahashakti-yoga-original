@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ChatMessage } from "./ChatMessage";
+import { ChatMessage, Message } from "./ChatMessage";
 import { ChatInput } from "./ChatInput";
 
 type ChatInterfaceProps = {
@@ -10,7 +10,7 @@ type ChatInterfaceProps = {
 };
 
 // Initial greeting message from the assistant
-const INITIAL_MESSAGES = [
+const INITIAL_MESSAGES: Message[] = [
   {
     id: "initial-message",
     content: "Namasté! I'm the Mahashakti Yoga assistant. How can I help you today with yoga classes, retreats, or scheduling?",
@@ -20,14 +20,14 @@ const INITIAL_MESSAGES = [
 ];
 
 export function ChatInterface({ onClose }: ChatInterfaceProps) {
-  const [messages, setMessages] = useState(INITIAL_MESSAGES);
+  const [messages, setMessages] = useState<Message[]>(INITIAL_MESSAGES);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSendMessage = async (content: string) => {
     if (!content.trim()) return;
     
     // Add user message to chat
-    const userMessage = {
+    const userMessage: Message = {
       id: `user-${Date.now()}`,
       content,
       role: "user",
@@ -42,7 +42,7 @@ export function ChatInterface({ onClose }: ChatInterfaceProps) {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       
       // Mock response
-      const botResponse = {
+      const botResponse: Message = {
         id: `bot-${Date.now()}`,
         content: getSimulatedResponse(content),
         role: "assistant",
