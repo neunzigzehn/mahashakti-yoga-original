@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { getImageUrl } from '@/utils/supabaseStorage';
 
@@ -77,7 +76,7 @@ const Classes = () => {
       image: getImageUrl("retreat-images", "yoga-class-3.png"),
       level: "Alle Niveaus",
       duration: "90 Min",
-      objectPosition: "center 40%", // Adjusted to better focus on the downward dog pose
+      objectPosition: "center 25%", // Adjusted to better show the entire body in the Yin Yoga pose
       objectFit: "cover",
     },
     {
