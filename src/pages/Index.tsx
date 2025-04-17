@@ -15,6 +15,9 @@ const Index = () => {
   useEffect(() => {
     // Initialize the Supabase storage when the home page loads
     initializeStorage();
+    
+    // Scroll to top when page loads
+    window.scrollTo(0, 0);
   }, []);
 
   return (

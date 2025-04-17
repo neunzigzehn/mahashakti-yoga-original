@@ -2,8 +2,21 @@
 import { useEffect, useRef, useState } from 'react';
 import { Navbar } from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Link } from 'react-router-dom';
+
+interface ClassSchedule {
+  id: number;
+  day: string;
+  time: string;
+  title: string;
+  level: string;
+  duration: string;
+  instructor: string;
+}
 
 const Stundenplan = () => {
+  const days = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
+  const [activeDay, setActiveDay] = useState('Montag');
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -31,6 +44,40 @@ const Stundenplan = () => {
     };
   }, []);
 
+  const scheduleData: Record<string, ClassSchedule[]> = {
+    'Montag': [
+      { id: 1, day: 'Montag', time: '7:00 Uhr', title: 'Morgen Flow', level: 'Alle Niveaus', duration: '60 Min', instructor: 'Veronika' },
+      { id: 2, day: 'Montag', time: '12:00 Uhr', title: 'Mittags Express Flow', level: 'Mittelstufe', duration: '45 Min', instructor: 'Veronika' },
+      { id: 3, day: 'Montag', time: '18:00 Uhr', title: 'Sanfte Abendpraxis', level: 'Alle Niveaus', duration: '75 Min', instructor: 'Veronika' },
+    ],
+    'Dienstag': [
+      { id: 4, day: 'Dienstag', time: '9:00 Uhr', title: 'Achtsames Vinyasa', level: 'Mittelstufe', duration: '75 Min', instructor: 'Veronika' },
+      { id: 5, day: 'Dienstag', time: '17:30 Uhr', title: 'Yin & Meditation', level: 'Alle Niveaus', duration: '90 Min', instructor: 'Veronika' },
+    ],
+    'Mittwoch': [
+      { id: 6, day: 'Mittwoch', time: '7:00 Uhr', title: 'Morgen Flow', level: 'Alle Niveaus', duration: '60 Min', instructor: 'Veronika' },
+      { id: 7, day: 'Mittwoch', time: '12:00 Uhr', title: 'Mittags Express Flow', level: 'Mittelstufe', duration: '45 Min', instructor: 'Veronika' },
+      { id: 8, day: 'Mittwoch', time: '19:00 Uhr', title: 'Restorative Abendpraxis', level: 'Alle Niveaus', duration: '90 Min', instructor: 'Veronika' },
+    ],
+    'Donnerstag': [
+      { id: 9, day: 'Donnerstag', time: '9:00 Uhr', title: 'Sanfter Flow', level: 'Anfänger', duration: '60 Min', instructor: 'Veronika' },
+      { id: 10, day: 'Donnerstag', time: '17:30 Uhr', title: 'Achtsames Vinyasa', level: 'Mittelstufe', duration: '75 Min', instructor: 'Veronika' },
+    ],
+    'Freitag': [
+      { id: 11, day: 'Freitag', time: '7:00 Uhr', title: 'Morgen Flow', level: 'Alle Niveaus', duration: '60 Min', instructor: 'Veronika' },
+      { id: 12, day: 'Freitag', time: '12:00 Uhr', title: 'Mittags Express Flow', level: 'Mittelstufe', duration: '45 Min', instructor: 'Veronika' },
+      { id: 13, day: 'Freitag', time: '18:00 Uhr', title: 'Wochenend-Entspannung', level: 'Alle Niveaus', duration: '90 Min', instructor: 'Veronika' },
+    ],
+    'Samstag': [
+      { id: 14, day: 'Samstag', time: '9:00 Uhr', title: 'Wochenend-Vinyasa', level: 'Alle Niveaus', duration: '90 Min', instructor: 'Veronika' },
+      { id: 15, day: 'Samstag', time: '11:00 Uhr', title: 'Anfänger Workshop', level: 'Anfänger', duration: '120 Min', instructor: 'Veronika' },
+    ],
+    'Sonntag': [
+      { id: 16, day: 'Sonntag', time: '10:00 Uhr', title: 'Sonntags Slow Flow', level: 'Alle Niveaus', duration: '90 Min', instructor: 'Veronika' },
+      { id: 17, day: 'Sonntag', time: '17:00 Uhr', title: 'Restorative & Meditation', level: 'Alle Niveaus', duration: '90 Min', instructor: 'Veronika' },
+    ],
+  };
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -38,69 +85,80 @@ const Stundenplan = () => {
       <main>
         {/* Hero banner */}
         <section className="pt-24 pb-16 bg-yoga-beige relative">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-yoga-gold/5 rounded-full translate-x-1/3 -translate-y-1/3"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-yoga-gold/5 rounded-full -translate-x-1/2 translate-y-1/3"></div>
+          
           <div className="container-custom">
             <h1 className="text-center font-serif text-4xl md:text-5xl lg:text-6xl text-yoga-brown">Stundenplan</h1>
             <div className="w-24 h-0.5 bg-yoga-gold mx-auto mt-6 mb-12"></div>
+            <p className="text-yoga-brown/80 max-w-2xl mx-auto text-center mt-8">
+              Unser Stundenplan bietet eine Vielfalt an Klassen für alle Niveaus. 
+              Für Einsteiger empfehlen wir unsere "Alle Level" Kurse.
+            </p>
           </div>
         </section>
 
         {/* Main content */}
         <section ref={sectionRef} className="py-16 bg-white">
           <div className="container-custom">
-            <div className={`max-w-4xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <div className="mb-12">
-                <p className="text-yoga-brown/80 mb-8 text-center text-lg">
-                  Unser Stundenplan bietet eine Vielfalt an Klassen für alle Niveaus. 
-                  Für Einsteiger empfehlen wir unsere "Alle Level" Kurse.
-                </p>
-                
-                <div className="overflow-x-auto mb-10">
-                  <table className="w-full border-collapse">
-                    <thead>
-                      <tr className="bg-yoga-brown text-white">
-                        <th className="p-4 text-left">Zeit</th>
-                        <th className="p-4 text-left">Klasse</th>
-                        <th className="p-4 text-left">Level</th>
-                        <th className="p-4 text-left">Dauer</th>
-                        <th className="p-4 text-left">Lehrer</th>
+            <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              {/* Day selection tabs */}
+              <div className={`flex overflow-x-auto pb-2 md:pb-0 md:justify-center mb-8 scrollbar-hide transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                <div className="flex space-x-1 md:space-x-2">
+                  {days.map((day) => (
+                    <button
+                      key={day}
+                      className={`px-4 py-2 font-sans text-sm uppercase tracking-wider whitespace-nowrap transition-all duration-300 ${
+                        activeDay === day
+                          ? 'bg-yoga-brown text-white shadow-md'
+                          : 'bg-white text-yoga-brown hover:bg-yoga-tan/50'
+                      }`}
+                      onClick={() => setActiveDay(day)}
+                    >
+                      {day}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Schedule table */}
+              <div className={`bg-white rounded-lg shadow-lg overflow-hidden border border-yoga-gold/10 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead className="bg-yoga-brown text-white">
+                      <tr>
+                        <th className="px-6 py-4 text-left font-medium text-sm uppercase tracking-wider">Zeit</th>
+                        <th className="px-6 py-4 text-left font-medium text-sm uppercase tracking-wider">Kurs</th>
+                        <th className="px-6 py-4 text-left font-medium text-sm uppercase tracking-wider">Niveau</th>
+                        <th className="px-6 py-4 text-left font-medium text-sm uppercase tracking-wider">Dauer</th>
+                        <th className="px-6 py-4 text-left font-medium text-sm uppercase tracking-wider">Lehrer</th>
+                        <th className="px-6 py-4 text-right font-medium text-sm uppercase tracking-wider"></th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr className="border-b border-yoga-beige/50 hover:bg-yoga-beige/20 transition-colors">
-                        <td className="p-4">07:00 Uhr</td>
-                        <td className="p-4 font-medium">Morning Flow</td>
-                        <td className="p-4">Alle</td>
-                        <td className="p-4">60 min</td>
-                        <td className="p-4">Nina</td>
-                      </tr>
-                      <tr className="border-b border-yoga-beige/50 hover:bg-yoga-beige/20 transition-colors">
-                        <td className="p-4">12:00 Uhr</td>
-                        <td className="p-4 font-medium">Lunch Express</td>
-                        <td className="p-4">Mittel</td>
-                        <td className="p-4">45 min</td>
-                        <td className="p-4">Nina</td>
-                      </tr>
-                      <tr className="border-b border-yoga-beige/50 hover:bg-yoga-beige/20 transition-colors">
-                        <td className="p-4">18:00 Uhr</td>
-                        <td className="p-4 font-medium">Abend Flow Sanft</td>
-                        <td className="p-4">Alle</td>
-                        <td className="p-4">75 min</td>
-                        <td className="p-4">Nina</td>
-                      </tr>
+                    <tbody className="divide-y divide-yoga-beige">
+                      {scheduleData[activeDay]?.map((classItem) => (
+                        <tr key={classItem.id} className="hover:bg-yoga-beige/30 transition-colors duration-200">
+                          <td className="px-6 py-4 whitespace-nowrap font-medium text-yoga-brown">{classItem.time}</td>
+                          <td className="px-6 py-4 text-yoga-brown">{classItem.title}</td>
+                          <td className="px-6 py-4 text-yoga-brown/80">{classItem.level}</td>
+                          <td className="px-6 py-4 text-yoga-brown/80">{classItem.duration}</td>
+                          <td className="px-6 py-4 text-yoga-brown/80">{classItem.instructor}</td>
+                          <td className="px-6 py-4 text-right">
+                            <Link to="/kontakt" className="text-yoga-gold hover:text-yoga-brown transition-colors duration-300 text-sm uppercase tracking-wider font-medium">
+                              Buchen
+                            </Link>
+                          </td>
+                        </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>
-                
-                <div className="text-center">
-                  <button className="yoga-button-premium bg-yoga-brown text-white hover:bg-yoga-gold border-yoga-brown hover:border-yoga-gold">
-                    Gesamtplan anzeigen
-                  </button>
-                </div>
               </div>
-              
-              <div className="mt-16 p-8 bg-yoga-beige/30 rounded-lg">
-                <h2 className="font-serif text-2xl mb-6 text-yoga-brown text-center">Weitere Informationen</h2>
-                <ul className="space-y-4 text-yoga-brown/80">
+
+              <div className="mt-16 p-8 bg-yoga-beige/30 rounded-lg transition-all duration-1000 delay-700 text-center">
+                <h2 className="font-serif text-2xl mb-6 text-yoga-brown">Weitere Informationen</h2>
+                <div className="w-16 h-0.5 bg-yoga-gold mx-auto mb-6"></div>
+                <ul className="space-y-4 text-yoga-brown/80 max-w-3xl mx-auto">
                   <li className="flex items-start">
                     <span className="text-yoga-gold mr-2">•</span>
                     <span>Bitte komme 10-15 Minuten vor Kursbeginn, um dich in Ruhe umzuziehen und anzumelden.</span>
@@ -118,6 +176,12 @@ const Stundenplan = () => {
                     <span>Bitte informiere den Lehrer vor der Klasse über eventuelle gesundheitliche Einschränkungen oder Verletzungen.</span>
                   </li>
                 </ul>
+                
+                <div className="mt-10">
+                  <Link to="/angebot" className="yoga-button-premium bg-yoga-brown text-white hover:bg-yoga-gold border-yoga-brown hover:border-yoga-gold">
+                    Alle Kurse ansehen
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

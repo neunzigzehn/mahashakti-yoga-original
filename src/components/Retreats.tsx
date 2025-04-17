@@ -1,5 +1,7 @@
 
 import { useRef, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { MapPin, Calendar } from 'lucide-react';
 
 interface Retreat {
   id: number;
@@ -90,7 +92,7 @@ const Retreats = () => {
       
       <div className="container-custom relative">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="section-title text-yoga-brown">Heilige Reisen</h2>
+          <h2 className="section-title text-yoga-brown">Retreats mit Veronika</h2>
           <p className="text-yoga-brown/80 max-w-2xl mx-auto mt-10">
             Erlebe die transformative Kraft des Yoga an heiligen Orten auf der ganzen Welt.
             Unsere Retreats bieten ein perfektes Gleichgewicht aus authentischer Praxis, spiritueller Erforschung und kulturellem Eintauchen.
@@ -114,19 +116,14 @@ const Retreats = () => {
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <h3 className="font-serif text-2xl text-white">{retreat.title}</h3>
-                  <div className="flex text-white/90 space-x-6 mt-2">
+                  <div className="flex flex-wrap text-white/90 gap-4 mt-2">
                     <span className="flex items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                      {retreat.location}
+                      <MapPin className="h-5 w-5 mr-1 flex-shrink-0" />
+                      <span>{retreat.location}</span>
                     </span>
                     <span className="flex items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                      {retreat.date}
+                      <Calendar className="h-5 w-5 mr-1 flex-shrink-0" />
+                      <span>{retreat.date}</span>
                     </span>
                   </div>
                 </div>
@@ -141,7 +138,7 @@ const Retreats = () => {
                 </div>
               </div>
               <div className="px-6 pb-6">
-                <a href="/retreats" className="yoga-button-premium bg-yoga-brown text-white hover:bg-yoga-gold border-yoga-brown hover:border-yoga-gold w-full block text-center">Mehr erfahren</a>
+                <Link to="/retreats" className="yoga-button-premium bg-yoga-brown text-white hover:bg-yoga-gold border-yoga-brown hover:border-yoga-gold w-full block text-center">Mehr erfahren</Link>
               </div>
             </div>
           ))}
@@ -154,7 +151,7 @@ const Retreats = () => {
             Suchst du nach einer personalisierten spirituellen Reise für deine Gruppe, Familie oder zu einem besonderen Anlass?
             Mahashakti bietet maßgeschneiderte Retreats, die auf deine spezifischen Intentionen und spirituellen Ziele abgestimmt sind.
           </p>
-          <a href="#contact" className="yoga-button-premium bg-yoga-gold/90 hover:bg-yoga-gold text-white border-yoga-gold/90 hover:border-yoga-gold">Anfrage für private Reisen</a>
+          <Link to="/retreats" className="yoga-button-premium bg-yoga-gold/90 hover:bg-yoga-gold text-white border-yoga-gold/90 hover:border-yoga-gold">Anfrage für private Reisen</Link>
         </div>
       </div>
     </section>

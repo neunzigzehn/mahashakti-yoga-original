@@ -77,35 +77,35 @@ export const Navbar = () => {
                   <ul className="grid w-[250px] gap-1 p-2">
                     <li>
                       <NavigationMenuLink asChild>
-                        <Link to="/angebot" className="block w-full px-4 py-2.5 rounded-md text-yoga-brown hover:text-yoga-gold hover:bg-yoga-beige/50 transition-colors">
+                        <Link to="/angebot" className="block w-full px-4 py-2.5 rounded-md text-yoga-brown hover:text-white hover:bg-yoga-gold transition-colors">
                           Kursangebot
                         </Link>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <Link to="/stundenplan" className="block w-full px-4 py-2.5 rounded-md text-yoga-brown hover:text-yoga-gold hover:bg-yoga-beige/50 transition-colors">
+                        <Link to="/stundenplan" className="block w-full px-4 py-2.5 rounded-md text-yoga-brown hover:text-white hover:bg-yoga-gold transition-colors">
                           Stundenplan
                         </Link>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <Link to="/retreats" className="block w-full px-4 py-2.5 rounded-md text-yoga-brown hover:text-yoga-gold hover:bg-yoga-beige/50 transition-colors">
+                        <Link to="/retreats" className="block w-full px-4 py-2.5 rounded-md text-yoga-brown hover:text-white hover:bg-yoga-gold transition-colors">
                           Retreats
                         </Link>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <Link to="/ausbildungen" className="block w-full px-4 py-2.5 rounded-md text-yoga-brown hover:text-yoga-gold hover:bg-yoga-beige/50 transition-colors">
+                        <Link to="/ausbildungen" className="block w-full px-4 py-2.5 rounded-md text-yoga-brown hover:text-white hover:bg-yoga-gold transition-colors">
                           Ausbildungen
                         </Link>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <Link to="/workshops" className="block w-full px-4 py-2.5 rounded-md text-yoga-brown hover:text-yoga-gold hover:bg-yoga-beige/50 transition-colors">
+                        <Link to="/workshops" className="block w-full px-4 py-2.5 rounded-md text-yoga-brown hover:text-white hover:bg-yoga-gold transition-colors">
                           Workshops & Events
                         </Link>
                       </NavigationMenuLink>
