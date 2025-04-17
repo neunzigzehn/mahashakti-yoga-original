@@ -6,6 +6,7 @@ import SuggestedQuestions from "./chat/SuggestedQuestions";
 import ChatInput from "./chat/ChatInput";
 import ChatHeader from "./chat/ChatHeader";
 import { Message } from "./chat/types";
+import "./chat/styles.css";
 
 const suggestedQuestions = [
   "Welche Kurse bieten Sie an?",
