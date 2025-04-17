@@ -1,5 +1,5 @@
 
-import { supabase } from '@/integrations/supabase/client';
+import { supabase, supabaseStorageUrl } from '@/integrations/supabase/client';
 
 export const initializeStorage = async () => {
   try {
@@ -32,7 +32,7 @@ export const initializeStorage = async () => {
 
     // Get the URLs for the favicon files
     const getPublicUrl = (fileName: string) => {
-      return `${supabase.storageUrl}/object/public/favicons/${fileName}`;
+      return `${supabaseStorageUrl}/object/public/favicons/${fileName}`;
     };
 
     // Make the favicon URLs available to the window object for the index.html to use
@@ -61,13 +61,13 @@ const updateFaviconLinks = () => {
   faviconLinks.forEach(link => {
     const href = link.getAttribute('href');
     if (href) {
-      if (href === '/favicon.ico') {
+      if (href.includes('favicon.ico')) {
         link.setAttribute('href', window.faviconUrls.faviconIco);
-      } else if (href === '/favicon.svg') {
+      } else if (href.includes('favicon.svg')) {
         link.setAttribute('href', window.faviconUrls.faviconSvg);
-      } else if (href === '/favicon-96x96.png') {
+      } else if (href.includes('favicon-96x96.png')) {
         link.setAttribute('href', window.faviconUrls.favicon96);
-      } else if (href === '/apple-touch-icon.png') {
+      } else if (href.includes('apple-touch-icon.png')) {
         link.setAttribute('href', window.faviconUrls.appleTouchIcon);
       }
     }
