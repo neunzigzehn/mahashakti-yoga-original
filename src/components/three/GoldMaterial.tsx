@@ -7,10 +7,10 @@ const GoldMaterial = () => {
   
   useEffect(() => {
     if (material.current) {
-      material.current.metalness = 0.7;   // Increased for more reflection
-      material.current.roughness = 0.3;   // Decreased for more shine
+      material.current.metalness = 0.5;   // Increased for more premium shine
+      material.current.roughness = 0.5;   // Balanced for elegant reflection
       material.current.transparent = true;
-      material.current.opacity = 0.95;    // Increased opacity
+      material.current.opacity = 0.85;    // Slightly increased
     }
   }, []);
 
@@ -19,9 +19,9 @@ const GoldMaterial = () => {
       ref={material} 
       color="#BFA065"              // Rich gold from website palette
       emissive="#FEF7CD"           // Soft warm glow
-      emissiveIntensity={1.3}      // Significantly enhanced glow
+      emissiveIntensity={0.7}      // Enhanced glow
       transparent
-      opacity={0.95}               // Match opacity with useEffect
+      opacity={0.85}               // Match opacity with useEffect
     />
   );
 };

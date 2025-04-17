@@ -12,27 +12,27 @@ const Testimonials = () => {
   const testimonials: Testimonial[] = [
     {
       id: 1,
-      quote: "Ich kenne Veronika und ihr wunderbares Mahashakti Yoga Studio schon sehr lange - sie hat mich zum Yoga gebracht und ich habe so großartigen Unterricht mit diesen schönen Vibes nirgendwo anders gefunden. Jetzt, wo ich in Saarbrücken lebe, ist es fantastisch, wieder online mit ihr üben zu können. Ich bin mehr als glücklich darüber!",
-      name: "Marion",
-      title: "Praktiziert seit 2021",
+      quote: "Mahashakti's kundalini classes have been transformative for my spiritual journey. The energy work and meditations have helped me connect with my inner power in ways I never thought possible.",
+      name: "Sophia Müller",
+      title: "Practicing for 3 years",
     },
     {
       id: 2,
-      quote: "Als jemand, der mit Stress und Angstzuständen zu kämpfen hatte, war Veronikas authentischer Ansatz zum Yoga ein wahres Geschenk. Die Atemtechniken und Mantras haben mir geholfen, im Alltag Frieden zu finden. Ihre Mind & Emotional Balance Sessions sind transformativ.",
+      quote: "As someone who struggled with stress and anxiety, Mahashakti's authentic approach to yoga has been a true gift. The breathing techniques and mantras have helped me find peace in everyday life.",
       name: "Andreas Weber",
-      title: "Praktiziert seit 1 Jahr",
+      title: "Practicing for 1 year",
     },
     {
       id: 3,
-      quote: "Der heilige Raum, den Veronika schafft, ermöglicht tiefe innere Arbeit. Ihre Führung durch traditionelle Praktiken hat neue Dimensionen in meiner spirituellen Entwicklung eröffnet. Die Craniosacral Balancing Sessions sind besonders heilsam.",
+      quote: "The sacred space that Mahashakti creates allows for deep inner work. Her guidance through traditional tantric practices has opened new dimensions in my spiritual development.",
       name: "Lena Schmidt",
-      title: "Praktiziert seit 2 Jahren",
+      title: "Practicing for 2 years",
     },
     {
       id: 4,
-      quote: "Veronika hat eine unglaubliche Fähigkeit, alte yogische Weisheit in zugängliche Praktiken zu übersetzen. Ihr tiefes Wissen und ihre echte Hingabe an die Tradition machen jede Klasse zu einer tiefgreifenden Erfahrung. Ich empfehle ihre Retreats in Tirol sehr!",
+      quote: "Mahashakti has an incredible ability to translate ancient yogic wisdom into accessible practices. Her deep knowledge and genuine devotion to the tradition make every class a profound experience.",
       name: "Thomas Fischer",
-      title: "Praktiziert seit 4 Jahren",
+      title: "Practicing for 4 years",
     },
   ];
 
@@ -92,6 +92,18 @@ const Testimonials = () => {
     };
   }, [isPaused, testimonials.length]);
 
+  const nextTestimonial = () => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setActiveIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
+  };
+
+  const goToTestimonial = (index: number) => {
+    setActiveIndex(index);
+  };
+
   return (
     <section 
       ref={sectionRef} 
@@ -105,7 +117,7 @@ const Testimonials = () => {
       
       <div className="container-custom relative">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="section-title text-yoga-brown">Erfahrungen unserer Schüler</h2>
+          <h2 className="section-title text-yoga-brown">Student Experiences</h2>
         </div>
 
         <div className={`max-w-4xl mx-auto relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>

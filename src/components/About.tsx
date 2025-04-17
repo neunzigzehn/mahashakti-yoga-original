@@ -51,8 +51,8 @@ const About = () => {
             <div className="absolute inset-0 border-2 border-yoga-gold rounded-lg transform translate-x-6 translate-y-6"></div>
             <div className="relative overflow-hidden rounded-lg shadow-xl">
               <img 
-                src="/lovable-uploads/205b48d5-16ef-42e4-91ac-372d0c0815b7.png" 
-                alt="Veronika Rössl - Mahashakti Yoga Founder" 
+                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1000&q=80" 
+                alt="Mahashakti in yoga pose" 
                 className="w-full h-auto object-cover transform transition-transform duration-700 hover:scale-105"
               />
             </div>
