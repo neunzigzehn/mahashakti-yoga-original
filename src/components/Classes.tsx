@@ -8,6 +8,7 @@ interface YogaClass {
   image: string;
   level: string;
   duration: string;
+  objectPosition?: string; // Add object-position property for image alignment
 }
 
 const Classes = () => {
@@ -54,6 +55,7 @@ const Classes = () => {
       image: "public/lovable-uploads/2923884d-cdb3-4751-a291-53f8d955a7ae.png",
       level: "Alle Niveaus",
       duration: "75 Min",
+      objectPosition: "center top", // Adjusted to move image up
     },
     {
       id: 2,
@@ -62,6 +64,7 @@ const Classes = () => {
       image: "public/lovable-uploads/ef7f56f0-628a-4a61-a33d-543f239643cf.png",
       level: "Mittelstufe",
       duration: "90 Min",
+      objectPosition: "center center",
     },
     {
       id: 3,
@@ -70,6 +73,7 @@ const Classes = () => {
       image: "public/lovable-uploads/4f4b0113-5662-426b-b0ed-039247ec283a.png",
       level: "Alle Niveaus",
       duration: "90 Min",
+      objectPosition: "center center",
     },
     {
       id: 4,
@@ -78,6 +82,7 @@ const Classes = () => {
       image: "public/lovable-uploads/0e42c8a4-6afd-410a-a56a-63559589bb10.png",
       level: "Fortgeschritten",
       duration: "90 Min",
+      objectPosition: "center bottom", // Adjusted to move image down
     },
   ];
 
@@ -99,7 +104,8 @@ const Classes = () => {
                 <img 
                   src={yogaClass.image} 
                   alt={yogaClass.title} 
-                  className="w-full h-full object-cover object-center filter grayscale-[25%] hover:grayscale-0 transition-all duration-700 ease-in-out group-hover:scale-110"
+                  className="w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110 filter grayscale-[25%] hover:grayscale-0"
+                  style={{ objectPosition: yogaClass.objectPosition || 'center center' }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-yoga-brown/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
