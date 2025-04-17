@@ -23,7 +23,7 @@ const WebGLBackground = () => {
 
     // Simplified mouse tracking with throttling
     let lastUpdateTime = 0;
-    const updateInterval = 50; // ms between updates
+    const updateInterval = 100; // Increased interval to reduce updates
     
     const handleMouseMove = (e: MouseEvent) => {
       const currentTime = Date.now();
@@ -31,16 +31,17 @@ const WebGLBackground = () => {
       
       lastUpdateTime = currentTime;
       
+      // Reduced sensitivity for more stability
       const x = (e.clientX / window.innerWidth) * 2 - 1;
       const y = -(e.clientY / window.innerHeight) * 2 + 1;
       
       setMousePosition({
-        x: x * 0.75,
-        y: y * 0.75
+        x: x * 0.5, // Reduced impact
+        y: y * 0.5  // Reduced impact
       });
     };
 
-    // Simple touch handling
+    // Simple touch handling with reduced sensitivity
     const handleTouchMove = (e: TouchEvent) => {
       if (e.touches.length === 0) return;
       
@@ -53,8 +54,8 @@ const WebGLBackground = () => {
       const y = -(e.touches[0].clientY / window.innerHeight) * 2 + 1;
       
       setMousePosition({
-        x: x * 0.75,
-        y: y * 0.75
+        x: x * 0.5, // Reduced impact
+        y: y * 0.5  // Reduced impact
       });
     };
 
@@ -76,14 +77,15 @@ const WebGLBackground = () => {
       <div className="absolute inset-0 backdrop-blur-3xl"></div>
       <Canvas 
         gl={{ 
-          antialias: true,
+          antialias: false, // Reduced quality for stability
           alpha: true,
-          powerPreference: 'default'
+          powerPreference: 'low-power' // Changed to low-power for better compatibility
         }}
-        dpr={[0.6, 1]} 
-        camera={{ position: [0, 0, 10], fov: 60 }}
+        dpr={[0.5, 1]} // Further reduced resolution for stability
+        camera={{ position: [0, 0, 10], fov: 50 }} // Reduced FOV
+        style={{ position: 'absolute' }}
+        frameloop="demand" // Add frameloop="demand" to be more conservative with rendering
       >
-        <fog attach="fog" args={['#FFFFFF', 25, 45]} />
         <Lighting />
         <Orbs mousePosition={mousePosition} />
       </Canvas>

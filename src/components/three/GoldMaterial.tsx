@@ -3,16 +3,14 @@ import { useRef } from 'react';
 import * as THREE from 'three';
 
 const GoldMaterial = () => {
-  const materialRef = useRef<THREE.MeshStandardMaterial>(null!);
+  const materialRef = useRef<THREE.MeshBasicMaterial>(null!);
   
   return (
-    <meshStandardMaterial 
+    <meshBasicMaterial 
       ref={materialRef} 
       color="#BFA065"
-      metalness={0.4}
-      roughness={0.6}
       transparent
-      opacity={0.8}
+      opacity={0.7}
     />
   );
 };
