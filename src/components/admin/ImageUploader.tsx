@@ -2,12 +2,15 @@
 import { useState } from 'react';
 import { uploadImage } from '@/utils/supabaseStorage';
 import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
+import { RefreshCw, Upload, Check, AlertCircle } from 'lucide-react';
 
 interface ImageUploaderProps {
   bucket: string;
 }
 
 const ImageUploader = ({ bucket }: ImageUploaderProps) => {
+  const { toast } = useToast();
   const [status, setStatus] = useState<'idle' | 'uploading' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
   const [uploadProgress, setUploadProgress] = useState<Record<string, number>>({});
@@ -18,6 +21,17 @@ const ImageUploader = ({ bucket }: ImageUploaderProps) => {
     
     setStatus('uploading');
     setMessage('Uploading yoga class images...');
+    
+    const expectedCount = 4;
+    const actualCount = files.length;
+    
+    if (actualCount !== expectedCount) {
+      toast({
+        title: 'Warning',
+        description: `Expected ${expectedCount} files, but got ${actualCount}. Continuing anyway.`,
+        variant: 'destructive',
+      });
+    }
     
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
@@ -35,6 +49,11 @@ const ImageUploader = ({ bucket }: ImageUploaderProps) => {
           setUploadProgress(prev => ({ ...prev, [fileName]: -1 }));
           setMessage(prev => `${prev}\nFailed to upload ${fileName}.`);
           setStatus('error');
+          toast({
+            title: 'Upload Error',
+            description: `Failed to upload ${fileName}`,
+            variant: 'destructive',
+          });
           return;
         }
       } catch (error) {
@@ -42,12 +61,21 @@ const ImageUploader = ({ bucket }: ImageUploaderProps) => {
         setUploadProgress(prev => ({ ...prev, [fileName]: -1 }));
         setMessage(prev => `${prev}\nError uploading ${fileName}: ${error}`);
         setStatus('error');
+        toast({
+          title: 'Upload Error',
+          description: `Error uploading ${fileName}: ${error}`,
+          variant: 'destructive',
+        });
         return;
       }
     }
     
     setStatus('success');
     setMessage(prev => `${prev}\nAll yoga class images uploaded successfully!`);
+    toast({
+      title: 'Success',
+      description: 'All yoga class images uploaded successfully!',
+    });
   };
 
   const uploadRetreatImages = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,6 +84,17 @@ const ImageUploader = ({ bucket }: ImageUploaderProps) => {
     
     setStatus('uploading');
     setMessage('Uploading retreat images...');
+    
+    const expectedCount = 3;
+    const actualCount = files.length;
+    
+    if (actualCount !== expectedCount) {
+      toast({
+        title: 'Warning',
+        description: `Expected ${expectedCount} files, but got ${actualCount}. Continuing anyway.`,
+        variant: 'destructive',
+      });
+    }
     
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
@@ -73,6 +112,11 @@ const ImageUploader = ({ bucket }: ImageUploaderProps) => {
           setUploadProgress(prev => ({ ...prev, [fileName]: -1 }));
           setMessage(prev => `${prev}\nFailed to upload ${fileName}.`);
           setStatus('error');
+          toast({
+            title: 'Upload Error',
+            description: `Failed to upload ${fileName}`,
+            variant: 'destructive',
+          });
           return;
         }
       } catch (error) {
@@ -80,12 +124,27 @@ const ImageUploader = ({ bucket }: ImageUploaderProps) => {
         setUploadProgress(prev => ({ ...prev, [fileName]: -1 }));
         setMessage(prev => `${prev}\nError uploading ${fileName}: ${error}`);
         setStatus('error');
+        toast({
+          title: 'Upload Error',
+          description: `Error uploading ${fileName}: ${error}`,
+          variant: 'destructive',
+        });
         return;
       }
     }
     
     setStatus('success');
     setMessage(prev => `${prev}\nAll retreat images uploaded successfully!`);
+    toast({
+      title: 'Success',
+      description: 'All retreat images uploaded successfully!',
+    });
+  };
+
+  const resetStatus = () => {
+    setStatus('idle');
+    setMessage('');
+    setUploadProgress({});
   };
 
   return (
@@ -93,12 +152,13 @@ const ImageUploader = ({ bucket }: ImageUploaderProps) => {
       <h2 className="text-xl font-semibold mb-4">Supabase Image Uploader</h2>
       
       <div className="space-y-6">
-        <div>
-          <h3 className="font-medium mb-2">Yoga Class Images (1-4)</h3>
+        <div className="bg-yoga-beige/20 p-4 rounded-md">
+          <h3 className="font-medium mb-2">Yoga Class Images (upload 4 images)</h3>
+          <p className="text-sm text-gray-600 mb-4">
+            These images will appear in the Yoga Kurse section. Please select exactly 4 images in order.
+            They will be named yoga-class-1.png, yoga-class-2.png, etc.
+          </p>
           <div className="mb-2">
-            <label htmlFor="yoga-images" className="block text-sm mb-1">
-              Select 4 yoga class images in order (1, 2, 3, 4)
-            </label>
             <input
               id="yoga-images"
               type="file"
@@ -111,12 +171,13 @@ const ImageUploader = ({ bucket }: ImageUploaderProps) => {
           </div>
         </div>
         
-        <div>
-          <h3 className="font-medium mb-2">Retreat Images (1-3)</h3>
+        <div className="bg-yoga-beige/20 p-4 rounded-md">
+          <h3 className="font-medium mb-2">Retreat Images (upload 3 images)</h3>
+          <p className="text-sm text-gray-600 mb-4">
+            These images will appear in the Retreats section. Please select exactly 3 images in order.
+            They will be named retreat-1.png, retreat-2.png, etc.
+          </p>
           <div className="mb-2">
-            <label htmlFor="retreat-images" className="block text-sm mb-1">
-              Select 3 retreat images in order (1, 2, 3)
-            </label>
             <input
               id="retreat-images"
               type="file"
@@ -130,13 +191,33 @@ const ImageUploader = ({ bucket }: ImageUploaderProps) => {
         </div>
         
         {status !== 'idle' && (
-          <div className="mt-4 p-3 bg-gray-50 rounded-md">
-            <h4 className="font-medium mb-2">
-              {status === 'uploading' ? 'Uploading...' :
-               status === 'success' ? 'Upload Complete' :
-               'Upload Error'}
-            </h4>
-            <pre className="whitespace-pre-wrap text-sm bg-white p-2 rounded border">
+          <div className="mt-4 p-4 bg-gray-50 rounded-md">
+            <div className="flex justify-between mb-2">
+              <h4 className="font-medium">
+                {status === 'uploading' ? (
+                  <span className="flex items-center">
+                    <RefreshCw className="mr-2 h-4 w-4 animate-spin" /> Uploading...
+                  </span>
+                ) : status === 'success' ? (
+                  <span className="flex items-center text-green-600">
+                    <Check className="mr-2 h-4 w-4" /> Upload Complete
+                  </span>
+                ) : (
+                  <span className="flex items-center text-red-600">
+                    <AlertCircle className="mr-2 h-4 w-4" /> Upload Error
+                  </span>
+                )}
+              </h4>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={resetStatus}
+                disabled={status === 'uploading'}
+              >
+                Clear
+              </Button>
+            </div>
+            <pre className="whitespace-pre-wrap text-sm bg-white p-3 rounded border overflow-auto max-h-40">
               {message}
             </pre>
           </div>
