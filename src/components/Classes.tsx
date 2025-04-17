@@ -56,7 +56,7 @@ const Classes = () => {
       image: "/lovable-uploads/dba68d16-d275-4cef-a55a-21fcf95b2e44.png",
       level: "Alle Niveaus",
       duration: "75 Min",
-      objectPosition: "50% 20%", // Shifted further up to show more of the body
+      objectPosition: "50% 10%", // Shifted further up to fully show the body
       objectFit: "cover",
     },
     {
@@ -86,7 +86,7 @@ const Classes = () => {
       image: "/lovable-uploads/9ca8aec4-ec47-4aa0-ab46-f249513d47c8.png",
       level: "Fortgeschritten",
       duration: "90 Min",
-      objectPosition: "50% 70%", // Shifted further down to show more of the face
+      objectPosition: "50% 80%", // Shifted further down to fully show the face
       objectFit: "cover",
     },
   ];
