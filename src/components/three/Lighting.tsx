@@ -10,22 +10,22 @@ const Lighting = () => {
     if (pointLightRef.current) {
       // Subtle intensity variations
       const time = clock.getElapsedTime();
-      pointLightRef.current.intensity = 0.3 + Math.sin(time * 0.2) * 0.05;
+      pointLightRef.current.intensity = 0.5 + Math.sin(time * 0.2) * 0.05;
     }
   });
   
   return (
     <>
-      {/* Very minimal lighting to not interfere with glowing orbs */}
-      <ambientLight intensity={0.2} />
+      {/* Increased ambient light */}
+      <ambientLight intensity={0.4} />
       
-      {/* Subtle point light */}
+      {/* Enhanced point light */}
       <pointLight 
         ref={pointLightRef} 
-        position={[0, 0, 10]} 
-        intensity={0.3} 
+        position={[0, 0, 5]} 
+        intensity={0.5} 
         color="#ffffff" 
-        distance={50}
+        distance={30}
         decay={2}
       />
     </>

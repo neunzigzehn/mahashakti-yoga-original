@@ -27,6 +27,7 @@ const Orbs = ({ mousePosition }: OrbsProps) => {
         size / 2, size / 2, size / 2
       );
       
+      // More pronounced white center
       gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
       gradient.addColorStop(0.2, 'rgba(255, 255, 255, 0.8)');
       gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.3)');
@@ -45,7 +46,7 @@ const Orbs = ({ mousePosition }: OrbsProps) => {
     if (goldOrbRef.current && brownOrbRef.current) {
       const time = clock.getElapsedTime();
       
-      // Extremely slow, subtle movement
+      // Move orbs closer to camera for better visibility
       goldOrbRef.current.position.x = THREE.MathUtils.lerp(
         goldOrbRef.current.position.x,
         (mousePosition.x * viewport.width) * 0.1 + Math.sin(time * 0.05) * 2,
@@ -56,7 +57,8 @@ const Orbs = ({ mousePosition }: OrbsProps) => {
         (-mousePosition.y * viewport.height) * 0.1 + Math.cos(time * 0.07) * 1,
         0.005
       );
-      goldOrbRef.current.position.z = -5;
+      // Bring the orb closer to the camera (was -5)
+      goldOrbRef.current.position.z = 0;
 
       brownOrbRef.current.position.x = THREE.MathUtils.lerp(
         brownOrbRef.current.position.x,
@@ -68,20 +70,21 @@ const Orbs = ({ mousePosition }: OrbsProps) => {
         (mousePosition.y * viewport.height) * 0.12 + Math.sin(time * 0.08) * 1.2,
         0.004
       );
-      brownOrbRef.current.position.z = -8;
+      // Bring the orb closer to the camera (was -8)
+      brownOrbRef.current.position.z = -2;
     }
   });
 
   return (
     <>
       {/* Gold hue orb */}
-      <mesh ref={goldOrbRef} position={[-5, 3, -5]} renderOrder={1}>
-        <planeGeometry args={[25, 25]} />
+      <mesh ref={goldOrbRef} position={[-2, 2, 0]} renderOrder={1}>
+        <planeGeometry args={[15, 15]} />
         <meshBasicMaterial 
           map={gradientTexture}
           color="#FEF7CD"
           transparent
-          opacity={0.85}
+          opacity={0.9} // Increased opacity
           blending={THREE.AdditiveBlending}
           depthWrite={false}
           depthTest={false}
@@ -89,13 +92,13 @@ const Orbs = ({ mousePosition }: OrbsProps) => {
       </mesh>
       
       {/* Brown/peach hue orb */}
-      <mesh ref={brownOrbRef} position={[5, -3, -8]} renderOrder={2}>
-        <planeGeometry args={[30, 30]} />
+      <mesh ref={brownOrbRef} position={[2, -2, -2]} renderOrder={2}>
+        <planeGeometry args={[18, 18]} />
         <meshBasicMaterial 
           map={gradientTexture}
           color="#FDE1D3"
           transparent
-          opacity={0.75}
+          opacity={0.85} // Increased opacity
           blending={THREE.AdditiveBlending}
           depthWrite={false}
           depthTest={false}

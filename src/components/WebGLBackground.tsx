@@ -102,8 +102,8 @@ const WebGLBackground = () => {
         }}
       />
       
-      {/* Extra CSS blur effect for the background */}
-      <div className="absolute inset-0 backdrop-blur-[70px] opacity-50" />
+      {/* Reduced blur effect for the background to make orbs more visible */}
+      <div className="absolute inset-0 backdrop-blur-[30px] opacity-30" />
       
       <Canvas 
         gl={{ 
@@ -113,8 +113,13 @@ const WebGLBackground = () => {
           stencil: false,
           depth: false // Disable depth testing for better blending
         }}
-        dpr={[0.7, 1.2]} // Slightly reduced DPR for better performance
-        camera={{ position: [0, 0, 15], fov: 45, near: 0.1, far: 100 }}
+        dpr={[1, 2]} // Increased DPR for better quality
+        camera={{ 
+          position: [0, 0, 10], // Moved camera closer
+          fov: 50, // Wider field of view
+          near: 0.1, 
+          far: 100 
+        }}
         style={{ mixBlendMode: 'plus-lighter' }} // Premium blend mode
       >
         <Lighting />
