@@ -1,46 +1,29 @@
 
-import { useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { useThree, extend } from '@react-three/fiber';
-import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass';
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
-import * as THREE from 'three';
+import { EffectComposer, Bloom } from '@react-three/postprocessing';
+import { KernelSize } from 'postprocessing';
 
-// Register the postprocessing passes
-extend({ EffectComposer, RenderPass, UnrealBloomPass });
-
+// We'll use @react-three/postprocessing instead of direct Three.js imports
 const BlurEffect = () => {
-  const { gl, scene, camera, size } = useThree();
+  const { gl, scene, camera } = useThree();
   
   useEffect(() => {
-    // Set high resolution rendering
+    // Set high resolution rendering for better quality
     gl.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    
-    // Create effect composer
-    const composer = new EffectComposer(gl);
-    composer.addPass(new RenderPass(scene, camera));
-    
-    // Add bloom pass for soft glow effect
-    const bloomPass = new UnrealBloomPass(
-      new THREE.Vector2(size.width, size.height),
-      0.75,  // strength: subtle bloom
-      0.5,   // radius: larger for more diffuse effect
-      0.2    // threshold: start bloom at brighter values
-    );
-    composer.addPass(bloomPass);
-    
-    // Override the default render function to use our composer
-    const originalRender = gl.render;
-    gl.render = () => {
-      composer.render();
-    };
-    
-    return () => {
-      gl.render = originalRender;
-    };
-  }, [gl, scene, camera, size]);
+  }, [gl]);
 
-  return null;
+  return (
+    <EffectComposer>
+      <Bloom 
+        intensity={0.75} // subtle bloom
+        luminanceThreshold={0.2} // start bloom at brighter values
+        luminanceSmoothing={0.9} // smooth transition
+        kernelSize={KernelSize.LARGE} // larger for more diffuse effect
+        mipmapBlur={true} // enable mipmap blur for better quality
+      />
+    </EffectComposer>
+  );
 };
 
 export default BlurEffect;
