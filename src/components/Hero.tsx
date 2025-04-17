@@ -1,12 +1,10 @@
 
 import { useEffect, useState } from 'react';
 import WebGLBackground from './WebGLBackground';
-import { useMediaQuery } from '@react-hookz/web';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const isMobile = useMediaQuery('(max-width: 768px)');
 
   useEffect(() => {
     // Set background as loaded
@@ -47,31 +45,21 @@ const Hero = () => {
             </p>
           </div>
           <div className={`flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <a 
-              href="#classes" 
-              className="yoga-button-premium border-yoga-brown text-yoga-brown hover:bg-yoga-brown hover:text-white"
-              aria-label="Kurse entdecken"
-            >
+            <a href="#classes" className="yoga-button-premium border-yoga-brown text-yoga-brown hover:bg-yoga-brown hover:text-white">
               Kurse entdecken
             </a>
-            <a 
-              href="#about" 
-              className="yoga-button-outline border-yoga-brown/70 text-yoga-brown hover:border-yoga-brown"
-              aria-label="Mehr erfahren"
-            >
+            <a href="#about" className="yoga-button-outline border-yoga-brown/70 text-yoga-brown hover:border-yoga-brown">
               Mehr erfahren
             </a>
           </div>
         </div>
       </div>
 
-      {/* Scroll down indicator - hidden on mobile */}
-      {!isMobile && (
-        <div className={`absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center transition-all duration-1000 delay-1500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <span className="text-yoga-brown text-sm font-light tracking-wider mb-2">Scrollen</span>
-          <div className="h-16 w-0.5 bg-yoga-brown/50 animate-pulse"></div>
-        </div>
-      )}
+      {/* Scroll down indicator */}
+      <div className={`absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center transition-all duration-1000 delay-1500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <span className="text-yoga-brown text-sm font-light tracking-wider mb-2">Scrollen</span>
+        <div className="h-16 w-0.5 bg-yoga-brown/50 animate-pulse"></div>
+      </div>
       
       {/* Hinweis unter Hero */}
       <div className={`absolute bottom-4 left-0 right-0 text-center transition-all duration-1000 delay-1800 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
@@ -79,7 +67,6 @@ const Hero = () => {
           href="/ALLE_TERMINE_2025_2026.pdf" 
           download 
           className="inline-flex items-center text-yoga-brown/80 hover:text-yoga-brown transition-colors text-sm font-medium"
-          aria-label="Download PDF mit allen Terminen 2025 und 2026"
         >
           <span>Alle Retreats, Aus- & Fortbildungen 2025 / 2026 → Download PDF</span>
         </a>

@@ -8,12 +8,10 @@ import Schedule from "@/components/Schedule";
 import Retreats from "@/components/Retreats";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import Meta from "@/components/Meta";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
-      <Meta />
       <Navbar />
       <Hero />
       <About />
