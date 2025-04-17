@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 
 interface Testimonial {
@@ -91,18 +90,6 @@ const Testimonials = () => {
       }
     };
   }, [isPaused, testimonials.length]);
-
-  const nextTestimonial = () => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setActiveIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
-  };
-
-  const goToTestimonial = (index: number) => {
-    setActiveIndex(index);
-  };
 
   return (
     <section 
