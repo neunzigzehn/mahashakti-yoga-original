@@ -26,7 +26,7 @@ const WebGLBackground = () => {
     // Track mouse movement with heavy throttling for very smooth, subtle movement
     let timeoutId: number;
     let lastUpdateTime = 0;
-    const updateInterval = 80; // Increased interval for even smoother tracking
+    const updateInterval = 50; // ms between updates for smoother tracking
     
     const handleMouseMove = (e: MouseEvent) => {
       const currentTime = Date.now();
@@ -39,14 +39,14 @@ const WebGLBackground = () => {
         const x = (e.clientX / window.innerWidth) * 2 - 1;
         const y = -(e.clientY / window.innerHeight) * 2 + 1;
         
-        // Add significant dampening for subtle, premium feel
+        // Add dampening for more premium feel - smaller range of movement
         setMousePosition({
-          x: x * 0.5, // Reduce movement range by 50%
-          y: y * 0.5
+          x: x * 0.75, // Reduce movement range by 25%
+          y: y * 0.75
         });
         
         timeoutId = 0;
-      }, 45);
+      }, 30);
     };
 
     // Track touch movement for mobile with throttling
@@ -61,14 +61,14 @@ const WebGLBackground = () => {
         const x = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
         const y = -(e.touches[0].clientY / window.innerHeight) * 2 + 1;
         
-        // Add significant dampening
+        // Add dampening for more premium feel
         setMousePosition({
-          x: x * 0.5,
-          y: y * 0.5
+          x: x * 0.75,
+          y: y * 0.75
         });
         
         timeoutId = 0;
-      }, 45);
+      }, 30);
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -87,19 +87,12 @@ const WebGLBackground = () => {
 
   return (
     <div className="absolute inset-0 -z-10">
-      <Canvas 
-        dpr={[1, 2]} 
-        camera={{ position: [0, 0, 15], fov: 60 }}
-        gl={{
-          antialias: true,
-          alpha: true,
-          powerPreference: 'high-performance'
-        }}
-      >
+      {/* Remove extra blur filter layer to avoid double blurring */}
+      <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 10], fov: 60 }}>
         <BlurEffect />
         <Lighting />
-        {/* Very light fog for soft distance fade */}
-        <fog attach="fog" args={['#FFFFFF', 40, 80]} />
+        {/* Reduce fog density to make orbs more visible */}
+        <fog attach="fog" args={['#FFFFFF', 30, 60]} />
         <Orbs mousePosition={mousePosition} />
       </Canvas>
     </div>

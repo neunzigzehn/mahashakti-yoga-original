@@ -7,21 +7,21 @@ const BrownMaterial = () => {
   
   useEffect(() => {
     if (material.current) {
-      material.current.metalness = 0.2;   // Reduced metalness for softer look
-      material.current.roughness = 0.7;   // Increased for less shine, more diffusion
+      material.current.metalness = 0.6;   // Increased for more reflection
+      material.current.roughness = 0.4;   // Decreased for more shine
       material.current.transparent = true;
-      material.current.opacity = 0.45;    // More transparency for subtle effect
+      material.current.opacity = 0.95;    // Increased opacity
     }
   }, []);
 
   return (
     <meshStandardMaterial 
       ref={material} 
-      color="#3F3628"              // Keep darker brown
-      emissive="#251F17"           // Keep dark brown emissive
-      emissiveIntensity={0.3}      // Significantly reduced for subtle glow
+      color="#3F3628"              // Darker brown from website palette
+      emissive="#E5D1B8"           // Warm tan glow
+      emissiveIntensity={1.2}      // Significantly increased glow
       transparent
-      opacity={0.45}               // Match opacity with useEffect
+      opacity={0.95}               // Match opacity with useEffect
     />
   );
 };
