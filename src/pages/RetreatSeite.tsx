@@ -67,11 +67,12 @@ const RetreatSeite = () => {
                 <Card className="overflow-hidden bg-white shadow-lg border-yoga-gold/10 hover:shadow-xl transition-shadow duration-300">
                   <div className="h-56 bg-yoga-beige/50 relative overflow-hidden">
                     <img 
-                      src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=1000&q=80" 
+                      src="public/lovable-uploads/72c705d6-2b0f-484b-88f0-d6e6988c1170.png" 
                       alt="Yoga-Retreat in Port de Sollér, Mallorca" 
                       className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                       loading="lazy"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-yoga-brown/70 to-transparent"></div>
                   </div>
                   <CardHeader className="pb-2">
                     <CardTitle className="font-serif text-xl text-yoga-brown">YOGA-RETREAT im BIKINI ISLAND & MOUNTAIN HOTEL</CardTitle>
@@ -105,11 +106,12 @@ const RetreatSeite = () => {
                 <Card className="overflow-hidden bg-white shadow-lg border-yoga-gold/10 hover:shadow-xl transition-shadow duration-300">
                   <div className="h-56 bg-yoga-beige/50 relative overflow-hidden">
                     <img 
-                      src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1000&q=80" 
+                      src="public/lovable-uploads/bf6b3af2-94dc-43a1-a0e7-152549c426ce.png" 
                       alt="Yoga-Retreat im Vigilius Mountain Hotel, Südtirol" 
                       className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                       loading="lazy"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-yoga-brown/70 to-transparent"></div>
                   </div>
                   <CardHeader className="pb-2">
                     <CardTitle className="font-serif text-xl text-yoga-brown">YOGA-RETREAT im VIGILIUS MOUNTAIN HOTEL</CardTitle>
@@ -143,11 +145,12 @@ const RetreatSeite = () => {
                 <Card className="overflow-hidden bg-white shadow-lg border-yoga-gold/10 hover:shadow-xl transition-shadow duration-300">
                   <div className="h-56 bg-yoga-beige/50 relative overflow-hidden">
                     <img 
-                      src="https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?auto=format&fit=crop&w=1000&q=80" 
+                      src="public/lovable-uploads/a4d6f1a1-d412-4454-a3bd-0261a88e98b9.png" 
                       alt="Yoga-Retreat im Holzhotel Forsthofalm, Salzburger Land" 
                       className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                       loading="lazy"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-yoga-brown/70 to-transparent"></div>
                   </div>
                   <CardHeader className="pb-2">
                     <CardTitle className="font-serif text-xl text-yoga-brown">YOGA-RETREAT im HOLZHOTEL FORSTHOFALM</CardTitle>

@@ -58,7 +58,7 @@ const Retreats = () => {
       location: "Port de Sollér, Mallorca, Spanien",
       date: "24.-28.05.2025",
       description: "Yoga-Retreat in den Bergen mit Blick aufs Meer. Erlebe eine perfekte Balance aus Yoga-Praxis, Entspannung und mediterranem Flair auf der wunderschönen Insel Mallorca.",
-      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=1000&q=80",
+      image: "public/lovable-uploads/72c705d6-2b0f-484b-88f0-d6e6988c1170.png",
       price: "Ab 1.950€",
       spots: "8 Plätze verfügbar",
     },
@@ -68,7 +68,7 @@ const Retreats = () => {
       location: "Lana, Südtirol, 1500m Höhe",
       date: "12.06.-15.06.2025",
       description: "Eintauchen in die alpine Bergwelt auf 1500m Höhe. Ein besonderes Retreat in diesem exklusiven Naturresort, nur mit der Seilbahn erreichbar, für echte Erholung und tiefe Yoga-Praxis.",
-      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1000&q=80",
+      image: "public/lovable-uploads/bf6b3af2-94dc-43a1-a0e7-152549c426ce.png",
       price: "Ab 1.200€",
       spots: "10 Plätze verfügbar",
     },
@@ -78,7 +78,7 @@ const Retreats = () => {
       location: "Salzburger Land, Österreich",
       date: "04.-07.09.2025",
       description: "Drei Tage Yoga inmitten der atemberaubenden Bergkulisse des Salzburger Landes. Das nachhaltige Holzhotel bietet den perfekten Rahmen für Yoga und Naturerlebnisse.",
-      image: "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?auto=format&fit=crop&w=1000&q=80",
+      image: "public/lovable-uploads/a4d6f1a1-d412-4454-a3bd-0261a88e98b9.png",
       price: "Ab 990€",
       spots: "12 Plätze verfügbar",
     },
@@ -118,11 +118,11 @@ const Retreats = () => {
                   <h3 className="font-serif text-2xl text-white">{retreat.title}</h3>
                   <div className="flex flex-wrap text-white/90 gap-4 mt-2">
                     <span className="flex items-center text-sm">
-                      <MapPin className="h-4 w-4 mr-1.5 flex-shrink-0" />
-                      <span>{retreat.location}</span>
+                      <MapPin className="h-5 w-5 mr-1.5 flex-shrink-0" />
+                      <span className="whitespace-normal">{retreat.location}</span>
                     </span>
                     <span className="flex items-center text-sm">
-                      <Calendar className="h-4 w-4 mr-1.5 flex-shrink-0" />
+                      <Calendar className="h-5 w-5 mr-1.5 flex-shrink-0" />
                       <span>{retreat.date}</span>
                     </span>
                   </div>
