@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { uploadImage } from '@/utils/supabaseStorage';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { RefreshCw, Upload, Check, AlertCircle } from 'lucide-react';
+import { RefreshCw, Upload, Check, AlertCircle, Info } from 'lucide-react';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 interface ImageUploaderProps {
   bucket: string;
@@ -150,6 +151,18 @@ const ImageUploader = ({ bucket }: ImageUploaderProps) => {
   return (
     <div className="p-6 border rounded-lg shadow-sm">
       <h2 className="text-xl font-semibold mb-4">Supabase Image Uploader</h2>
+      
+      <Alert className="mb-6">
+        <Info className="h-4 w-4" />
+        <AlertTitle>Image Size Recommendations</AlertTitle>
+        <AlertDescription>
+          <p className="mb-2">For optimal display, please use the following image sizes:</p>
+          <ul className="list-disc pl-5 space-y-1">
+            <li>Yoga Class Images: 600x400 pixels (3:2 aspect ratio)</li>
+            <li>Retreat Images: 800x533 pixels (3:2 aspect ratio)</li>
+          </ul>
+        </AlertDescription>
+      </Alert>
       
       <div className="space-y-6">
         <div className="bg-yoga-beige/20 p-4 rounded-md">

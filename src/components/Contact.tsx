@@ -1,15 +1,8 @@
 
 import { useState, useRef, useEffect } from 'react';
+import ContactForm from './ContactForm';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -37,28 +30,6 @@ const Contact = () => {
     };
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Simulate form submission
-    setTimeout(() => {
-      setFormSubmitted(true);
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-      });
-    }, 800);
-  };
-
   return (
     <section id="contact" ref={sectionRef} className="py-24 bg-yoga-beige opacity-0 transition-opacity duration-1000">
       <div className="container-custom">
@@ -73,89 +44,7 @@ const Contact = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Contact form */}
           <div className="bg-white p-8 rounded-lg shadow-sm">
-            {formSubmitted ? (
-              <div className="text-center py-12">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-yoga-gold mx-auto mb-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <h3 className="font-serif text-2xl mb-4 text-yoga-brown">Nachricht gesendet</h3>
-                <p className="text-yoga-brown/80 mb-8">Vielen Dank für deine Anfrage. Mahashakti wird dir in Kürze antworten.</p>
-                <button 
-                  onClick={() => setFormSubmitted(false)} 
-                  className="yoga-button"
-                >
-                  Weitere Nachricht senden
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit}>
-                <div className="mb-6">
-                  <label htmlFor="name" className="block text-yoga-brown/90 text-sm font-medium mb-2">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full p-3 border border-yoga-tan focus:border-yoga-gold outline-none transition-colors duration-300 rounded-md"
-                  />
-                </div>
-                <div className="mb-6">
-                  <label htmlFor="email" className="block text-yoga-brown/90 text-sm font-medium mb-2">
-                    E-Mail
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full p-3 border border-yoga-tan focus:border-yoga-gold outline-none transition-colors duration-300 rounded-md"
-                  />
-                </div>
-                <div className="mb-6">
-                  <label htmlFor="subject" className="block text-yoga-brown/90 text-sm font-medium mb-2">
-                    Betreff
-                  </label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="w-full p-3 border border-yoga-tan focus:border-yoga-gold outline-none transition-colors duration-300 rounded-md"
-                  >
-                    <option value="">Thema auswählen</option>
-                    <option value="Kursanfrage">Kursanfrage</option>
-                    <option value="Private Sitzung">Private Sitzung</option>
-                    <option value="Retreat Informationen">Retreat Informationen</option>
-                    <option value="Yogalehrer-Ausbildung">Yogalehrer-Ausbildung</option>
-                    <option value="Allgemeine Frage">Allgemeine Frage</option>
-                  </select>
-                </div>
-                <div className="mb-6">
-                  <label htmlFor="message" className="block text-yoga-brown/90 text-sm font-medium mb-2">
-                    Nachricht
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={6}
-                    className="w-full p-3 border border-yoga-tan focus:border-yoga-gold outline-none transition-colors duration-300 rounded-md"
-                  ></textarea>
-                </div>
-                <button type="submit" className="yoga-button w-full bg-yoga-brown text-white hover:bg-yoga-brown/80 border-yoga-brown">
-                  Nachricht senden
-                </button>
-              </form>
-            )}
+            <ContactForm />
           </div>
 
           {/* Contact information */}
@@ -166,7 +55,7 @@ const Contact = () => {
               <p className="text-yoga-brown/80 mb-4">80331 München, Deutschland</p>
               <div className="aspect-w-16 aspect-h-9">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.3832795782893!2d11.576019776592503!3d48.13728197130091!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e75f626a1ca8d%3A0x93be7a6a7de8e355!2sMarienplatz%2C%20Altstadt-Lehel%2C%20Munich%2C%20Germany!5e0!3m2!1sen!2sus!4v1650913953646!5m2!1sen!2sus"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.5142520077986!2d11.57564587659239!3d48.13484607128872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e758a1a8be2ad%3A0xae873c22f11cbc27!2sRosenstra%C3%9Fe%2012%2C%2080331%20M%C3%BCnchen%2C%20Germany!5e0!3m2!1sen!2sus!4v1743368976543!5m2!1sen!2sus"
                   className="w-full h-64 border-0 rounded-lg shadow-sm"
                   allowFullScreen={true}
                   loading="lazy"
