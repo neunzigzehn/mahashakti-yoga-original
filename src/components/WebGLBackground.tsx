@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useMemo } from 'react';
 import { Canvas } from '@react-three/fiber';
 import Orbs from './three/Orbs';
@@ -21,9 +20,9 @@ const WebGLBackground = () => {
       console.error("WebGL not supported:", e);
     }
 
-    // Optimized mouse tracking with throttling
+    // Optimized mouse tracking with more throttling for smoother movement
     let lastUpdateTime = 0;
-    const updateInterval = 30; // ms between updates for smoother performance
+    const updateInterval = 50; // Increased time between updates for smoother performance
     
     const handleMouseMove = (e: MouseEvent) => {
       const currentTime = Date.now();
@@ -31,13 +30,13 @@ const WebGLBackground = () => {
       
       lastUpdateTime = currentTime;
       
-      // Calculate smooth, normalized position
+      // Calculate smooth, normalized position with reduced sensitivity
       const x = (e.clientX / window.innerWidth) * 2 - 1;
       const y = -(e.clientY / window.innerHeight) * 2 + 1;
       
       setMousePosition({
-        x: x * 0.5, // Reduced sensitivity for smoother movement
-        y: y * 0.5
+        x: x * 0.3, // Further reduced sensitivity for smoother movement
+        y: y * 0.3
       });
     };
 
@@ -54,8 +53,8 @@ const WebGLBackground = () => {
       const y = -(e.touches[0].clientY / window.innerHeight) * 2 + 1;
       
       setMousePosition({
-        x: x * 0.5,
-        y: y * 0.5
+        x: x * 0.3,
+        y: y * 0.3
       });
     };
 
@@ -92,18 +91,18 @@ const WebGLBackground = () => {
 
   return (
     <div className="absolute inset-0 -z-10">
-      {/* Premium background effect with radial gradient */}
+      {/* Premium background effect with softer radial gradient */}
       <div 
         className="absolute inset-0" 
         style={{
-          background: 'radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.95) 0%, rgba(245, 243, 238, 0.8) 60%, rgba(229, 209, 184, 0.75) 100%)',
+          background: 'radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.97) 0%, rgba(245, 243, 238, 0.85) 60%, rgba(229, 209, 184, 0.8) 100%)',
           backgroundBlendMode: 'screen',
           backgroundImage: `url(${noisePattern})`,
         }}
       />
       
       {/* Enhanced blur effect */}
-      <div className="absolute inset-0 backdrop-blur-3xl opacity-70" />
+      <div className="absolute inset-0 backdrop-blur-[50px] opacity-70" />
       
       <Canvas 
         gl={{ 
@@ -113,11 +112,10 @@ const WebGLBackground = () => {
           stencil: false,
           depth: true
         }}
-        dpr={[0.8, 1.5]} 
-        camera={{ position: [0, 0, 10], fov: 55, near: 0.1, far: 100 }}
+        dpr={[0.7, 1.2]} // Slightly reduced DPR for better performance
+        camera={{ position: [0, 0, 15], fov: 45, near: 0.1, far: 120 }} // Adjusted camera for better view
         style={{ mixBlendMode: 'plus-lighter' }} // Premium blend mode
       >
-        <fog attach="fog" args={['#F5F3EE', 30, 50]} />
         <Lighting />
         <Orbs mousePosition={mousePosition} />
       </Canvas>

@@ -8,26 +8,27 @@ const BrownMaterial = () => {
   
   useFrame(({ clock }) => {
     if (materialRef.current) {
-      // Subtle pulsing effect
-      const pulse = Math.sin(clock.getElapsedTime() * 0.2) * 0.1 + 0.9;
-      materialRef.current.transmission = 0.15 * pulse;
+      // More subtle pulsing effect
+      const pulse = Math.sin(clock.getElapsedTime() * 0.15) * 0.05 + 0.95;
+      materialRef.current.transmission = 0.45 * pulse;
+      materialRef.current.opacity = 0.65 * pulse;
     }
   });
   
   return (
     <meshPhysicalMaterial 
       ref={materialRef} 
-      color="#3F3628"
-      metalness={0.4}
-      roughness={0.5}
-      clearcoat={0.5}
-      clearcoatRoughness={0.2}
-      transmission={0.15}
-      ior={1.3}
-      thickness={3}
-      envMapIntensity={0.8}
+      color="#6A5A45"
+      metalness={0.15}
+      roughness={0.8}
+      clearcoat={0.3}
+      clearcoatRoughness={0.7}
+      transmission={0.45}
+      ior={1.2}
+      thickness={1.5}
+      envMapIntensity={0.4}
       transparent
-      opacity={0.9}
+      opacity={0.65}
     />
   );
 };

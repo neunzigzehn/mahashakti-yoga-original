@@ -8,26 +8,27 @@ const GoldMaterial = () => {
   
   useFrame(({ clock }) => {
     if (materialRef.current) {
-      // Subtle shimmer effect
-      const shimmer = Math.sin(clock.getElapsedTime() * 0.3) * 0.1 + 0.9;
-      materialRef.current.transmission = 0.2 * shimmer;
+      // More subtle shimmer effect
+      const shimmer = Math.sin(clock.getElapsedTime() * 0.2) * 0.05 + 0.95;
+      materialRef.current.transmission = 0.5 * shimmer;
+      materialRef.current.opacity = 0.7 * shimmer;
     }
   });
   
   return (
     <meshPhysicalMaterial 
       ref={materialRef} 
-      color="#BFA065"
-      metalness={0.6}
-      roughness={0.4}
-      clearcoat={0.6}
-      clearcoatRoughness={0.1}
-      transmission={0.2}
-      ior={1.5}
-      thickness={2}
-      envMapIntensity={1.0}
+      color="#DFC585"
+      metalness={0.2}
+      roughness={0.7}
+      clearcoat={0.4}
+      clearcoatRoughness={0.6}
+      transmission={0.5}
+      ior={1.3}
+      thickness={1}
+      envMapIntensity={0.5}
       transparent
-      opacity={0.9}
+      opacity={0.7}
     />
   );
 };
