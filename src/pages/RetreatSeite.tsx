@@ -51,7 +51,7 @@ const RetreatSeite = () => {
       image: getImageUrl("retreat-images", "retreat-1.png"),
       price: "Ab 1.950€",
       spots: "8 Plätze verfügbar",
-      objectPosition: "center 40%"
+      objectPosition: "center 30%"
     },
     {
       id: 2,
@@ -62,7 +62,7 @@ const RetreatSeite = () => {
       image: getImageUrl("retreat-images", "retreat-2.png"),
       price: "Ab 1.200€",
       spots: "10 Plätze verfügbar",
-      objectPosition: "center 35%"
+      objectPosition: "center 25%"
     },
     {
       id: 3,
@@ -73,7 +73,7 @@ const RetreatSeite = () => {
       image: getImageUrl("retreat-images", "retreat-3.png"),
       price: "Ab 990€",
       spots: "12 Plätze verfügbar",
-      objectPosition: "center 40%"
+      objectPosition: "center 30%"
     }
   ];
 
