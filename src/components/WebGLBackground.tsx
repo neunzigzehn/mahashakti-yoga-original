@@ -1,13 +1,11 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { EffectComposer, Bloom, DepthOfField } from '@react-three/postprocessing';
-import { BlendFunction } from 'postprocessing';
 import Orbs from './three/Orbs';
 import Lighting from './three/Lighting';
 import FallbackContent from './three/FallbackContent';
 
-// Main WebGL component with premium visual effects
+// Main WebGL component with visual effects
 const WebGLBackground = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isWebGLAvailable, setIsWebGLAvailable] = useState(true);
@@ -122,21 +120,6 @@ const WebGLBackground = () => {
         <fog attach="fog" args={['#F5F3EE', 30, 50]} />
         <Lighting />
         <Orbs mousePosition={mousePosition} />
-        
-        {/* Post-processing effects for premium look */}
-        <EffectComposer>
-          <Bloom 
-            luminanceThreshold={0.2}
-            luminanceSmoothing={0.9}
-            intensity={0.8}
-            blendFunction={BlendFunction.SCREEN}
-          />
-          <DepthOfField
-            focusDistance={0.02}
-            focalLength={0.05}
-            bokehScale={3}
-          />
-        </EffectComposer>
       </Canvas>
     </div>
   );
