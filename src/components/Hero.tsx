@@ -22,8 +22,8 @@ const Hero = () => {
       {/* WebGL Background - load only when component is mounted */}
       {isLoaded && <WebGLBackground />}
       
-      {/* Semi-transparent white overlay with light blur to allow orbs to show through */}
-      <div className="absolute inset-0 bg-white/80 backdrop-blur-[2px]" />
+      {/* More transparent white overlay with very subtle blur */}
+      <div className="absolute inset-0 bg-white/60 backdrop-blur-[1px]" />
 
       {/* Content */}
       <div className="relative container-custom h-full flex flex-col justify-center items-start">
