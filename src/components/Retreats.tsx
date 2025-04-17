@@ -1,20 +1,8 @@
 
 import { useRef, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { MapPin, Calendar } from 'lucide-react';
-import { getImageUrl } from '@/utils/supabaseStorage';
-
-interface Retreat {
-  id: number;
-  title: string;
-  location: string;
-  date: string;
-  description: string;
-  image: string;
-  price: string;
-  spots: string;
-  objectPosition?: string; // Add object-position property
-}
+import RetreatCard from './retreats/RetreatCard';
+import PrivateRetreats from './retreats/PrivateRetreats';
+import { getRetreats } from './retreats/RetreatData';
 
 const Retreats = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -53,41 +41,7 @@ const Retreats = () => {
     };
   }, []);
 
-  const retreats: Retreat[] = [
-    {
-      id: 1,
-      title: "YOGA-RETREAT im BIKINI ISLAND & MOUNTAIN HOTEL",
-      location: "Port de Sollér, Mallorca, Spanien",
-      date: "24.-28.05.2025",
-      description: "Yoga-Retreat in den Bergen mit Blick aufs Meer. Erlebe eine perfekte Balance aus Yoga-Praxis, Entspannung und mediterranem Flair auf der wunderschönen Insel Mallorca.",
-      image: getImageUrl("retreat-images", "retreat-1.png"),
-      price: "Ab 1.950€",
-      spots: "8 Plätze verfügbar",
-      objectPosition: "center 40%", // Adjusted to better center on the person
-    },
-    {
-      id: 2,
-      title: "YOGA-RETREAT im VIGILIUS MOUNTAIN HOTEL",
-      location: "Lana, Südtirol, 1500m Höhe",
-      date: "12.06.-15.06.2025",
-      description: "Eintauchen in die alpine Bergwelt auf 1500m Höhe. Ein besonderes Retreat in diesem exklusiven Naturresort, nur mit der Seilbahn erreichbar, für echte Erholung und tiefe Yoga-Praxis.",
-      image: getImageUrl("retreat-images", "retreat-2.png"),
-      price: "Ab 1.200€",
-      spots: "10 Plätze verfügbar",
-      objectPosition: "center 35%", // Adjusted for better focus on the yoga pose
-    },
-    {
-      id: 3,
-      title: "YOGA-RETREAT im HOLZHOTEL FORSTHOFALM",
-      location: "Salzburger Land, Österreich",
-      date: "04.-07.09.2025",
-      description: "Drei Tage Yoga inmitten der atemberaubenden Bergkulisse des Salzburger Landes. Das nachhaltige Holzhotel bietet den perfekten Rahmen für Yoga und Naturerlebnisse.",
-      image: getImageUrl("retreat-images", "retreat-3.png"),
-      price: "Ab 990€",
-      spots: "12 Plätze verfügbar",
-      objectPosition: "center 40%", // Adjusted to better center the woman
-    },
-  ];
+  const retreats = getRetreats();
 
   return (
     <section id="retreats" ref={sectionRef} className="py-24 bg-white relative">
@@ -106,59 +60,22 @@ const Retreats = () => {
 
         <div ref={retreatsRef} className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {retreats.map((retreat) => (
-            <div key={retreat.id} className="retreat-card opacity-0 flex flex-col premium-card group">
-              <div className="relative h-64 image-zoom">
-                <img 
-                  src={retreat.image} 
-                  alt={retreat.title} 
-                  className="w-full h-full object-cover"
-                  style={{ objectPosition: retreat.objectPosition || 'center center' }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-yoga-brown/80 to-transparent"></div>
-                <div className="absolute top-0 left-0 m-4">
-                  <div className="py-1 px-3 bg-yoga-gold text-white text-xs uppercase tracking-wider rounded-sm shadow-md">
-                    Empfohlen
-                  </div>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h3 className="font-serif text-2xl text-white">{retreat.title}</h3>
-                  <div className="flex flex-wrap text-white/90 gap-4 mt-2">
-                    <span className="flex items-center text-sm">
-                      <MapPin className="h-5 w-5 mr-1.5 flex-shrink-0" />
-                      <span className="whitespace-normal">{retreat.location}</span>
-                    </span>
-                    <span className="flex items-center text-sm">
-                      <Calendar className="h-5 w-5 mr-1.5 flex-shrink-0" />
-                      <span>{retreat.date}</span>
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="p-6 flex-grow">
-                <p className="text-yoga-brown/80 mb-6 leading-relaxed">
-                  {retreat.description}
-                </p>
-                <div className="flex justify-between text-yoga-brown">
-                  <span className="font-medium text-yoga-gold">{retreat.price}</span>
-                  <span className="text-yoga-brown/70">{retreat.spots}</span>
-                </div>
-              </div>
-              <div className="px-6 pb-6">
-                <Link to="/retreats" className="yoga-button-premium bg-yoga-brown text-white hover:bg-yoga-gold border-yoga-brown hover:border-yoga-gold w-full block text-center">Mehr erfahren</Link>
-              </div>
-            </div>
+            <RetreatCard 
+              key={retreat.id}
+              id={retreat.id}
+              title={retreat.title}
+              location={retreat.location}
+              date={retreat.date}
+              description={retreat.description}
+              image={retreat.image}
+              price={retreat.price}
+              spots={retreat.spots}
+              objectPosition={retreat.objectPosition}
+            />
           ))}
         </div>
 
-        <div className={`mt-16 p-10 bg-yoga-tan/30 backdrop-blur-sm rounded-lg shadow-lg text-center border border-yoga-gold/20 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="font-serif text-2xl mb-4 text-yoga-brown">Private Yoga-Reisen</h3>
-          <div className="w-16 h-0.5 bg-yoga-gold mx-auto mb-6"></div>
-          <p className="text-yoga-brown/80 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Suchst du nach einer personalisierten spirituellen Reise für deine Gruppe, Familie oder zu einem besonderen Anlass?
-            Mahashakti bietet maßgeschneiderte Retreats, die auf deine spezifischen Intentionen und spirituellen Ziele abgestimmt sind.
-          </p>
-          <Link to="/retreats" className="yoga-button-premium bg-yoga-gold/90 hover:bg-yoga-gold text-white border-yoga-gold/90 hover:border-yoga-gold">Anfrage für private Reisen</Link>
-        </div>
+        <PrivateRetreats isVisible={isVisible} />
       </div>
     </section>
   );
