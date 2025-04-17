@@ -54,40 +54,40 @@ const Classes = () => {
       id: 1,
       title: "Hatha Flow Yoga",
       description: "Harmonische Verbindung von Atem und Bewegung. Stärke deinen Körper und verbessere deine Flexibilität mit fließenden Übergängen zwischen den Asanas.",
-      image: getImageUrl("retreat-images", "yoga-class-1.png"),
+      image: "/lovable-uploads/dba68d16-d275-4cef-a55a-21fcf95b2e44.png",
       level: "Alle Niveaus",
       duration: "75 Min",
-      objectPosition: "center 5%", // Much higher position to show the head properly
+      objectPosition: "center center", // Perfectly centered
       objectFit: "cover",
     },
     {
       id: 2,
       title: "Hatha-Vinyasa",
       description: "Eine dynamische Praxis, die traditionelle Hatha-Posen mit fließenden Vinyasa-Sequenzen verbindet. Entwickle Kraft und Flexibilität durch achtsame Bewegungen.",
-      image: getImageUrl("retreat-images", "yoga-class-2.png"),
+      image: "/lovable-uploads/040584b2-f8bb-43a4-81b5-2ea45fdd0e83.png",
       level: "Mittelstufe",
       duration: "90 Min",
-      objectPosition: "center 10%", // Moved much higher to better frame the face
+      objectPosition: "center center", // Perfectly centered
       objectFit: "cover",
     },
     {
       id: 3,
       title: "Yin Yoga",
       description: "Eine meditative Praxis mit längeren Haltezeiten. Löse tiefsitzende Spannungen, verbessere die Flexibilität deines Bindegewebes und finde innere Ruhe.",
-      image: getImageUrl("retreat-images", "yoga-class-3.png"),
+      image: "/lovable-uploads/d041641d-c7a5-4f92-9886-4b97f0e15bbe.png",
       level: "Alle Niveaus",
       duration: "90 Min",
-      objectPosition: "center 20%", // Significant adjustment to center the person better
+      objectPosition: "center center", // Perfectly centered
       objectFit: "cover",
     },
     {
       id: 4,
       title: "Ashtanga Yoga",
       description: "Eine kraftvolle und strukturierte Praxis, die durch eine festgelegte Sequenz von Asanas führt. Entwickle Stärke, Ausdauer und innere Klarheit durch regelmäßige Übung.",
-      image: getImageUrl("retreat-images", "yoga-class-4.png"),
+      image: "/lovable-uploads/9ca8aec4-ec47-4aa0-ab46-f249513d47c8.png",
       level: "Fortgeschritten",
       duration: "90 Min",
-      objectPosition: "center 15%", // Moved higher to better center the meditation pose
+      objectPosition: "center center", // Perfectly centered
       objectFit: "cover",
     },
   ];
