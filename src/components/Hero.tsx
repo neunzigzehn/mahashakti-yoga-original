@@ -1,12 +1,12 @@
 
 import { useEffect, useState } from 'react';
 import WebGLBackground from './WebGLBackground';
-import { useMedia } from '@react-hookz/web';
+import { useMediaQuery } from '@react-hookz/web';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const isMobile = useMedia('(max-width: 768px)');
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   useEffect(() => {
     // Set background as loaded

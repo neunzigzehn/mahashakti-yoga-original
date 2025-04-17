@@ -20,7 +20,7 @@ const Meta = ({
   const fullTitle = title.includes('Mahashakti') ? title : `${title} | Mahashakti Yoga`;
   
   // Current URL for canonical link
-  const currentUrl = canonicalUrl || window.location.href;
+  const currentUrl = canonicalUrl || (typeof window !== 'undefined' ? window.location.href : '');
   
   return (
     <Helmet>
