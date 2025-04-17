@@ -1,5 +1,6 @@
 
 import { useEffect, useRef, useState } from 'react';
+import { getImageUrl } from '@/utils/supabaseStorage';
 
 interface YogaClass {
   id: number;
@@ -52,7 +53,7 @@ const Classes = () => {
       id: 1,
       title: "Hatha Flow Yoga",
       description: "Harmonische Verbindung von Atem und Bewegung. Stärke deinen Körper und verbessere deine Flexibilität mit fließenden Übergängen zwischen den Asanas.",
-      image: "public/lovable-uploads/2923884d-cdb3-4751-a291-53f8d955a7ae.png",
+      image: getImageUrl("retreat-images", "yoga-class-1.png"),
       level: "Alle Niveaus",
       duration: "75 Min",
       objectPosition: "center bottom", // Adjusted to move image down
@@ -61,7 +62,7 @@ const Classes = () => {
       id: 2,
       title: "Hatha-Vinyasa",
       description: "Eine dynamische Praxis, die traditionelle Hatha-Posen mit fließenden Vinyasa-Sequenzen verbindet. Entwickle Kraft und Flexibilität durch achtsame Bewegungen.",
-      image: "public/lovable-uploads/ef7f56f0-628a-4a61-a33d-543f239643cf.png",
+      image: getImageUrl("retreat-images", "yoga-class-2.png"),
       level: "Mittelstufe",
       duration: "90 Min",
       objectPosition: "center center",
@@ -70,7 +71,7 @@ const Classes = () => {
       id: 3,
       title: "Yin Yoga",
       description: "Eine meditative Praxis mit längeren Haltezeiten. Löse tiefsitzende Spannungen, verbessere die Flexibilität deines Bindegewebes und finde innere Ruhe.",
-      image: "public/lovable-uploads/4f4b0113-5662-426b-b0ed-039247ec283a.png",
+      image: getImageUrl("retreat-images", "yoga-class-3.png"),
       level: "Alle Niveaus",
       duration: "90 Min",
       objectPosition: "center center",
@@ -79,7 +80,7 @@ const Classes = () => {
       id: 4,
       title: "Ashtanga Yoga",
       description: "Eine kraftvolle und strukturierte Praxis, die durch eine festgelegte Sequenz von Asanas führt. Entwickle Stärke, Ausdauer und innere Klarheit durch regelmäßige Übung.",
-      image: "public/lovable-uploads/0e42c8a4-6afd-410a-a56a-63559589bb10.png",
+      image: getImageUrl("retreat-images", "yoga-class-4.png"),
       level: "Fortgeschritten",
       duration: "90 Min",
       objectPosition: "center top", // Adjusted to move image up

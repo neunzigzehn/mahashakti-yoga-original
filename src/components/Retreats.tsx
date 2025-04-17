@@ -2,6 +2,7 @@
 import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Calendar } from 'lucide-react';
+import { getImageUrl } from '@/utils/supabaseStorage';
 
 interface Retreat {
   id: number;
@@ -58,7 +59,7 @@ const Retreats = () => {
       location: "Port de Sollér, Mallorca, Spanien",
       date: "24.-28.05.2025",
       description: "Yoga-Retreat in den Bergen mit Blick aufs Meer. Erlebe eine perfekte Balance aus Yoga-Praxis, Entspannung und mediterranem Flair auf der wunderschönen Insel Mallorca.",
-      image: "public/lovable-uploads/72c705d6-2b0f-484b-88f0-d6e6988c1170.png",
+      image: getImageUrl("retreat-images", "retreat-1.png"),
       price: "Ab 1.950€",
       spots: "8 Plätze verfügbar",
     },
@@ -68,7 +69,7 @@ const Retreats = () => {
       location: "Lana, Südtirol, 1500m Höhe",
       date: "12.06.-15.06.2025",
       description: "Eintauchen in die alpine Bergwelt auf 1500m Höhe. Ein besonderes Retreat in diesem exklusiven Naturresort, nur mit der Seilbahn erreichbar, für echte Erholung und tiefe Yoga-Praxis.",
-      image: "public/lovable-uploads/bf6b3af2-94dc-43a1-a0e7-152549c426ce.png",
+      image: getImageUrl("retreat-images", "retreat-2.png"),
       price: "Ab 1.200€",
       spots: "10 Plätze verfügbar",
     },
@@ -78,7 +79,7 @@ const Retreats = () => {
       location: "Salzburger Land, Österreich",
       date: "04.-07.09.2025",
       description: "Drei Tage Yoga inmitten der atemberaubenden Bergkulisse des Salzburger Landes. Das nachhaltige Holzhotel bietet den perfekten Rahmen für Yoga und Naturerlebnisse.",
-      image: "public/lovable-uploads/a4d6f1a1-d412-4454-a3bd-0261a88e98b9.png",
+      image: getImageUrl("retreat-images", "retreat-3.png"),
       price: "Ab 990€",
       spots: "12 Plätze verfügbar",
     },

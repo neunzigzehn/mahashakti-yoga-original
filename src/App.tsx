@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -16,6 +15,7 @@ import Blog from "./pages/Blog";
 import Impressum from "./pages/Impressum";
 import AGB from "./pages/AGB";
 import NotFound from "./pages/NotFound";
+import Admin from './pages/Admin';
 
 // Create query client with optimized settings
 const queryClient = new QueryClient({
@@ -29,32 +29,34 @@ const queryClient = new QueryClient({
   }
 });
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <div className="overflow-x-hidden w-full">
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/uber-uns" element={<UberUns />} />
-            <Route path="/angebot" element={<Angebot />} />
-            <Route path="/stundenplan" element={<Stundenplan />} />
-            <Route path="/retreats" element={<RetreatSeite />} />
-            <Route path="/ausbildungen" element={<Ausbildungen />} />
-            <Route path="/workshops" element={<Workshops />} />
-            <Route path="/kontakt" element={<Kontakt />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/impressum" element={<Impressum />} />
-            <Route path="/agb" element={<AGB />} />
-            {/* Catch-all route for 404 */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </div>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <div className="overflow-x-hidden w-full">
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/uber-uns" element={<UberUns />} />
+              <Route path="/angebot" element={<Angebot />} />
+              <Route path="/stundenplan" element={<Stundenplan />} />
+              <Route path="/retreats" element={<RetreatSeite />} />
+              <Route path="/ausbildungen" element={<Ausbildungen />} />
+              <Route path="/workshops" element={<Workshops />} />
+              <Route path="/kontakt" element={<Kontakt />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/impressum" element={<Impressum />} />
+              <Route path="/agb" element={<AGB />} />
+              <Route path="/admin" element={<Admin />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </div>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+}
 
 export default App;

@@ -3,7 +3,7 @@ import { supabase, supabaseStorageUrl } from '@/integrations/supabase/client';
 
 export const initializeStorage = async () => {
   try {
-    // Check if the favicons bucket exists
+    // Check if the required buckets exist
     const { data: buckets, error } = await supabase.storage.listBuckets();
     
     if (error) {
@@ -11,7 +11,9 @@ export const initializeStorage = async () => {
       return;
     }
 
+    // Check for the favicons bucket
     const faviconBucketExists = buckets.some(bucket => bucket.name === 'favicons');
+    const retreatImagesBucketExists = buckets.some(bucket => bucket.name === 'retreat-images');
     
     if (!faviconBucketExists) {
       // Create the favicons bucket
@@ -22,12 +24,27 @@ export const initializeStorage = async () => {
       
       if (createError) {
         console.error('Error creating favicons bucket:', createError);
-        return;
+      } else {
+        console.log('Favicons bucket created successfully');
       }
-      
-      console.log('Favicons bucket created successfully');
     } else {
       console.log('Favicons bucket already exists');
+    }
+
+    if (!retreatImagesBucketExists) {
+      // Create the retreat-images bucket
+      const { error: createError } = await supabase.storage.createBucket('retreat-images', {
+        public: true,
+        fileSizeLimit: 5242880 // 5MB
+      });
+      
+      if (createError) {
+        console.error('Error creating retreat-images bucket:', createError);
+      } else {
+        console.log('Retreat images bucket created successfully');
+      }
+    } else {
+      console.log('Retreat images bucket already exists');
     }
 
     // Get the URLs for the favicon files

@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { MapPin, Calendar, Users, ArrowRight, Download } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { getImageUrl } from '@/utils/supabaseStorage';
 
 const RetreatSeite = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -67,7 +68,7 @@ const RetreatSeite = () => {
                 <Card className="overflow-hidden bg-white shadow-lg border-yoga-gold/10 hover:shadow-xl transition-shadow duration-300">
                   <div className="h-56 bg-yoga-beige/50 relative overflow-hidden">
                     <img 
-                      src="public/lovable-uploads/72c705d6-2b0f-484b-88f0-d6e6988c1170.png" 
+                      src={getImageUrl("retreat-images", "retreat-1.png")}
                       alt="Yoga-Retreat in Port de Sollér, Mallorca" 
                       className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                       loading="lazy"
@@ -106,7 +107,7 @@ const RetreatSeite = () => {
                 <Card className="overflow-hidden bg-white shadow-lg border-yoga-gold/10 hover:shadow-xl transition-shadow duration-300">
                   <div className="h-56 bg-yoga-beige/50 relative overflow-hidden">
                     <img 
-                      src="public/lovable-uploads/bf6b3af2-94dc-43a1-a0e7-152549c426ce.png" 
+                      src={getImageUrl("retreat-images", "retreat-2.png")}
                       alt="Yoga-Retreat im Vigilius Mountain Hotel, Südtirol" 
                       className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                       loading="lazy"
@@ -145,7 +146,7 @@ const RetreatSeite = () => {
                 <Card className="overflow-hidden bg-white shadow-lg border-yoga-gold/10 hover:shadow-xl transition-shadow duration-300">
                   <div className="h-56 bg-yoga-beige/50 relative overflow-hidden">
                     <img 
-                      src="public/lovable-uploads/a4d6f1a1-d412-4454-a3bd-0261a88e98b9.png" 
+                      src={getImageUrl("retreat-images", "retreat-3.png")}
                       alt="Yoga-Retreat im Holzhotel Forsthofalm, Salzburger Land" 
                       className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                       loading="lazy"
