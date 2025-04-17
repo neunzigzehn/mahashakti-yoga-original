@@ -7,7 +7,7 @@ const BlurEffect = () => {
   
   useEffect(() => {
     // Full resolution rendering for better visibility
-    gl.setPixelRatio(window.devicePixelRatio);
+    gl.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit to 2x for performance
   }, [gl]);
 
   return null;
