@@ -57,7 +57,7 @@ const Classes = () => {
       image: "/lovable-uploads/dba68d16-d275-4cef-a55a-21fcf95b2e44.png",
       level: "Alle Niveaus",
       duration: "75 Min",
-      objectPosition: "center center", // Perfectly centered
+      objectPosition: "55% 45%", // Adjusted to better position the subject
       objectFit: "cover",
     },
     {
@@ -67,7 +67,7 @@ const Classes = () => {
       image: "/lovable-uploads/040584b2-f8bb-43a4-81b5-2ea45fdd0e83.png",
       level: "Mittelstufe",
       duration: "90 Min",
-      objectPosition: "center center", // Perfectly centered
+      objectPosition: "center center", // This one is already well-positioned
       objectFit: "cover",
     },
     {
@@ -77,7 +77,7 @@ const Classes = () => {
       image: "/lovable-uploads/d041641d-c7a5-4f92-9886-4b97f0e15bbe.png",
       level: "Alle Niveaus",
       duration: "90 Min",
-      objectPosition: "center center", // Perfectly centered
+      objectPosition: "center center", // This one is already well-positioned
       objectFit: "cover",
     },
     {
@@ -87,7 +87,7 @@ const Classes = () => {
       image: "/lovable-uploads/9ca8aec4-ec47-4aa0-ab46-f249513d47c8.png",
       level: "Fortgeschritten",
       duration: "90 Min",
-      objectPosition: "center center", // Perfectly centered
+      objectPosition: "65% 40%", // Adjusted to better center the subject
       objectFit: "cover",
     },
   ];
