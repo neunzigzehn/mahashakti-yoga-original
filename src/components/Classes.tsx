@@ -55,7 +55,7 @@ const Classes = () => {
       image: "public/lovable-uploads/2923884d-cdb3-4751-a291-53f8d955a7ae.png",
       level: "Alle Niveaus",
       duration: "75 Min",
-      objectPosition: "center top", // Adjusted to move image up
+      objectPosition: "center bottom", // Adjusted to move image down
     },
     {
       id: 2,
@@ -82,7 +82,7 @@ const Classes = () => {
       image: "public/lovable-uploads/0e42c8a4-6afd-410a-a56a-63559589bb10.png",
       level: "Fortgeschritten",
       duration: "90 Min",
-      objectPosition: "center bottom", // Adjusted to move image down
+      objectPosition: "center top", // Adjusted to move image up
     },
   ];
 
