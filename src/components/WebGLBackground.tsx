@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useMemo } from 'react';
 import { Canvas } from '@react-three/fiber';
 import Orbs from './three/Orbs';
@@ -20,9 +21,9 @@ const WebGLBackground = () => {
       console.error("WebGL not supported:", e);
     }
 
-    // Optimized mouse tracking with more throttling for smoother movement
+    // Extremely throttled mouse tracking for smoother movement
     let lastUpdateTime = 0;
-    const updateInterval = 50; // Increased time between updates for smoother performance
+    const updateInterval = 100; // Increased time between updates for smoother performance
     
     const handleMouseMove = (e: MouseEvent) => {
       const currentTime = Date.now();
@@ -35,8 +36,8 @@ const WebGLBackground = () => {
       const y = -(e.clientY / window.innerHeight) * 2 + 1;
       
       setMousePosition({
-        x: x * 0.3, // Further reduced sensitivity for smoother movement
-        y: y * 0.3
+        x: x * 0.2, // Further reduced sensitivity for smoother movement
+        y: y * 0.2
       });
     };
 
@@ -53,8 +54,8 @@ const WebGLBackground = () => {
       const y = -(e.touches[0].clientY / window.innerHeight) * 2 + 1;
       
       setMousePosition({
-        x: x * 0.3,
-        y: y * 0.3
+        x: x * 0.2,
+        y: y * 0.2
       });
     };
 
@@ -76,7 +77,7 @@ const WebGLBackground = () => {
     if (ctx) {
       for (let x = 0; x < canvas.width; x++) {
         for (let y = 0; y < canvas.height; y++) {
-          const value = Math.random() * 20; // Subtle noise
+          const value = Math.random() * 15; // Subtle noise
           ctx.fillStyle = `rgba(255, 255, 255, ${value / 100})`;
           ctx.fillRect(x, y, 1, 1);
         }
@@ -95,14 +96,14 @@ const WebGLBackground = () => {
       <div 
         className="absolute inset-0" 
         style={{
-          background: 'radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.97) 0%, rgba(245, 243, 238, 0.85) 60%, rgba(229, 209, 184, 0.8) 100%)',
+          background: 'radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.97) 0%, rgba(245, 243, 238, 0.9) 60%, rgba(229, 209, 184, 0.85) 100%)',
           backgroundBlendMode: 'screen',
           backgroundImage: `url(${noisePattern})`,
         }}
       />
       
-      {/* Enhanced blur effect */}
-      <div className="absolute inset-0 backdrop-blur-[50px] opacity-70" />
+      {/* Extra CSS blur effect for the background */}
+      <div className="absolute inset-0 backdrop-blur-[70px] opacity-50" />
       
       <Canvas 
         gl={{ 
@@ -110,10 +111,10 @@ const WebGLBackground = () => {
           alpha: true,
           powerPreference: 'default',
           stencil: false,
-          depth: true
+          depth: false // Disable depth testing for better blending
         }}
         dpr={[0.7, 1.2]} // Slightly reduced DPR for better performance
-        camera={{ position: [0, 0, 15], fov: 45, near: 0.1, far: 120 }} // Adjusted camera for better view
+        camera={{ position: [0, 0, 15], fov: 45, near: 0.1, far: 100 }}
         style={{ mixBlendMode: 'plus-lighter' }} // Premium blend mode
       >
         <Lighting />
