@@ -1,7 +1,9 @@
 
-import { useRef, useMemo } from 'react';
+import { useRef } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
+import GoldMaterial from './GoldMaterial';
+import BrownMaterial from './BrownMaterial';
 
 interface OrbsProps {
   mousePosition: { x: number; y: number };
@@ -12,98 +14,53 @@ const Orbs = ({ mousePosition }: OrbsProps) => {
   const brownOrbRef = useRef<THREE.Mesh>(null!);
   const { viewport } = useThree();
   
-  // Create a high-quality radial gradient texture for orbs (cached via useMemo)
-  const gradientTexture = useMemo(() => {
-    const size = 1024; // Higher resolution texture for better quality
-    const canvas = document.createElement('canvas');
-    canvas.width = size;
-    canvas.height = size;
-    const ctx = canvas.getContext('2d');
-    
-    if (ctx) {
-      // Create radial gradient with smoother transitions
-      const gradient = ctx.createRadialGradient(
-        size / 2, size / 2, 0,
-        size / 2, size / 2, size / 2
-      );
-      
-      // Enhanced glow effect with better color transitions
-      gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-      gradient.addColorStop(0.15, 'rgba(255, 255, 255, 0.9)');
-      gradient.addColorStop(0.4, 'rgba(255, 255, 255, 0.5)');
-      gradient.addColorStop(0.75, 'rgba(255, 255, 255, 0.2)');
-      gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-      
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, size, size);
-    }
-    
-    const texture = new THREE.CanvasTexture(canvas);
-    texture.needsUpdate = true;
-    return texture;
-  }, []);
-    
-  useFrame(({ clock }) => {
+  // Update orb positions based on mouse movement
+  useFrame(() => {
     if (goldOrbRef.current && brownOrbRef.current) {
-      const time = clock.getElapsedTime();
-      
-      // Fixed positioning to ensure visibility
+      // Move gold orb - smoother movement
       goldOrbRef.current.position.x = THREE.MathUtils.lerp(
         goldOrbRef.current.position.x,
-        (mousePosition.x * viewport.width) * 0.1 + Math.sin(time * 0.05) * 2,
-        0.01
+        (mousePosition.x * viewport.width) * 1.4,
+        0.008
       );
       goldOrbRef.current.position.y = THREE.MathUtils.lerp(
         goldOrbRef.current.position.y,
-        (-mousePosition.y * viewport.height) * 0.1 + Math.cos(time * 0.07) * 1,
-        0.01
+        (-mousePosition.y * viewport.height) * 1.4,
+        0.008
       );
-      // Fixed z position to ensure visibility
-      goldOrbRef.current.position.z = 0;
 
+      // Move brown orb in the opposite direction
       brownOrbRef.current.position.x = THREE.MathUtils.lerp(
         brownOrbRef.current.position.x,
-        (-mousePosition.x * viewport.width) * 0.12 + Math.cos(time * 0.06) * 1.5,
-        0.008
+        (-mousePosition.x * viewport.width) * 1.7,
+        0.006
       );
       brownOrbRef.current.position.y = THREE.MathUtils.lerp(
         brownOrbRef.current.position.y,
-        (mousePosition.y * viewport.height) * 0.12 + Math.sin(time * 0.08) * 1.2,
-        0.008
+        (mousePosition.y * viewport.height) * 1.7,
+        0.006
       );
-      // Fixed z position to ensure visibility but maintain layering
-      brownOrbRef.current.position.z = -1;
+
+      // Gentle rotation
+      goldOrbRef.current.rotation.x += 0.0003;
+      goldOrbRef.current.rotation.y += 0.0004;
+      brownOrbRef.current.rotation.x += 0.0004;
+      brownOrbRef.current.rotation.y += 0.0005;
     }
   });
 
   return (
     <>
-      {/* Gold hue orb with increased size and opacity */}
-      <mesh ref={goldOrbRef} position={[0, 0, 0]} renderOrder={10}>
-        <planeGeometry args={[20, 20]} />
-        <meshBasicMaterial 
-          map={gradientTexture}
-          color="#FEF7CD"
-          transparent
-          opacity={1}
-          blending={THREE.AdditiveBlending}
-          depthWrite={false}
-          depthTest={false}
-        />
+      {/* Gold orb */}
+      <mesh ref={goldOrbRef} position={[-4, 2.5, -12]}>
+        <sphereGeometry args={[7.5, 32, 32]} />
+        <GoldMaterial />
       </mesh>
       
-      {/* Brown/peach hue orb with increased size and opacity */}
-      <mesh ref={brownOrbRef} position={[0, 0, -1]} renderOrder={9}>
-        <planeGeometry args={[22, 22]} />
-        <meshBasicMaterial 
-          map={gradientTexture}
-          color="#FDE1D3"
-          transparent
-          opacity={1}
-          blending={THREE.AdditiveBlending}
-          depthWrite={false}
-          depthTest={false}
-        />
+      {/* Brown orb */}
+      <mesh ref={brownOrbRef} position={[4.5, -2.5, -15]}>
+        <sphereGeometry args={[9, 32, 32]} />
+        <BrownMaterial />
       </mesh>
     </>
   );

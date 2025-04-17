@@ -1,26 +1,20 @@
 
 import { useRef } from 'react';
 import * as THREE from 'three';
-import { useFrame } from '@react-three/fiber';
 
 const BrownMaterial = () => {
-  const materialRef = useRef<THREE.MeshBasicMaterial>(null!);
-  
-  useFrame(({ clock }) => {
-    if (materialRef.current) {
-      // Very subtle pulsing effect
-      const pulse = Math.sin(clock.getElapsedTime() * 0.15) * 0.05 + 0.95;
-      materialRef.current.opacity = 0.75 * pulse;
-    }
-  });
+  const materialRef = useRef<THREE.MeshStandardMaterial>(null!);
   
   return (
-    <meshBasicMaterial 
+    <meshStandardMaterial 
       ref={materialRef} 
-      color="#FDE1D3"
+      color="#3F3628"
+      emissive="#E5D1B8"
+      emissiveIntensity={0.6}
+      metalness={0.35}
+      roughness={0.65}
       transparent
-      opacity={0.75}
-      blending={THREE.AdditiveBlending}
+      opacity={0.85}
     />
   );
 };
