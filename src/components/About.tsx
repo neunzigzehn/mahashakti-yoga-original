@@ -39,7 +39,7 @@ const About = () => {
       
       <div className="container-custom relative">
         <div className={`text-center mb-16 transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="section-title text-yoga-brown">About Mahashakti</h2>
+          <h2 className="section-title text-yoga-brown">Über Mahashakti</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -52,8 +52,9 @@ const About = () => {
             <div className="relative overflow-hidden rounded-lg shadow-xl">
               <img 
                 src="/lovable-uploads/602e51c2-8474-470c-b1e8-9a9567c669e7.png" 
-                alt="Mahashakti Yoga Founder" 
+                alt="Mahashakti Yoga Gründerin" 
                 className="w-full h-auto object-cover transform transition-transform duration-700 hover:scale-105"
+                loading="lazy"
               />
             </div>
           </div>
@@ -63,31 +64,31 @@ const About = () => {
             ref={textRef} 
             className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}
           >
-            <h3 className="font-serif text-3xl mb-6 text-yoga-brown">My Yoga Journey</h3>
+            <h3 className="font-serif text-3xl mb-6 text-yoga-brown">Meine Yoga-Reise</h3>
             <div className="w-16 h-0.5 bg-yoga-gold mb-8"></div>
             <p className="text-yoga-brown/80 mb-6 leading-relaxed">
-              The journey of Mahashakti Yoga began over fifteen years ago, rooted in ancient traditions and authentic practices. What started as a personal exploration evolved into a mission to share these transformative practices with others.
+              Die Reise von Mahashakti Yoga begann vor über fünfzehn Jahren, verwurzelt in alten Traditionen und authentischen Praktiken. Was als persönliche Erkundung begann, entwickelte sich zu einer Mission, diese transformativen Praktiken mit anderen zu teilen.
             </p>
             <p className="text-yoga-brown/80 mb-6 leading-relaxed">
-              Trained in traditional Hatha, Kundalini, and Tantric yoga practices, Mahashakti offers a unique approach that honors the sacred origins of yoga while making it accessible to modern practitioners seeking physical, mental, and spiritual well-being.
+              Ausgebildet in traditionellen Hatha-, Kundalini- und Tantra-Yoga-Praktiken bietet Mahashakti einen einzigartigen Ansatz, der die heiligen Ursprünge des Yoga ehrt und gleichzeitig für moderne Praktizierende zugänglich macht, die körperliches, geistiges und spirituelles Wohlbefinden suchen.
             </p>
             <p className="text-yoga-brown/80 mb-8 leading-relaxed">
-              Our teaching philosophy centers on creating a sacred space where students can explore the deeper dimensions of yoga, connecting with their inner power and awakening their true potential.
+              Unsere Lehrphilosophie konzentriert sich darauf, einen heiligen Raum zu schaffen, in dem Schüler die tieferen Dimensionen des Yoga erforschen, sich mit ihrer inneren Kraft verbinden und ihr wahres Potenzial erwecken können.
             </p>
-            <a href="#contact" className="yoga-button-premium bg-yoga-brown text-white hover:bg-yoga-gold border-yoga-brown hover:border-yoga-gold">Connect With Us</a>
+            <a href="/kontakt" className="yoga-button-premium bg-yoga-brown text-white hover:bg-yoga-gold border-yoga-brown hover:border-yoga-gold">Kontakt aufnehmen</a>
           </div>
         </div>
 
         {/* Philosophy section */}
         <div className={`mt-24 text-center max-w-3xl mx-auto transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="font-serif text-3xl mb-6 text-yoga-brown">Our Philosophy</h3>
+          <h3 className="font-serif text-3xl mb-6 text-yoga-brown">Unsere Philosophie</h3>
           <div className="w-16 h-0.5 bg-yoga-gold mx-auto mb-8"></div>
           <p className="text-yoga-brown/80 mb-10 leading-relaxed italic font-serif text-2xl">
-            "Yoga is not merely a practice, but a journey towards discovering your inner power and divine light."
+            "Yoga ist nicht nur eine Praxis, sondern eine Reise zur Entdeckung deiner inneren Kraft und deines göttlichen Lichts."
           </p>
           <div className="p-8 bg-white/80 backdrop-blur-sm rounded-lg shadow-sm">
             <p className="text-yoga-brown/80 leading-relaxed">
-              At Mahashakti Yoga, we believe in the transformative power of authentic yoga practices that integrate body, mind, and spirit. Our approach combines traditional wisdom with contemporary understanding, creating a space for personal growth, healing, and spiritual awakening.
+              Bei Mahashakti Yoga glauben wir an die transformative Kraft authentischer Yoga-Praktiken, die Körper, Geist und Seele integrieren. Unser Ansatz verbindet traditionelle Weisheit mit zeitgenössischem Verständnis und schafft einen Raum für persönliches Wachstum, Heilung und spirituelles Erwachen.
             </p>
           </div>
         </div>
