@@ -2,6 +2,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { Navbar } from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { MapPin, Calendar, Users, ArrowRight, Download } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 const RetreatSeite = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -31,6 +34,11 @@ const RetreatSeite = () => {
     };
   }, []);
 
+  // Scroll to top when page loads
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -39,8 +47,12 @@ const RetreatSeite = () => {
         {/* Hero banner */}
         <section className="pt-24 pb-16 bg-yoga-beige relative">
           <div className="container-custom">
-            <h1 className="text-center font-serif text-4xl md:text-5xl lg:text-6xl text-yoga-brown">Retreats</h1>
-            <div className="w-24 h-0.5 bg-yoga-gold mx-auto mt-6 mb-12"></div>
+            <h1 className="text-center font-serif text-4xl md:text-5xl lg:text-6xl text-yoga-brown">Yoga-Retreats</h1>
+            <div className="w-24 h-0.5 bg-yoga-gold mx-auto mt-6 mb-8"></div>
+            <p className="text-center text-yoga-brown/80 max-w-3xl mx-auto">
+              Komme auch du mit auf eines der vielen schönen Yoga-Retreats mit Veronika an besonderen Kraftorten dieser Welt. 
+              Alleine, zu zweit, in einer Gruppe, als AnfängerIn oder fortgeschritten. Come as you are.
+            </p>
           </div>
         </section>
 
@@ -50,118 +62,262 @@ const RetreatSeite = () => {
             <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               
               {/* Featured Retreats */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-                {/* Sacred India Retreat */}
-                <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-                  <div className="h-48 bg-yoga-beige/50 relative">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+                {/* Mallorca - Port de Soller */}
+                <Card className="overflow-hidden bg-white shadow-lg border-yoga-gold/10 hover:shadow-xl transition-shadow duration-300">
+                  <div className="h-56 bg-yoga-beige/50 relative overflow-hidden">
                     <img 
-                      src="/placeholder.svg" 
-                      alt="Sacred India Retreat in Rishikesh" 
-                      className="w-full h-full object-cover"
+                      src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=1000&q=80" 
+                      alt="Yoga-Retreat in Port de Sollér, Mallorca" 
+                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                       loading="lazy"
                     />
                   </div>
-                  <div className="p-6">
-                    <h3 className="font-serif text-xl mb-2 text-yoga-brown">Sacred India Retreat – Rishikesh</h3>
-                    <p className="text-yoga-brown/70 text-sm mb-4">15.–28. 03. 2026</p>
-                    <p className="text-yoga-brown/80 mb-4">
-                      Tauche im Ursprungsland des Yoga in die authentische Tradition ein und erlebe spirituelle Transformation.
+                  <CardHeader className="pb-2">
+                    <CardTitle className="font-serif text-xl text-yoga-brown">YOGA-RETREAT im BIKINI ISLAND & MOUNTAIN HOTEL</CardTitle>
+                    <CardDescription className="text-yoga-brown/70 flex flex-col gap-2 mt-2">
+                      <span className="flex items-center">
+                        <MapPin className="h-4 w-4 mr-2 text-yoga-gold" />
+                        Port de Sollér, Mallorca, Spanien
+                      </span>
+                      <span className="flex items-center">
+                        <Calendar className="h-4 w-4 mr-2 text-yoga-gold" />
+                        24.-28.05.2025 (4 Nächte)
+                      </span>
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="text-yoga-brown/80">
+                    <p className="mb-4">
+                      Yoga-Retreat in den Bergen mit Blick aufs Meer. Erlebe eine perfekte Balance aus Yoga-Praxis, 
+                      Entspannung und mediterranem Flair auf der wunderschönen Insel Mallorca.
                     </p>
-                    <p className="text-yoga-gold font-medium mb-4">ab 2.800 €</p>
-                    <a href="#" className="yoga-button inline-block w-full text-center">Mehr erfahren</a>
-                  </div>
-                </div>
+                    <div className="text-yoga-gold font-medium">Ab 1.950€</div>
+                  </CardContent>
+                  <CardFooter className="pt-0 flex justify-between items-center">
+                    <span className="text-yoga-brown/60 text-sm">8 Plätze verfügbar</span>
+                    <a href="#" className="text-yoga-brown hover:text-yoga-gold flex items-center transition-colors">
+                      Mehr Infos <ArrowRight className="ml-1 h-4 w-4" />
+                    </a>
+                  </CardFooter>
+                </Card>
                 
-                {/* Kundalini Awakening */}
-                <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-                  <div className="h-48 bg-yoga-beige/50 relative">
+                {/* Südtirol - Vigilius */}
+                <Card className="overflow-hidden bg-white shadow-lg border-yoga-gold/10 hover:shadow-xl transition-shadow duration-300">
+                  <div className="h-56 bg-yoga-beige/50 relative overflow-hidden">
                     <img 
-                      src="/placeholder.svg" 
-                      alt="Kundalini Awakening Retreat in Süddeutschland" 
-                      className="w-full h-full object-cover"
+                      src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1000&q=80" 
+                      alt="Yoga-Retreat im Vigilius Mountain Hotel, Südtirol" 
+                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                       loading="lazy"
                     />
                   </div>
-                  <div className="p-6">
-                    <h3 className="font-serif text-xl mb-2 text-yoga-brown">Kundalini Awakening – Süddeutschland</h3>
-                    <p className="text-yoga-brown/70 text-sm mb-4">8.–15. 07. 2025</p>
-                    <p className="text-yoga-brown/80 mb-4">
-                      Aktiviere deine innere Energie durch kraftvolle Kundalini-Praktiken und transformative Atemarbeit.
+                  <CardHeader className="pb-2">
+                    <CardTitle className="font-serif text-xl text-yoga-brown">YOGA-RETREAT im VIGILIUS MOUNTAIN HOTEL</CardTitle>
+                    <CardDescription className="text-yoga-brown/70 flex flex-col gap-2 mt-2">
+                      <span className="flex items-center">
+                        <MapPin className="h-4 w-4 mr-2 text-yoga-gold" />
+                        Lana, Südtirol, 1500m Höhe
+                      </span>
+                      <span className="flex items-center">
+                        <Calendar className="h-4 w-4 mr-2 text-yoga-gold" />
+                        12.06.-15.06.2025
+                      </span>
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="text-yoga-brown/80">
+                    <p className="mb-4">
+                      Eintauchen in die alpine Bergwelt auf 1500m Höhe. Ein besonderes Retreat in diesem exklusiven 
+                      Naturresort, nur mit der Seilbahn erreichbar, für echte Erholung und tiefe Yoga-Praxis.
                     </p>
-                    <p className="text-yoga-gold font-medium mb-4">ab 1.950 €</p>
-                    <a href="#" className="yoga-button inline-block w-full text-center">Mehr erfahren</a>
-                  </div>
-                </div>
+                    <div className="text-yoga-gold font-medium">Ab 1.200€</div>
+                  </CardContent>
+                  <CardFooter className="pt-0 flex justify-between items-center">
+                    <span className="text-yoga-brown/60 text-sm">10 Plätze verfügbar</span>
+                    <a href="#" className="text-yoga-brown hover:text-yoga-gold flex items-center transition-colors">
+                      Mehr Infos <ArrowRight className="ml-1 h-4 w-4" />
+                    </a>
+                  </CardFooter>
+                </Card>
                 
-                {/* Tantric Wisdom Retreat */}
-                <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-                  <div className="h-48 bg-yoga-beige/50 relative">
+                {/* Salzburger Land - Forsthofalm */}
+                <Card className="overflow-hidden bg-white shadow-lg border-yoga-gold/10 hover:shadow-xl transition-shadow duration-300">
+                  <div className="h-56 bg-yoga-beige/50 relative overflow-hidden">
                     <img 
-                      src="/placeholder.svg" 
-                      alt="Tantric Wisdom Retreat in Bali" 
-                      className="w-full h-full object-cover"
+                      src="https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?auto=format&fit=crop&w=1000&q=80" 
+                      alt="Yoga-Retreat im Holzhotel Forsthofalm, Salzburger Land" 
+                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                       loading="lazy"
                     />
                   </div>
-                  <div className="p-6">
-                    <h3 className="font-serif text-xl mb-2 text-yoga-brown">Tantric Wisdom Retreat – Bali</h3>
-                    <p className="text-yoga-brown/70 text-sm mb-4">5.–17. 10. 2025</p>
-                    <p className="text-yoga-brown/80 mb-4">
-                      Verbinde feminine & maskuline Energien in einem ganzheitlichen Ansatz zur Selbstfindung.
+                  <CardHeader className="pb-2">
+                    <CardTitle className="font-serif text-xl text-yoga-brown">YOGA-RETREAT im HOLZHOTEL FORSTHOFALM</CardTitle>
+                    <CardDescription className="text-yoga-brown/70 flex flex-col gap-2 mt-2">
+                      <span className="flex items-center">
+                        <MapPin className="h-4 w-4 mr-2 text-yoga-gold" />
+                        Salzburger Land, Österreich
+                      </span>
+                      <span className="flex items-center">
+                        <Calendar className="h-4 w-4 mr-2 text-yoga-gold" />
+                        04.-07.09.2025 (3 Nächte)
+                      </span>
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="text-yoga-brown/80">
+                    <p className="mb-4">
+                      Drei Tage Yoga inmitten der atemberaubenden Bergkulisse des Salzburger Landes. Das nachhaltige 
+                      Holzhotel bietet den perfekten Rahmen für Yoga und Naturerlebnisse.
                     </p>
-                    <p className="text-yoga-gold font-medium mb-4">ab 3.200 €</p>
-                    <a href="#" className="yoga-button inline-block w-full text-center">Mehr erfahren</a>
-                  </div>
-                </div>
+                    <div className="text-yoga-gold font-medium">Ab 990€</div>
+                  </CardContent>
+                  <CardFooter className="pt-0 flex justify-between items-center">
+                    <span className="text-yoga-brown/60 text-sm">12 Plätze verfügbar</span>
+                    <a href="#" className="text-yoga-brown hover:text-yoga-gold flex items-center transition-colors">
+                      Mehr Infos <ArrowRight className="ml-1 h-4 w-4" />
+                    </a>
+                  </CardFooter>
+                </Card>
               </div>
               
               {/* Additional Retreats */}
               <div className="bg-yoga-beige/30 p-8 rounded-lg mb-16">
                 <h2 className="font-serif text-2xl mb-8 text-yoga-brown text-center">Weitere Retreats 2025 / 2026</h2>
-                <ul className="space-y-4 text-yoga-brown/80 max-w-2xl mx-auto">
-                  <li className="flex items-start">
-                    <span className="text-yoga-gold mr-2">•</span>
-                    <span>Mallorca – Port de Sóller 28.05.–01.06.2025</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-yoga-gold mr-2">•</span>
-                    <span>Südtirol – Vigilius Mountain Resort 12.–15.06.2025</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-yoga-gold mr-2">•</span>
-                    <span>Salzburg – Holzhotel Forsthofalm 04.–07.09.2025</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-yoga-gold mr-2">•</span>
-                    <span>Tirol – Posthotel Achenkirch 11.–14.09. & 13.–16.11.2025</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-yoga-gold mr-2">•</span>
-                    <span>Mallorca Süd – Es Trenc 05.–09.10.2025</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-yoga-gold mr-2">•</span>
-                    <span>Südtirol – Hotel Schwarzschmied 27.–30.11.2025</span>
-                  </li>
-                </ul>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                  <div className="bg-white p-5 rounded-md shadow-sm">
+                    <h3 className="font-serif text-lg mb-3 text-yoga-brown">POSTHOTEL ACHENKIRCH</h3>
+                    <div className="flex items-center mb-2">
+                      <MapPin className="h-4 w-4 mr-2 text-yoga-gold" />
+                      <span className="text-yoga-brown/80">Tirol, Österreich</span>
+                    </div>
+                    <div className="flex items-center">
+                      <Calendar className="h-4 w-4 mr-2 text-yoga-gold" />
+                      <span className="text-yoga-brown/80">11./12.09. – 14.09.25</span>
+                    </div>
+                    <div className="mt-1 text-yoga-brown/70 text-sm italic">
+                      Beginne Donnerstag oder Freitag
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white p-5 rounded-md shadow-sm">
+                    <h3 className="font-serif text-lg mb-3 text-yoga-brown">POSTHOTEL ACHENKIRCH</h3>
+                    <div className="flex items-center mb-2">
+                      <MapPin className="h-4 w-4 mr-2 text-yoga-gold" />
+                      <span className="text-yoga-brown/80">Tirol, Österreich</span>
+                    </div>
+                    <div className="flex items-center">
+                      <Calendar className="h-4 w-4 mr-2 text-yoga-gold" />
+                      <span className="text-yoga-brown/80">13./14.11. – 16.11.25</span>
+                    </div>
+                    <div className="mt-1 text-yoga-brown/70 text-sm italic">
+                      Beginne Donnerstag oder Freitag
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white p-5 rounded-md shadow-sm">
+                    <h3 className="font-serif text-lg mb-3 text-yoga-brown">BIKINI ISLAND & MOUNTAIN HOTEL</h3>
+                    <div className="flex items-center mb-2">
+                      <MapPin className="h-4 w-4 mr-2 text-yoga-gold" />
+                      <span className="text-yoga-brown/80">Es Trenc, Mallorca</span>
+                    </div>
+                    <div className="flex items-center">
+                      <Calendar className="h-4 w-4 mr-2 text-yoga-gold" />
+                      <span className="text-yoga-brown/80">05.10.-09.10.25 (4 Nächte)</span>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white p-5 rounded-md shadow-sm">
+                    <h3 className="font-serif text-lg mb-3 text-yoga-brown">HOTEL SCHWARZSCHMIED</h3>
+                    <div className="flex items-center mb-2">
+                      <MapPin className="h-4 w-4 mr-2 text-yoga-gold" />
+                      <span className="text-yoga-brown/80">Lana, Südtirol</span>
+                    </div>
+                    <div className="flex items-center">
+                      <Calendar className="h-4 w-4 mr-2 text-yoga-gold" />
+                      <span className="text-yoga-brown/80">27.11. - 30.11.25</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Typical Retreat Day */}
+              <div className="mb-16 bg-white shadow-lg rounded-lg overflow-hidden">
+                <div className="bg-yoga-tan/20 py-6 px-8">
+                  <h2 className="font-serif text-2xl text-yoga-brown text-center">Ein typischer Yoga-Tag</h2>
+                </div>
+                <div className="p-8">
+                  <ul className="space-y-4 text-yoga-brown/80">
+                    <li className="flex items-start">
+                      <span className="text-yoga-gold mr-3 font-medium">08:00-09:30</span>
+                      <span>Eine Yoga-Stunde mit unterschiedlichen Schwerpunkten (Meditation, Atemtechniken, Sonnengrüße, verschiedene Asanas, Savasana)</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-yoga-gold mr-3 font-medium">bis 11:00</span>
+                      <span>Frühstück/Brunch zusammen in der Gruppe oder alleine oder mit Freunden/Familie</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-yoga-gold mr-3 font-medium">ab 11:30</span>
+                      <span>Wandern, Ausflüge, Massage, Wellness, andere Aktivitäten oder einfach die Seele baumeln lassen</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-yoga-gold mr-3 font-medium">17:00-18:30</span>
+                      <span>Eine weitere Yoga-Stunde mit unterschiedlichen Themen und Übungen, einmal auch Yin Yoga</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-yoga-gold mr-3 font-medium">Abend</span>
+                      <span>Gemeinsames oder individuelles Abendessen, Sauna, Entspannung oder geselliges Beisammensein</span>
+                    </li>
+                  </ul>
+                  <div className="mt-6 text-yoga-brown/80 italic">
+                    Fixpunkt sind die Yoga-Stunden mit Veronika. Das Programm dazwischen stellst du dir selbst zusammen oder machen wir uns in der Gruppe aus.
+                  </div>
+                </div>
+              </div>
+              
+              {/* Testimonials */}
+              <div className="mb-16">
+                <h2 className="font-serif text-2xl mb-8 text-yoga-brown text-center">Feedback von Teilnehmern</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="bg-yoga-beige/20 p-6 rounded-lg relative">
+                    <div className="text-yoga-gold text-4xl absolute top-4 right-6 opacity-20">"</div>
+                    <p className="text-yoga-brown/80 mb-4 relative z-10">
+                      Liebe Veronika, lieben Dank für das schöne Retreat. Es war eine wunderschöne Zeit mit dir, du hast uns gefordert, 
+                      man konnte dank deiner Hilfe, über sich hinauswachsen und du hast uns Raum zum Entspannen gegeben. Von allem war 
+                      alles dabei. Du füllst den Raum mit so wundervoller Energie, dass man in jeder Sekunde sich getragen und gestärkt fühlt.
+                    </p>
+                    <div className="text-yoga-brown font-medium">Susanne Sch., Januar 2023</div>
+                  </div>
+                  
+                  <div className="bg-yoga-beige/20 p-6 rounded-lg relative">
+                    <div className="text-yoga-gold text-4xl absolute top-4 right-6 opacity-20">"</div>
+                    <p className="text-yoga-brown/80 mb-4 relative z-10">
+                      Veronika ist außergewöhnlich und ganz besonders; mit ihrem rießigen Schatz an Erfahrung, ihrer Freude, 
+                      am Unterrichten und Bewegen. Völlig entspannt & ruhig unterrichtet sie und macht glasklare & hilfreiche Ansagen. 
+                      In ihrem Unterricht kann man so viel genießen: wohlige Leichtigkeit, herrliche Tiefe, verspielte, ungewöhnliche Übergänge.
+                    </p>
+                    <div className="text-yoga-brown font-medium">Mimo R., Januar 2023</div>
+                  </div>
+                </div>
               </div>
               
               {/* Private Sacred Journeys */}
-              <div className="text-center max-w-2xl mx-auto">
-                <h2 className="font-serif text-2xl mb-4 text-yoga-brown">Private Sacred Journeys</h2>
+              <div className="text-center max-w-2xl mx-auto mb-16">
+                <h2 className="font-serif text-2xl mb-4 text-yoga-brown">Private Yoga-Reisen</h2>
                 <p className="text-yoga-brown/80 mb-8">
-                  Maßgeschneiderte Retreats für Gruppen – Planen Sie Ihr eigenes transformatives Erlebnis für Freunde, Familie oder Ihr Unternehmen.
+                  Maßgeschneiderte Retreats für Gruppen – Plane dein eigenes transformatives Erlebnis für Freunde, Familie oder dein Unternehmen.
                 </p>
-                <button className="yoga-button-premium bg-yoga-brown text-white hover:bg-yoga-gold border-yoga-brown hover:border-yoga-gold">
+                <Link to="/kontakt" className="yoga-button-premium bg-yoga-brown text-white hover:bg-yoga-gold border-yoga-brown hover:border-yoga-gold">
                   Unverbindlich anfragen
-                </button>
+                </Link>
               </div>
               
               {/* Download PDF section */}
-              <div className="mt-16 p-8 bg-white shadow-md rounded-lg text-center max-w-2xl mx-auto">
+              <div className="p-8 bg-white shadow-md rounded-lg text-center max-w-2xl mx-auto border border-yoga-gold/10">
                 <h3 className="font-serif text-xl mb-4 text-yoga-brown">Alle Retreats, Aus- & Fortbildungen 2025 / 2026</h3>
-                <a href="/ALLE_TERMINE_2025_2026.pdf" className="yoga-button inline-block" download>
-                  Download PDF
+                <a 
+                  href="/ALLE_TERMINE_2025_2026.pdf"
+                  className="yoga-button inline-flex items-center" 
+                  download
+                >
+                  <Download className="mr-2 h-4 w-4" /> Download PDF
                 </a>
               </div>
             </div>

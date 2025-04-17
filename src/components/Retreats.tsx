@@ -54,32 +54,32 @@ const Retreats = () => {
   const retreats: Retreat[] = [
     {
       id: 1,
-      title: "Heiliges Indien Retreat",
-      location: "Rishikesh, Indien",
-      date: "15.-28. März 2026",
-      description: "Tauche ein in die Geburtsstätte des Yoga für eine transformative Reise entlang des heiligen Ganges. Erlebe traditionelle Praktiken, Tempelbesuche und authentische Lehren in der Yoga-Hauptstadt der Welt.",
+      title: "YOGA-RETREAT im BIKINI ISLAND & MOUNTAIN HOTEL",
+      location: "Port de Sollér, Mallorca, Spanien",
+      date: "24.-28.05.2025",
+      description: "Yoga-Retreat in den Bergen mit Blick aufs Meer. Erlebe eine perfekte Balance aus Yoga-Praxis, Entspannung und mediterranem Flair auf der wunderschönen Insel Mallorca.",
       image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=1000&q=80",
-      price: "Ab 2.800€",
-      spots: "10 Plätze verfügbar",
-    },
-    {
-      id: 2,
-      title: "Kundalini Erwachen",
-      location: "Süddeutschland",
-      date: "8.-15. Juli 2025",
-      description: "Aktiviere deine innere Energie durch kraftvolle Kundalini-Praktiken in der ruhigen deutschen Landschaft. Dieses Retreat kombiniert traditionelle Kriyas, Meditation und heilige Zeremonien, um dein göttliches Potenzial zu erwecken.",
-      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1000&q=80",
       price: "Ab 1.950€",
       spots: "8 Plätze verfügbar",
     },
     {
+      id: 2,
+      title: "YOGA-RETREAT im VIGILIUS MOUNTAIN HOTEL",
+      location: "Lana, Südtirol, 1500m Höhe",
+      date: "12.06.-15.06.2025",
+      description: "Eintauchen in die alpine Bergwelt auf 1500m Höhe. Ein besonderes Retreat in diesem exklusiven Naturresort, nur mit der Seilbahn erreichbar, für echte Erholung und tiefe Yoga-Praxis.",
+      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1000&q=80",
+      price: "Ab 1.200€",
+      spots: "10 Plätze verfügbar",
+    },
+    {
       id: 3,
-      title: "Tantrisches Weisheits-Retreat",
-      location: "Bali, Indonesien",
-      date: "5.-17. Oktober 2025",
-      description: "Tauche tief ein in alte tantrische Praktiken, die die heilige Vereinigung von weiblichen und männlichen Energien ehren. Verbinde dich mit deiner göttlichen Essenz durch Meditation, Ritual und Verkörperungspraktiken im magischen Bali.",
+      title: "YOGA-RETREAT im HOLZHOTEL FORSTHOFALM",
+      location: "Salzburger Land, Österreich",
+      date: "04.-07.09.2025",
+      description: "Drei Tage Yoga inmitten der atemberaubenden Bergkulisse des Salzburger Landes. Das nachhaltige Holzhotel bietet den perfekten Rahmen für Yoga und Naturerlebnisse.",
       image: "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?auto=format&fit=crop&w=1000&q=80",
-      price: "Ab 3.200€",
+      price: "Ab 990€",
       spots: "12 Plätze verfügbar",
     },
   ];
@@ -117,12 +117,12 @@ const Retreats = () => {
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <h3 className="font-serif text-2xl text-white">{retreat.title}</h3>
                   <div className="flex flex-wrap text-white/90 gap-4 mt-2">
-                    <span className="flex items-center">
-                      <MapPin className="h-5 w-5 mr-1 flex-shrink-0" />
+                    <span className="flex items-center text-sm">
+                      <MapPin className="h-4 w-4 mr-1.5 flex-shrink-0" />
                       <span>{retreat.location}</span>
                     </span>
-                    <span className="flex items-center">
-                      <Calendar className="h-5 w-5 mr-1 flex-shrink-0" />
+                    <span className="flex items-center text-sm">
+                      <Calendar className="h-4 w-4 mr-1.5 flex-shrink-0" />
                       <span>{retreat.date}</span>
                     </span>
                   </div>
@@ -145,7 +145,7 @@ const Retreats = () => {
         </div>
 
         <div className={`mt-16 p-10 bg-yoga-tan/30 backdrop-blur-sm rounded-lg shadow-lg text-center border border-yoga-gold/20 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="font-serif text-2xl mb-4 text-yoga-brown">Private heilige Reisen</h3>
+          <h3 className="font-serif text-2xl mb-4 text-yoga-brown">Private Yoga-Reisen</h3>
           <div className="w-16 h-0.5 bg-yoga-gold mx-auto mb-6"></div>
           <p className="text-yoga-brown/80 mb-8 max-w-3xl mx-auto leading-relaxed">
             Suchst du nach einer personalisierten spirituellen Reise für deine Gruppe, Familie oder zu einem besonderen Anlass?
