@@ -10,10 +10,14 @@ import FallbackContent from './three/FallbackContent';
 const WebGLBackground = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isWebGLAvailable, setIsWebGLAvailable] = useState(true);
+  const [mountComplete, setMountComplete] = useState(false);
   const requestRef = useRef<number | null>(null);
   const lastUpdateTimeRef = useRef(0);
   
   useEffect(() => {
+    // Set mount complete to ensure proper initialization
+    setMountComplete(true);
+    
     // Check if WebGL is available
     try {
       const canvas = document.createElement('canvas');
@@ -43,8 +47,8 @@ const WebGLBackground = () => {
         
         // Add dampening for more premium feel - smaller range of movement
         setMousePosition({
-          x: x * 0.5, // Reduce movement range further
-          y: y * 0.5
+          x: x * 0.3, // Further reduced movement range
+          y: y * 0.3
         });
       });
     };
@@ -68,8 +72,8 @@ const WebGLBackground = () => {
         
         // Add dampening for more premium feel
         setMousePosition({
-          x: x * 0.5,
-          y: y * 0.5
+          x: x * 0.3,
+          y: y * 0.3
         });
       });
     };
@@ -90,15 +94,22 @@ const WebGLBackground = () => {
     return <FallbackContent />;
   }
 
+  // Don't render Canvas until component is fully mounted
+  if (!mountComplete) {
+    return <div className="absolute inset-0 -z-10 bg-white" />;
+  }
+
   return (
     <div className="absolute inset-0 -z-10">
-      {/* Optimize Three.js rendering */}
       <Canvas 
-        dpr={[1, 1.5]} // Reduced DPR for better performance
+        dpr={1} // Fixed DPR for better performance and stability
         camera={{ position: [0, 0, 10], fov: 60 }}
         gl={{ 
           antialias: false, // Disable antialiasing for performance
-          powerPreference: 'high-performance'
+          powerPreference: 'high-performance',
+          depth: true, // Enable depth testing
+          stencil: false, // Disable stencil buffer to save memory
+          alpha: true
         }}
         frameloop="demand" // Only render when needed
       >
