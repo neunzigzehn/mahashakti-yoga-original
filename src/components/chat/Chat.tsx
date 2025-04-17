@@ -11,9 +11,9 @@ export function Chat() {
   };
 
   return (
-    <div>
+    <>
       {isOpen && <ChatInterface onClose={() => setIsOpen(false)} />}
       <ChatButton onClick={toggleChat} isOpen={isOpen} />
-    </div>
+    </>
   );
 }
