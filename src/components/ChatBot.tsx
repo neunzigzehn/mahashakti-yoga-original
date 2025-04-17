@@ -1,14 +1,11 @@
 
-import { useState, useEffect, useRef } from "react";
-import { MessageCircle, X, Send } from "lucide-react";
-import { Separator } from "./ui/separator";
-
-interface Message {
-  id: string;
-  text: string;
-  sender: "bot" | "user";
-  timestamp: Date;
-}
+import { useState, useEffect } from "react";
+import { MessageCircle } from "lucide-react";
+import Messages from "./chat/Messages";
+import SuggestedQuestions from "./chat/SuggestedQuestions";
+import ChatInput from "./chat/ChatInput";
+import ChatHeader from "./chat/ChatHeader";
+import { Message } from "./chat/types";
 
 const suggestedQuestions = [
   "Welche Kurse bieten Sie an?",
@@ -21,9 +18,7 @@ const suggestedQuestions = [
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
-  const [inputMessage, setInputMessage] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(true);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (messages.length === 0) {
@@ -39,45 +34,35 @@ const ChatBot = () => {
     }
   }, []);
 
-  useEffect(() => {
-    // Scroll to bottom when messages change
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, isOpen]);
-
-  const formatTime = (date: Date) => {
-    return date.toLocaleString('de-DE', { 
-      hour: 'numeric', 
-      minute: '2-digit'
-    });
-  };
-
-  const handleSend = () => {
-    if (inputMessage.trim()) {
-      // Add user message
-      const userMessage: Message = {
-        id: `user-${Date.now()}`,
-        text: inputMessage,
-        sender: "user",
+  const handleSend = (message: string) => {
+    // Add user message
+    const userMessage: Message = {
+      id: `user-${Date.now()}`,
+      text: message,
+      sender: "user",
+      timestamp: new Date(),
+    };
+    
+    setMessages(prev => [...prev, userMessage]);
+    // Hide suggestions after sending a message
+    setShowSuggestions(false);
+    
+    // Simulate bot response after a delay
+    setTimeout(() => {
+      const botResponse: Message = {
+        id: `bot-${Date.now()}`,
+        text: "Vielen Dank für Ihre Nachricht! Unser Team wird sich in Kürze bei Ihnen melden.",
+        sender: "bot",
         timestamp: new Date(),
       };
       
-      setMessages(prev => [...prev, userMessage]);
-      setInputMessage("");
-      // Hide suggestions after sending a message
-      setShowSuggestions(false);
+      setMessages(prev => [...prev, botResponse]);
       
-      // Simulate bot response after a delay
+      // Show suggestions again after bot response
       setTimeout(() => {
-        const botResponse: Message = {
-          id: `bot-${Date.now()}`,
-          text: "Vielen Dank für Ihre Nachricht! Unser Team wird sich in Kürze bei Ihnen melden.",
-          sender: "bot",
-          timestamp: new Date(),
-        };
-        
-        setMessages(prev => [...prev, botResponse]);
-      }, 1000);
-    }
+        setShowSuggestions(true);
+      }, 500);
+    }, 1000);
   };
 
   const handleSuggestedQuestion = (question: string) => {
@@ -148,91 +133,18 @@ const ChatBot = () => {
       {/* Chat window - improved width */}
       {isOpen && (
         <div className="fixed bottom-24 right-6 z-50 w-[330px] rounded-lg shadow-xl overflow-hidden bg-yoga-cream animate-scale-in font-serif">
-          {/* Header */}
-          <div className="flex items-center justify-between p-3 border-b border-yoga-gold/20 bg-yoga-cream">
-            <div className="flex items-center">
-              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-yoga-gold text-white mr-2 text-xs font-semibold">
-                MA
-              </div>
-              <h3 className="font-serif text-yoga-brown">Mahashakti Assistent</h3>
-            </div>
-            <button 
-              onClick={() => setIsOpen(false)} 
-              className="text-yoga-brown/60 hover:text-yoga-brown transition-colors"
-              aria-label="Chat schließen"
-            >
-              <X size={16} />
-            </button>
-          </div>
-          
-          {/* Messages */}
-          <div className="h-[320px] overflow-y-auto p-3 bg-yoga-cream/95">
-            {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`mb-3 ${
-                  message.sender === "bot" ? "pr-6" : "pl-6"
-                }`}
-              >
-                <div
-                  className={`p-3 rounded-lg max-w-[90%] font-sans text-sm ${
-                    message.sender === "bot"
-                      ? "bg-yoga-gold/10 text-yoga-brown"
-                      : "bg-yoga-brown/10 text-yoga-brown ml-auto"
-                  }`}
-                >
-                  {message.text}
-                </div>
-                <div
-                  className={`text-xs text-yoga-brown/60 mt-1 font-sans ${
-                    message.sender === "user" ? "text-right" : ""
-                  }`}
-                >
-                  {formatTime(message.timestamp)}
-                </div>
-              </div>
-            ))}
-            <div ref={messagesEndRef} />
-          </div>
+          <ChatHeader onClose={() => setIsOpen(false)} />
+          <Messages messages={messages} />
           
           {/* Suggested questions with improved visual separation */}
           {showSuggestions && (
-            <div className="px-3 py-2 bg-yoga-cream border-t border-yoga-gold/30">
-              <p className="text-xs font-serif text-yoga-brown/80 mb-2">Vorgeschlagene Fragen:</p>
-              <Separator className="mb-2 bg-yoga-gold/20" />
-              <div className="flex flex-col gap-1.5">
-                {suggestedQuestions.map((question, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleSuggestedQuestion(question)}
-                    className="text-xs font-sans py-1.5 px-3 rounded-full bg-yoga-beige/80 text-yoga-brown hover:bg-yoga-gold/20 transition-colors text-left overflow-hidden text-ellipsis border border-yoga-gold/10"
-                  >
-                    {question}
-                  </button>
-                ))}
-              </div>
-            </div>
+            <SuggestedQuestions 
+              questions={suggestedQuestions} 
+              onSelectQuestion={handleSuggestedQuestion} 
+            />
           )}
           
-          {/* Input */}
-          <div className="p-3 border-t border-yoga-gold/20 flex items-center">
-            <input
-              type="text"
-              value={inputMessage}
-              onChange={(e) => setInputMessage(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleSend()}
-              className="flex-1 py-2 px-3 text-sm font-sans border border-yoga-beige rounded-l-md focus:outline-none focus:ring-1 focus:ring-yoga-gold/30 bg-white"
-              placeholder="Nachricht eingeben..."
-            />
-            <button
-              onClick={handleSend}
-              className="bg-yoga-gold text-white p-2 rounded-r-md hover:bg-yoga-brown transition-colors"
-              disabled={!inputMessage.trim()}
-              aria-label="Nachricht senden"
-            >
-              <Send size={16} />
-            </button>
-          </div>
+          <ChatInput onSendMessage={handleSend} />
         </div>
       )}
     </>
