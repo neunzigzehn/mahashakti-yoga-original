@@ -2,7 +2,6 @@
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import SimpleEffects from './SimpleEffects';
 
 const Lighting = () => {
   const spotLightRef = useRef<THREE.SpotLight>(null!);
@@ -32,9 +31,6 @@ const Lighting = () => {
       />
       <hemisphereLight args={["#ffffff", "#999999", 0.6]} />
       <pointLight position={[-10, -10, -10]} intensity={0.4} color="#e0d8ca" />
-      
-      {/* Add simple glow effect */}
-      <SimpleEffects />
     </>
   );
 };

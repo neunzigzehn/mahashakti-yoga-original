@@ -10,20 +10,25 @@ interface OrbsProps {
 }
 
 const Orbs = ({ mousePosition }: OrbsProps) => {
-  const goldOrbRef = useRef<THREE.Mesh>(null!);
-  const brownOrbRef = useRef<THREE.Mesh>(null!);
+  const goldOrbRef = useRef<THREE.Group>(null!);
+  const brownOrbRef = useRef<THREE.Group>(null!);
+  const goldGlowRef = useRef<THREE.Mesh>(null!);
+  const brownGlowRef = useRef<THREE.Mesh>(null!);
   const { viewport } = useThree();
   
   // Create more complex geometries for premium look
   const goldGeometry = useMemo(() => new THREE.SphereGeometry(7, 64, 64), []);
   const brownGeometry = useMemo(() => new THREE.SphereGeometry(8, 64, 64), []);
+  // Slightly larger geometries for the glow effect
+  const goldGlowGeometry = useMemo(() => new THREE.SphereGeometry(7.5, 32, 32), []);
+  const brownGlowGeometry = useMemo(() => new THREE.SphereGeometry(8.5, 32, 32), []);
   
   // Use a more sophisticated animation approach
   useFrame(({ clock }) => {
     if (goldOrbRef.current && brownOrbRef.current) {
       const time = clock.getElapsedTime();
       
-      // Smooth interactive movement with damping effect
+      // Smooth interactive movement with damping effect for gold orb
       goldOrbRef.current.position.x = THREE.MathUtils.lerp(
         goldOrbRef.current.position.x,
         (mousePosition.x * viewport.width) * 0.65 + Math.sin(time * 0.2) * 1.5,
@@ -54,22 +59,55 @@ const Orbs = ({ mousePosition }: OrbsProps) => {
       goldOrbRef.current.rotation.y = time * 0.08;
       brownOrbRef.current.rotation.x = time * 0.07;
       brownOrbRef.current.rotation.y = time * 0.04;
+      
+      // Animate glow opacity for subtle pulsing effect
+      if (goldGlowRef.current && brownGlowRef.current) {
+        const goldGlowOpacity = 0.15 + Math.sin(time * 0.4) * 0.05;
+        const brownGlowOpacity = 0.12 + Math.sin(time * 0.3) * 0.04;
+        
+        (goldGlowRef.current.material as THREE.MeshBasicMaterial).opacity = goldGlowOpacity;
+        (brownGlowRef.current.material as THREE.MeshBasicMaterial).opacity = brownGlowOpacity;
+      }
     }
   });
 
   return (
     <>
-      {/* Premium gold orb */}
-      <mesh ref={goldOrbRef} position={[-4, 2.5, -12]} castShadow receiveShadow>
-        <primitive object={goldGeometry} />
-        <GoldMaterial />
-      </mesh>
+      {/* Premium gold orb with integrated glow */}
+      <group ref={goldOrbRef} position={[-4, 2.5, -12]}>
+        <mesh castShadow receiveShadow>
+          <primitive object={goldGeometry} />
+          <GoldMaterial />
+        </mesh>
+        <mesh ref={goldGlowRef}>
+          <primitive object={goldGlowGeometry} />
+          <meshBasicMaterial 
+            color="#BFA065" 
+            transparent
+            opacity={0.15}
+            blending={THREE.AdditiveBlending}
+            side={THREE.BackSide}
+          />
+        </mesh>
+      </group>
       
-      {/* Premium brown orb */}
-      <mesh ref={brownOrbRef} position={[4.5, -2.5, -15]} castShadow receiveShadow>
-        <primitive object={brownGeometry} />
-        <BrownMaterial />
-      </mesh>
+      {/* Premium brown orb with integrated glow */}
+      <group ref={brownOrbRef} position={[4.5, -2.5, -15]}>
+        <mesh castShadow receiveShadow>
+          <primitive object={brownGeometry} />
+          <BrownMaterial />
+        </mesh>
+        <mesh ref={brownGlowRef}>
+          <primitive object={brownGlowGeometry} />
+          <meshBasicMaterial 
+            color="#3F3628" 
+            transparent
+            opacity={0.12}
+            blending={THREE.AdditiveBlending}
+            side={THREE.BackSide}
+          />
+        </mesh>
+      </group>
     </>
   );
 };
