@@ -8,6 +8,7 @@ import Schedule from "@/components/Schedule";
 import Retreats from "@/components/Retreats";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { Chat } from "@/components/chat/Chat";
 
 const Index = () => {
   return (
@@ -21,6 +22,7 @@ const Index = () => {
       <Retreats />
       <Contact />
       <Footer />
+      <Chat />
     </div>
   );
 };
