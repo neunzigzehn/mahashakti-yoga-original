@@ -13,7 +13,7 @@ export function Chat() {
   return (
     <div className="fixed bottom-0 right-0 z-50">
       <ChatButton onClick={toggleChat} isOpen={isOpen} />
-      <ChatInterface isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      {isOpen && <ChatInterface isOpen={isOpen} onClose={() => setIsOpen(false)} />}
     </div>
   );
 }

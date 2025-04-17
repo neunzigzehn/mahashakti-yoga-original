@@ -28,12 +28,15 @@ export function ChatInterface({ isOpen, onClose }: ChatInterfaceProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Scroll to the bottom whenever messages change
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);
 
   const handleSendMessage = async (content: string) => {
+    if (!content.trim()) return;
+    
     // Add user message to chat
     const userMessage: Message = {
       id: nanoid(),
@@ -41,10 +44,10 @@ export function ChatInterface({ isOpen, onClose }: ChatInterfaceProps) {
       role: "user",
       timestamp: new Date(),
     };
+    
     setMessages((prev) => [...prev, userMessage]);
     setIsLoading(true);
 
-    // In a real implementation, this would call your API to get a response from OpenAI
     try {
       // Simulate API call delay
       await new Promise((resolve) => setTimeout(resolve, 1500));
@@ -92,54 +95,52 @@ export function ChatInterface({ isOpen, onClose }: ChatInterfaceProps) {
     }
   };
 
+  if (!isOpen) return null;
+
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: 20, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 20, scale: 0.95 }}
-          transition={{ duration: 0.2 }}
-          className="fixed bottom-24 right-6 w-[90%] max-w-[400px] rounded-lg border bg-white shadow-xl z-40"
+    <motion.div
+      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 20, scale: 0.95 }}
+      transition={{ duration: 0.2 }}
+      className="fixed bottom-24 right-6 w-[90%] max-w-[400px] rounded-lg border bg-white shadow-xl z-40"
+    >
+      {/* Chat Header */}
+      <div className="flex items-center justify-between border-b px-4 py-3 bg-yoga-cream">
+        <div>
+          <h3 className="font-display italic text-xl text-yoga-brown">Mahashakti Yoga</h3>
+          <p className="text-xs text-yoga-brown/70">Yoga Assistant</p>
+        </div>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="h-8 w-8 text-yoga-brown hover:bg-yoga-cream/80"
+          onClick={onClose}
         >
-          {/* Chat Header */}
-          <div className="flex items-center justify-between border-b px-4 py-3 bg-yoga-cream">
-            <div>
-              <h3 className="font-display italic text-xl text-yoga-brown">Mahashakti Yoga</h3>
-              <p className="text-xs text-yoga-brown/70">Yoga Assistant</p>
+          <X className="h-4 w-4" />
+          <span className="sr-only">Close</span>
+        </Button>
+      </div>
+      
+      {/* Messages Container */}
+      <div className="flex h-[350px] flex-col overflow-y-auto p-4">
+        {messages.map((message) => (
+          <ChatMessage key={message.id} message={message} />
+        ))}
+        {isLoading && (
+          <div className="flex justify-start py-2">
+            <div className="flex space-x-1">
+              <div className="h-2 w-2 rounded-full bg-yoga-gold animate-pulse"></div>
+              <div className="h-2 w-2 rounded-full bg-yoga-gold animate-pulse delay-150"></div>
+              <div className="h-2 w-2 rounded-full bg-yoga-gold animate-pulse delay-300"></div>
             </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-8 w-8 text-yoga-brown hover:bg-yoga-cream/80"
-              onClick={onClose}
-            >
-              <X className="h-4 w-4" />
-              <span className="sr-only">Close</span>
-            </Button>
           </div>
-          
-          {/* Messages Container */}
-          <div className="flex h-[350px] flex-col overflow-y-auto p-4">
-            {messages.map((message) => (
-              <ChatMessage key={message.id} message={message} />
-            ))}
-            {isLoading && (
-              <div className="flex justify-start py-2">
-                <div className="flex space-x-1">
-                  <div className="h-2 w-2 rounded-full bg-yoga-gold animate-pulse"></div>
-                  <div className="h-2 w-2 rounded-full bg-yoga-gold animate-pulse delay-150"></div>
-                  <div className="h-2 w-2 rounded-full bg-yoga-gold animate-pulse delay-300"></div>
-                </div>
-              </div>
-            )}
-            <div ref={messagesEndRef} />
-          </div>
-          
-          {/* Chat Input */}
-          <ChatInput onSend={handleSendMessage} disabled={isLoading} />
-        </motion.div>
-      )}
-    </AnimatePresence>
+        )}
+        <div ref={messagesEndRef} />
+      </div>
+      
+      {/* Chat Input */}
+      <ChatInput onSend={handleSendMessage} disabled={isLoading} />
+    </motion.div>
   );
 }
