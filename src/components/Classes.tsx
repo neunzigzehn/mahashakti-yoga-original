@@ -57,7 +57,7 @@ const Classes = () => {
       image: getImageUrl("retreat-images", "yoga-class-1.png"),
       level: "Alle Niveaus",
       duration: "75 Min",
-      objectPosition: "center 25%", // Adjusted to better center the person on the beach
+      objectPosition: "center 15%", // Adjusted to show more of the upper body on the beach
       objectFit: "cover",
     },
     {
@@ -67,7 +67,7 @@ const Classes = () => {
       image: getImageUrl("retreat-images", "yoga-class-2.png"),
       level: "Mittelstufe",
       duration: "90 Min",
-      objectPosition: "center 30%", // Adjusted to better center the smiling woman on the mat
+      objectPosition: "center 25%", // Slightly adjusted for better vertical alignment
       objectFit: "cover",
     },
     {
@@ -77,7 +77,7 @@ const Classes = () => {
       image: getImageUrl("retreat-images", "yoga-class-3.png"),
       level: "Alle Niveaus",
       duration: "90 Min",
-      objectPosition: "center 60%", // Adjusted to focus on the person in the yin pose by the water
+      objectPosition: "center 35%", // Adjusted to better center the person in the yin pose
       objectFit: "cover",
     },
     {
@@ -87,7 +87,7 @@ const Classes = () => {
       image: getImageUrl("retreat-images", "yoga-class-4.png"),
       level: "Fortgeschritten",
       duration: "90 Min",
-      objectPosition: "center 40%", // Adjusted to better center the person in meditation pose by the rocks
+      objectPosition: "center 30%", // Adjusted to better center the person in meditation pose
       objectFit: "cover",
     },
   ];
