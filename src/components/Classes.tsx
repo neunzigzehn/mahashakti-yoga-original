@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { getImageUrl } from '@/utils/supabaseStorage';
 
@@ -57,7 +56,7 @@ const Classes = () => {
       image: "/lovable-uploads/dba68d16-d275-4cef-a55a-21fcf95b2e44.png",
       level: "Alle Niveaus",
       duration: "75 Min",
-      objectPosition: "55% 45%", // Adjusted to better position the subject
+      objectPosition: "50% 30%", // Shifted up slightly
       objectFit: "cover",
     },
     {
@@ -87,7 +86,7 @@ const Classes = () => {
       image: "/lovable-uploads/9ca8aec4-ec47-4aa0-ab46-f249513d47c8.png",
       level: "Fortgeschritten",
       duration: "90 Min",
-      objectPosition: "65% 40%", // Adjusted to better center the subject
+      objectPosition: "50% 60%", // Shifted down slightly
       objectFit: "cover",
     },
   ];
