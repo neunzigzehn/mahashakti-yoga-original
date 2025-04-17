@@ -13,6 +13,7 @@ interface Retreat {
   image: string;
   price: string;
   spots: string;
+  objectPosition?: string; // Add object-position property
 }
 
 const Retreats = () => {
@@ -62,6 +63,7 @@ const Retreats = () => {
       image: getImageUrl("retreat-images", "retreat-1.png"),
       price: "Ab 1.950€",
       spots: "8 Plätze verfügbar",
+      objectPosition: "center center",
     },
     {
       id: 2,
@@ -72,6 +74,7 @@ const Retreats = () => {
       image: getImageUrl("retreat-images", "retreat-2.png"),
       price: "Ab 1.200€",
       spots: "10 Plätze verfügbar",
+      objectPosition: "center 40%",
     },
     {
       id: 3,
@@ -82,6 +85,7 @@ const Retreats = () => {
       image: getImageUrl("retreat-images", "retreat-3.png"),
       price: "Ab 990€",
       spots: "12 Plätze verfügbar",
+      objectPosition: "center 35%",
     },
   ];
 
@@ -108,6 +112,7 @@ const Retreats = () => {
                   src={retreat.image} 
                   alt={retreat.title} 
                   className="w-full h-full object-cover"
+                  style={{ objectPosition: retreat.objectPosition || 'center center' }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-yoga-brown/80 to-transparent"></div>
                 <div className="absolute top-0 left-0 m-4">

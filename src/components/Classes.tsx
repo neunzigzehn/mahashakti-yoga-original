@@ -9,7 +9,8 @@ interface YogaClass {
   image: string;
   level: string;
   duration: string;
-  objectPosition?: string; // Add object-position property for image alignment
+  objectPosition?: string; // Object position property for image alignment
+  objectFit?: string;      // Added object-fit property for more control
 }
 
 const Classes = () => {
@@ -56,7 +57,8 @@ const Classes = () => {
       image: getImageUrl("retreat-images", "yoga-class-1.png"),
       level: "Alle Niveaus",
       duration: "75 Min",
-      objectPosition: "center bottom", // Adjusted to move image down
+      objectPosition: "center 35%", // Adjusted to better show the split pose
+      objectFit: "cover",
     },
     {
       id: 2,
@@ -65,7 +67,8 @@ const Classes = () => {
       image: getImageUrl("retreat-images", "yoga-class-2.png"),
       level: "Mittelstufe",
       duration: "90 Min",
-      objectPosition: "center center",
+      objectPosition: "center 40%", // Adjusted to center the woman on the yoga mat
+      objectFit: "cover",
     },
     {
       id: 3,
@@ -74,7 +77,8 @@ const Classes = () => {
       image: getImageUrl("retreat-images", "yoga-class-3.png"),
       level: "Alle Niveaus",
       duration: "90 Min",
-      objectPosition: "center center",
+      objectPosition: "center 35%", // Adjusted to focus on the downward dog pose
+      objectFit: "cover",
     },
     {
       id: 4,
@@ -83,7 +87,8 @@ const Classes = () => {
       image: getImageUrl("retreat-images", "yoga-class-4.png"),
       level: "Fortgeschritten",
       duration: "90 Min",
-      objectPosition: "center top", // Adjusted to move image up
+      objectPosition: "center 30%", // Adjusted to center the meditation pose
+      objectFit: "cover",
     },
   ];
 
@@ -105,8 +110,11 @@ const Classes = () => {
                 <img 
                   src={yogaClass.image} 
                   alt={yogaClass.title} 
-                  className="w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110 filter grayscale-[25%] hover:grayscale-0"
-                  style={{ objectPosition: yogaClass.objectPosition || 'center center' }}
+                  className="w-full h-full transition-all duration-700 ease-in-out group-hover:scale-110 filter grayscale-[25%] hover:grayscale-0"
+                  style={{ 
+                    objectPosition: yogaClass.objectPosition || 'center center',
+                    objectFit: yogaClass.objectFit || 'cover'
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-yoga-brown/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
