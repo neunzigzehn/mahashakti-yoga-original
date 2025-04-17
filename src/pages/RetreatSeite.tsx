@@ -9,6 +9,8 @@ import TestimonialsSection from '@/components/retreats/TestimonialsSection';
 import DownloadSection from '@/components/retreats/DownloadSection';
 import { getImageUrl } from '@/utils/supabaseStorage';
 import PageHeader from '@/components/PageHeader';
+import { Card, CardContent } from '@/components/ui/card';
+import { Check } from 'lucide-react';
 
 const RetreatSeite = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -92,7 +94,55 @@ const RetreatSeite = () => {
           <div className="container-custom">
             <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+              {/* Introduction section to fill the gap */}
+              <div className="mb-16 max-w-3xl mx-auto text-center">
+                <h2 className="font-serif text-2xl mb-6 text-yoga-brown">Warum ein Yoga-Retreat mit Veronika?</h2>
+                <p className="text-yoga-brown/80 mb-8 leading-relaxed">
+                  Ein Retreat ist eine wunderbare Gelegenheit, um tiefer in deine Yoga-Praxis einzutauchen, dich zu entspannen und 
+                  neue Kraft zu tanken. In einer kleinen Gruppe von Gleichgesinnten kannst du deinen Alltag hinter dir lassen und 
+                  dich ganz auf dich und deine Praxis konzentrieren.
+                </p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+                  <Card className="border-yoga-gold/20 shadow-sm">
+                    <CardContent className="p-6">
+                      <div className="flex items-start mb-3">
+                        <div className="bg-yoga-gold/10 p-2 rounded-full mr-4">
+                          <Check className="h-5 w-5 text-yoga-gold" />
+                        </div>
+                        <h3 className="font-serif text-lg text-yoga-brown">Persönliche Betreuung</h3>
+                      </div>
+                      <p className="text-yoga-brown/70 text-sm">Kleine Gruppen ermöglichen eine individuelle Betreuung und Anpassung der Praxis an deine Bedürfnisse.</p>
+                    </CardContent>
+                  </Card>
+                  
+                  <Card className="border-yoga-gold/20 shadow-sm">
+                    <CardContent className="p-6">
+                      <div className="flex items-start mb-3">
+                        <div className="bg-yoga-gold/10 p-2 rounded-full mr-4">
+                          <Check className="h-5 w-5 text-yoga-gold" />
+                        </div>
+                        <h3 className="font-serif text-lg text-yoga-brown">Besondere Orte</h3>
+                      </div>
+                      <p className="text-yoga-brown/70 text-sm">Alle Retreats finden an sorgfältig ausgewählten Kraftorten statt, die den perfekten Rahmen für deine Yoga-Erfahrung bieten.</p>
+                    </CardContent>
+                  </Card>
+                  
+                  <Card className="border-yoga-gold/20 shadow-sm">
+                    <CardContent className="p-6">
+                      <div className="flex items-start mb-3">
+                        <div className="bg-yoga-gold/10 p-2 rounded-full mr-4">
+                          <Check className="h-5 w-5 text-yoga-gold" />
+                        </div>
+                        <h3 className="font-serif text-lg text-yoga-brown">Ganzheitliche Erfahrung</h3>
+                      </div>
+                      <p className="text-yoga-brown/70 text-sm">Neben Yoga erwarten dich auch Meditation, gesunde Ernährung und Zeit für Entspannung und Austausch.</p>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                 {retreats.map(retreat => (
                   <RetreatCard
                     key={retreat.id}

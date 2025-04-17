@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { getImageUrl } from '@/utils/supabaseStorage';
 
@@ -67,7 +66,7 @@ const Classes = () => {
       image: "/lovable-uploads/040584b2-f8bb-43a4-81b5-2ea45fdd0e83.png",
       level: "Mittelstufe",
       duration: "90 Min",
-      objectPosition: "50% 40%", // Adjusted to show more of upper body
+      objectPosition: "50% 30%", // Moved up more to align with other images
       objectFit: "cover",
     },
     {
