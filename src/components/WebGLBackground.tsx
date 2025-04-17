@@ -1,5 +1,5 @@
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import Orbs from './three/Orbs';
 import Lighting from './three/Lighting';
@@ -83,27 +83,27 @@ const WebGLBackground = () => {
   return (
     <div className="absolute inset-0 -z-10">
       <div className="absolute inset-0 backdrop-blur-3xl"></div>
-      <Canvas 
-        gl={{ 
-          antialias: true,
-          alpha: true,
-          powerPreference: 'high-performance',
-          preserveDrawingBuffer: true, // Better for screenshots
-          precision: 'highp' // Higher precision for better visuals
-        }}
-        dpr={[1, 2]} // Responsive to device pixel ratio for better quality
-        camera={{ 
-          position: [0, 0, 8], 
-          fov: 60,
-          near: 0.1,
-          far: 100
-        }}
-        performance={{ min: 0.5 }} // Performance floor to prevent hanging
-      >
-        <fog attach="fog" args={['#FFFFFF', 20, 40]} />
-        <Lighting />
-        <Orbs mousePosition={mousePosition} />
-      </Canvas>
+      <Suspense fallback={<FallbackContent />}>
+        <Canvas 
+          gl={{ 
+            antialias: true,
+            alpha: true,
+            powerPreference: 'default',
+            preserveDrawingBuffer: true
+          }}
+          dpr={[1, 2]} 
+          camera={{ 
+            position: [0, 0, 8], 
+            fov: 60,
+            near: 0.1,
+            far: 100
+          }}
+        >
+          <fog attach="fog" args={['#FFFFFF', 20, 40]} />
+          <Lighting />
+          <Orbs mousePosition={mousePosition} />
+        </Canvas>
+      </Suspense>
     </div>
   );
 };

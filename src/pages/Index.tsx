@@ -9,7 +9,7 @@ import Retreats from "@/components/Retreats";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ChatBot from "@/components/ChatBot";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { initializeStorage } from "@/utils/initializeStorage";
 
 const Index = () => {
@@ -17,7 +17,16 @@ const Index = () => {
 
   useEffect(() => {
     // Initialize the Supabase storage when the home page loads
-    initializeStorage();
+    const initStorage = async () => {
+      try {
+        await initializeStorage();
+      } catch (error) {
+        console.error("Failed to initialize storage:", error);
+        // Continue even if storage initialization fails
+      }
+    };
+    
+    initStorage();
     
     // Scroll to top when page loads
     window.scrollTo(0, 0);
@@ -33,7 +42,9 @@ const Index = () => {
   return (
     <div className={`min-h-screen transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'} overflow-hidden`}>
       <Navbar />
-      <Hero />
+      <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
+        <Hero />
+      </Suspense>
       <About />
       <Classes />
       <Testimonials />
